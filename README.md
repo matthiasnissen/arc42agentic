@@ -74,11 +74,11 @@ Ein Reviewresultat befindet sich hier [ConflictReviewResultOpus46.md](ConflictRe
 
 ### Orchestratoren
 
-| Agent | Beschreibung |
-|---|---|
-| `arc42-review` | Hauptorchestrator: Vollständiges Review aller Sektionen + Konfliktanalyse, [arc42-review](agents/arc42-review.agent.md) |
-| `arc42-branch-review` | Branch-Review: Ermittelt geänderte Dateien per Git-Diff, delegiert gezielt im Delta-Modus, [arc42-branch-review](agents/arc42-branch-review.agent.md) |
-| `arc42-conflict-review` | Konfliktanalyse-Orchestrator: Koordiniert alle 7 Konfliktdimensionen, [arc42-conflict-review](agents/arc42-conflict-review.agent.md) |
+| Agent | Beschreibung | Link |
+|---|---|---|
+| `arc42-review` | Hauptorchestrator: Vollständiges Review aller Sektionen + Konfliktanalyse | [arc42-review](agents/arc42-review.agent.md) |
+| `arc42-branch-review` | Branch-Review: Ermittelt geänderte Dateien per Git-Diff, delegiert gezielt im Delta-Modus | [arc42-branch-review](agents/arc42-branch-review.agent.md) |
+| `arc42-conflict-review` | Konfliktanalyse-Orchestrator: Koordiniert alle 7 Konfliktdimensionen | [arc42-conflict-review](agents/arc42-conflict-review.agent.md) |
 
 ### Sektions-Agenten
 

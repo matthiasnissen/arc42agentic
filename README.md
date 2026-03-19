@@ -155,7 +155,7 @@ src/
 └── images/                      Diagramme und Abbildungen
 ```
 
-> Die Beispiel-Dokumentation steht unter der Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/).
+> Die Beispiel-Dokumentation steht unter der Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/). Siehe [src/LICENSE.md](src/LICENSE.md).
 
 ## Branches zum Testen
 
@@ -167,11 +167,23 @@ Das Repository enthält Branches, in denen gezielt Änderungen an der arc42-Doku
 
 So lässt sich das Delta-Review in der Praxis ausprobieren und überprüfen, ob die Agenten korrekt im Delta-Modus arbeiten.
 
+## Lizenz
+
+Dieses Repository enthält zwei unabhängige Komponenten mit unterschiedlichen Lizenzen:
+
+| Komponente | Pfad | Lizenz |
+|---|---|---|
+| Arc42 Review Agents | `agents/` | [MIT License](LICENSE) |
+| DokChess-Beispieldokumentation | `src/` | [CC BY-NC-SA 4.0](src/LICENSE.md) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/) |
+
+Die Agenten-Definitionen (`agents/`) sind eigenständige Werkzeuge und kein abgeleitetes Werk der Beispieldokumentation. Sie stehen unter der MIT-Lizenz und können frei verwendet, verändert und weitergegeben werden.
+
 ## Projektstruktur
 
 ```
 Arc42Agents/
 ├── README.md               ← Diese Datei
+├── LICENSE                  MIT License (gilt für agents/)
 ├── agents/                  22 Agent-Definitionen (.agent.md)
 │   ├── arc42-review.agent.md
 │   ├── arc42-branch-review.agent.md
@@ -182,7 +194,8 @@ Arc42Agents/
 │   ├── arc42-conflict-quality-strategy.agent.md
 │   ├── ...
 │   └── arc42-conflict-risks-quality.agent.md
-└── src/                     Beispiel-Dokumentation (DokChess)
+└── src/                     Beispiel-Dokumentation (DokChess, CC BY-NC-SA 4.0)
+    ├── LICENSE.md           CC BY-NC-SA 4.0 Lizenz
     ├── 01-Einfuehrung-und-Ziele/
     ├── ...
     ├── 12-Glossar/

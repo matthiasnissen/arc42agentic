@@ -33,12 +33,24 @@ Wähle den jewiligen Agenten in GitHub Copilot aus. Verwende keine Delegation ü
 
 Rufe in Copilot den Agenten `arc42-review` auf (z. B. über den Copilot-Chat). Er:
 
-1. Identifiziert alle vorhandenen Sektionen unter `src/` ![Analyse der Sektionen](.attachments/ScreenshotReviewAll01.png)
-2. Delegiert an die 12 Sektions-Agenten ![Parallele Subagenten](.attachments/ScreenshotReviewAll02.png)
-3. Startet die sektionsübergreifende Konfliktanalyse ![Parallele Konflikanalyse](.attachments/ScreenshotReviewAll03.png)
+1. Identifiziert alle vorhandenen Sektionen unter `src/`
+2. Delegiert an die 12 Sektions-Agenten
+3. Startet die sektionsübergreifende Konfliktanalyse
 4. Erstellt einen konsolidierten Prüfbericht mit Ampel-Bewertung
 
 Ein Reviewesultat befindet sich hier [FullReviewResultOpus46.md](FullReviewResultOpus46.md). Je nach verwendetem Modell unterscheiden sich die Resultate leicht.
+
+Identifiziert alle vorhandenen Sektionen unter `src/`
+
+![Analyse der Sektionen](.attachments/ScreenshotReviewAll01.png)
+
+Delegiert an die 12 Sektions-Agenten:
+
+![Parallele Subagenten](.attachments/ScreenshotReviewAll02.png)
+
+Starten der sektionsübergreifenden Konfliktanalyse 
+
+![Parallele Konflikanalyse](.attachments/ScreenshotReviewAll03.png)
 
 ### Branch-Review starten
 
@@ -52,11 +64,11 @@ Rufe den Agenten `arc42-branch-review` auf. Er:
 
 ### Nur Konfliktanalyse starten
 
-Rufe den Agenten `@arc42-conflict-review` auf. Er führt alle 7 Konfliktdimensionen durch und liefert eine Konfliktkarte der Dokumentation.
-
-![Konfliktanalyse](.attachments/ScreenshotConflictReview.png)
+Rufe den Agenten `arc42-conflict-review` auf. Er führt alle 7 Konfliktdimensionen durch und liefert eine Konfliktkarte der Dokumentation.
 
 Ein Reviewresultat befindet sich hier [ConflictReviewResultOpus46.md](ConflictReviewResultOpus46.md)
+
+![Konfliktanalyse](.attachments/ScreenshotConflictReview.png)
 
 ## Agenten im Detail
 

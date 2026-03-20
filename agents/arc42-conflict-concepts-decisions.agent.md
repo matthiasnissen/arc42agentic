@@ -23,17 +23,7 @@ Probleme entstehen, wenn:
 
 ## Review-Modus
 
-Dieser Agent unterstützt zwei Modi:
-
-### Vollständig-Modus (Standard)
-Wenn du OHNE spezifischen Änderungskontext aufgerufen wirst → prüfe alle Konfliktdimensionen vollständig.
-
-### Delta-Modus (Branch-Review)
-Wenn der Aufrufer **geänderte Dateien und/oder Diffs** mitliefert:
-- Lies trotzdem ALLE relevanten Dateien aus den beteiligten Sektionen (beide Seiten der Beziehung werden für Konfliktprüfung benötigt)
-- Fokussiere die Analyse darauf, ob die **Änderungen neue Konflikte einführen** oder bestehende verschärfen
-- Melde nur Konflikte, die durch die Änderungen verursacht oder beeinflusst wurden
-- Kennzeichne jeden Befund als änderungsbezogen
+> Verwende den **Konfliktanalyse-Review-Modus** (Vollständig/Delta) wie im Skill `arc42-review-format` definiert.
 
 ## Konfliktprüfungen
 
@@ -77,6 +67,8 @@ Wenn der Aufrufer **geänderte Dateien und/oder Diffs** mitliefert:
 
 ## Ausgabeformat
 
+> Befund-Format gemäß Skill `arc42-review-format` (Konfliktanalyse-Variante).
+
 ```markdown
 # Konfliktanalyse: Konzepte ↔ Entscheidungen
 
@@ -106,4 +98,3 @@ Wenn der Aufrufer **geänderte Dateien und/oder Diffs** mitliefert:
 
 - Nicht jedes Konzept braucht eine explizite Entscheidung — triviale Konzepte (z.B. Logging-Format) sind akzeptabel
 - Nicht jede Entscheidung braucht ein Konzept — Entscheidungen mit rein strategischem Charakter müssen nicht in S8 beschrieben werden
-- Berücksichtige, dass die Dokumentation auf Deutsch verfasst ist

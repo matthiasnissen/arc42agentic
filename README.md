@@ -12,6 +12,8 @@ Das Agentensystem besteht aus **22 spezialisierten Agenten** in vier Kategorien:
 - **12 Sektions-Agenten** — prüfen jeweils eine arc42-Sektion
 - **7 Konflikt-Agenten** — analysieren sektionsübergreifende Widersprüche
 
+Gemeinsame Formate (Review-Modi, Befund-Templates, allgemeine Regeln) sind im **Skill [`arc42-review-format`](.github/skills/arc42-review-format/SKILL.md)** zentral definiert und werden von allen Agenten referenziert.
+
 ### Review-Modi
 
 | Modus | Orchestrator | Beschreibung |

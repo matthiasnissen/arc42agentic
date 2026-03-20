@@ -40,7 +40,7 @@ Rufe in Copilot den Agenten `arc42-review` auf (z. B. über den Copilot-Chat). E
 3. Startet die sektionsübergreifende Konfliktanalyse
 4. Erstellt einen konsolidierten Prüfbericht mit Ampel-Bewertung
 
-Ein Reviewesultat befindet sich hier [FullReviewResultOpus46.md](FullReviewResultOpus46.md). Je nach verwendetem Modell unterscheiden sich die Resultate leicht.
+Ein Reviewesultat befindet sich hier: [FullReviewResultOpus46.md](FullReviewResultOpus46.md). Je nach verwendetem Modell unterscheiden sich die Resultate leicht.
 
 Identifiziert alle vorhandenen Sektionen unter `src/`
 
@@ -64,11 +64,13 @@ Rufe den Agenten `arc42-branch-review` auf. Er:
 4. Löst relevante Konfliktanalysen basierend auf den geänderten Sektionen aus
 5. Erstellt einen fokussierten Änderungs-Review-Bericht
 
+Ein Reviewresultat des Branches Konflikt/ADR befindet sich hier: [BranchReviewConflicADROpus46.md](BranchReviewConflicADROpus46.md)
+
 ### Nur Konfliktanalyse starten
 
 Rufe den Agenten `arc42-conflict-review` auf. Er führt alle 7 Konfliktdimensionen durch und liefert eine Konfliktkarte der Dokumentation.
 
-Ein Reviewresultat befindet sich hier [ConflictReviewResultOpus46.md](ConflictReviewResultOpus46.md)
+Ein Reviewresultat befindet sich hier: [ConflictReviewResultOpus46.md](ConflictReviewResultOpus46.md)
 
 ![Konfliktanalyse](.attachments/ScreenshotConflictReview.png)
 

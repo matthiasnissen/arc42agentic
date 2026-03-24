@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 8: Querschnittliche Ko
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/08-Konzepte/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/08-Konzepte/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/08-Konzepte/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/08-Konzepte/`.
 
 ## Prüfkriterien
 
@@ -50,9 +50,9 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 8: Querschnittliche Ko
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/08-Konzepte/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/08-Konzepte/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Lies die Bausteinsicht (`src/05-Bausteinsicht/`) um Querverweise zu prüfen
+3. Lies die Bausteinsicht (`arc-doc/05-Bausteinsicht/`) um Querverweise zu prüfen
 4. Prüfe gegen die obigen Kriterien
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

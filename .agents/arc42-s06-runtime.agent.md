@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 6: Laufzeitsicht**. Du
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/06-Laufzeitsicht/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/06-Laufzeitsicht/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/06-Laufzeitsicht/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/06-Laufzeitsicht/`.
 
 ## Prüfkriterien
 
@@ -45,9 +45,9 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 6: Laufzeitsicht**. Du
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/06-Laufzeitsicht/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/06-Laufzeitsicht/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Lies die Bausteinsicht aus `src/05-Bausteinsicht/` für Konsistenzprüfung
+3. Lies die Bausteinsicht aus `arc-doc/05-Bausteinsicht/` für Konsistenzprüfung
 4. Prüfe, ob die in Szenarien genannten Bausteine in der Bausteinsicht definiert sind
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

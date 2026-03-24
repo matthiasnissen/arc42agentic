@@ -23,7 +23,7 @@ Du ermittelst die geänderten Dateien im aktuellen Branch (im Vergleich zum Basi
    ```
 2. Ermittle die geänderten Dateien im Vergleich zum Basis-Branch:
    ```
-   git diff --name-status origin/main...HEAD -- src/
+   git diff --name-status origin/main...HEAD -- arc-doc/
    ```
    Falls `origin/main` nicht existiert, versuche `main`, `master` oder `origin/master`.
 3. Ermittle auch die noch nicht committeten Änderungen über `get_changed_files`.
@@ -34,18 +34,18 @@ Ordne jede geänderte Datei der jeweiligen arc42-Sektion zu:
 
 | Pfad-Prefix | Sektion | Agent |
 |---|---|---|
-| `src/01-Einfuehrung-und-Ziele/` | Sektion 1 | `arc42-s01-introduction` |
-| `src/02-Randbedingungen/` | Sektion 2 | `arc42-s02-constraints` |
-| `src/03-Kontextabgrenzung/` | Sektion 3 | `arc42-s03-context` |
-| `src/04-Loesungsstrategie/` | Sektion 4 | `arc42-s04-solution-strategy` |
-| `src/05-Bausteinsicht/` | Sektion 5 | `arc42-s05-building-blocks` |
-| `src/06-Laufzeitsicht/` | Sektion 6 | `arc42-s06-runtime` |
-| `src/07-Verteilungssicht/` | Sektion 7 | `arc42-s07-deployment` |
-| `src/08-Konzepte/` | Sektion 8 | `arc42-s08-concepts` |
-| `src/09-Entscheidungen/` | Sektion 9 | `arc42-s09-decisions` |
-| `src/10-Qualitaetsanforderungen/` | Sektion 10 | `arc42-s10-quality` |
-| `src/11-Risiken/` | Sektion 11 | `arc42-s11-risks` |
-| `src/12-Glossar/` | Sektion 12 | `arc42-s12-glossary` |
+| `arc-doc/01-Einfuehrung-und-Ziele/` | Sektion 1 | `arc42-s01-introduction` |
+| `arc-doc/02-Randbedingungen/` | Sektion 2 | `arc42-s02-constraints` |
+| `arc-doc/03-Kontextabgrenzung/` | Sektion 3 | `arc42-s03-context` |
+| `arc-doc/04-Loesungsstrategie/` | Sektion 4 | `arc42-s04-solution-strategy` |
+| `arc-doc/05-Bausteinsicht/` | Sektion 5 | `arc42-s05-building-blocks` |
+| `arc-doc/06-Laufzeitsicht/` | Sektion 6 | `arc42-s06-runtime` |
+| `arc-doc/07-Verteilungssicht/` | Sektion 7 | `arc42-s07-deployment` |
+| `arc-doc/08-Konzepte/` | Sektion 8 | `arc42-s08-concepts` |
+| `arc-doc/09-Entscheidungen/` | Sektion 9 | `arc42-s09-decisions` |
+| `arc-doc/10-Qualitaetsanforderungen/` | Sektion 10 | `arc42-s10-quality` |
+| `arc-doc/11-Risiken/` | Sektion 11 | `arc42-s11-risks` |
+| `arc-doc/12-Glossar/` | Sektion 12 | `arc42-s12-glossary` |
 
 ### Phase 3: Änderungs-Kontext bereitstellen
 

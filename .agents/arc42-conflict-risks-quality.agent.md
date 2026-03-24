@@ -14,9 +14,9 @@ Risiken (Sektion 11) und Qualitätsziele (Sektion 1.2) / Qualitätsanforderungen
 
 ## Zu prüfende Dateien
 
-- `src/01-Einfuehrung-und-Ziele/` — insbesondere Qualitätsziele
-- `src/10-Qualitaetsanforderungen/` — alle Dateien
-- `src/11-Risiken/` — alle Dateien
+- `arc-doc/01-Einfuehrung-und-Ziele/` — insbesondere Qualitätsziele
+- `arc-doc/10-Qualitaetsanforderungen/` — alle Dateien
+- `arc-doc/11-Risiken/` — alle Dateien
 
 ## Review-Modus
 
@@ -55,9 +55,9 @@ Risiken (Sektion 11) und Qualitätsziele (Sektion 1.2) / Qualitätsanforderungen
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Qualitätsziele aus `src/01-Einfuehrung-und-Ziele/`
-3. Lies alle Qualitätsszenarien aus `src/10-Qualitaetsanforderungen/`
-4. Lies alle Risiken und Maßnahmen aus `src/11-Risiken/`
+2. Lies alle Qualitätsziele aus `arc-doc/01-Einfuehrung-und-Ziele/`
+3. Lies alle Qualitätsszenarien aus `arc-doc/10-Qualitaetsanforderungen/`
+4. Lies alle Risiken und Maßnahmen aus `arc-doc/11-Risiken/`
 5. Erstelle eine Zuordnungsmatrix: Qualitätsziel → Risiko → Maßnahme
 6. Identifiziere Lücken und Widersprüche (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

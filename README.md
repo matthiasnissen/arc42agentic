@@ -35,14 +35,14 @@ Wähle den jewiligen Agenten in GitHub Copilot aus. Verwende keine Delegation ü
 
 Rufe in Copilot den Agenten `arc42-review` auf (z. B. über den Copilot-Chat). Er:
 
-1. Identifiziert alle vorhandenen Sektionen unter `src/`
+1. Identifiziert alle vorhandenen Sektionen unter `arc-doc/`
 2. Delegiert an die 12 Sektions-Agenten
 3. Startet die sektionsübergreifende Konfliktanalyse
 4. Erstellt einen konsolidierten Prüfbericht mit Ampel-Bewertung
 
 Ein Reviewesultat befindet sich hier: [FullReviewResultOpus46.md](FullReviewResultOpus46.md). Je nach verwendetem Modell unterscheiden sich die Resultate leicht.
 
-Identifiziert alle vorhandenen Sektionen unter `src/`
+Identifiziert alle vorhandenen Sektionen unter `arc-doc/`
 
 ![Analyse der Sektionen](.attachments/ScreenshotReviewAll01.png)
 
@@ -145,16 +145,16 @@ Branch-Review:
     └── ...nur relevante Konflikt-Agenten...
 ```
 
-## Beispiel-Dokumentation (`src/`)
+## Beispiel-Dokumentation (`arc-doc/`)
 
-Das Verzeichnis `src/` enthält eine vollständige arc42-Architekturdokumentation des Schach-Programms **DokChess** als Referenzbeispiel. Die Dokumentation stammt von Stefan Zörner und ist unter [dokchess.de](https://www.dokchess.de/) im Detail beschrieben.
+Das Verzeichnis `arc-doc/` enthält eine vollständige arc42-Architekturdokumentation des Schach-Programms **DokChess** als Referenzbeispiel. Die Dokumentation stammt von Stefan Zörner und ist unter [dokchess.de](https://www.dokchess.de/) im Detail beschrieben.
 
-Die Dokumentation von Stefan wurde automatisch heruntergeladen und in Markdown überführt. Von mir wurden die dokumentierten Entscheidungen in das ADR Format von Nygard überführt.
+Die Dokumentation von Stefan wurde automatisch heruntergeladen und in Markdown überführt. Von mir wurden die dokumentierten Entscheidungen in das ADR Format von Michael Nygard überführt.
 
 Die Struktur folgt dem [arc42-Template](https://docs.arc42.org/home/) mit 12 Sektionen:
 
 ```
-src/
+arc-doc/
 ├── 00-Ueberblick/              Überblick
 ├── 01-Einfuehrung-und-Ziele/   Aufgabenstellung, Qualitätsziele, Stakeholder
 ├── 02-Randbedingungen/          Technisch, Organisatorisch, Konventionen
@@ -171,7 +171,7 @@ src/
 └── images/                      Diagramme und Abbildungen
 ```
 
-> Die Beispiel-Dokumentation steht unter der Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/). Siehe [src/LICENSE.md](src/LICENSE.md).
+> Die Beispiel-Dokumentation steht unter der Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/). Siehe [arc-doc/LICENSE.md](arc-doc/LICENSE.md).
 
 ## Branches zum Testen
 
@@ -190,7 +190,7 @@ Dieses Repository enthält zwei unabhängige Komponenten mit unterschiedlichen L
 | Komponente | Pfad | Lizenz |
 |---|---|---|
 | Arc42 Review Agents | `.agents/` | [MIT License](LICENSE) |
-| DokChess-Beispieldokumentation | `src/` | [CC BY-NC-SA 4.0](src/LICENSE.md) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/) |
+| DokChess-Beispieldokumentation | `arc-doc/` | [CC BY-NC-SA 4.0](arc-doc/LICENSE.md) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/) |
 
 Die Agenten-Definitionen (`.agents/`) sind eigenständige Werkzeuge und kein abgeleitetes Werk der Beispieldokumentation. Sie stehen unter der MIT-Lizenz und können frei verwendet, verändert und weitergegeben werden.
 
@@ -210,7 +210,7 @@ Arc42Agents/
 │   ├── arc42-conflict-quality-strategy.agent.md
 │   ├── ...
 │   └── arc42-conflict-risks-quality.agent.md
-└── src/                     Beispiel-Dokumentation (DokChess, CC BY-NC-SA 4.0)
+└── arc-doc/                     Beispiel-Dokumentation (DokChess, CC BY-NC-SA 4.0)
     ├── LICENSE.md           CC BY-NC-SA 4.0 Lizenz
     ├── 01-Einfuehrung-und-Ziele/
     ├── ...

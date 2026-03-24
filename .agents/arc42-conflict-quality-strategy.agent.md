@@ -16,9 +16,9 @@ Widersprüche oder Lücken in diesem Strang untergraben die Architekturbegründu
 
 ## Zu prüfende Dateien
 
-- `src/01-Einfuehrung-und-Ziele/` — insbesondere Qualitätsziele
-- `src/04-Loesungsstrategie/` — alle Dateien
-- `src/10-Qualitaetsanforderungen/` — alle Dateien
+- `arc-doc/01-Einfuehrung-und-Ziele/` — insbesondere Qualitätsziele
+- `arc-doc/04-Loesungsstrategie/` — alle Dateien
+- `arc-doc/10-Qualitaetsanforderungen/` — alle Dateien
 
 ## Review-Modus
 
@@ -58,9 +58,9 @@ Widersprüche oder Lücken in diesem Strang untergraben die Architekturbegründu
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Qualitätsziele aus `src/01-Einfuehrung-und-Ziele/`
-3. Lies alle Dateien in `src/04-Loesungsstrategie/`
-4. Lies alle Dateien in `src/10-Qualitaetsanforderungen/`
+2. Lies alle Qualitätsziele aus `arc-doc/01-Einfuehrung-und-Ziele/`
+3. Lies alle Dateien in `arc-doc/04-Loesungsstrategie/`
+4. Lies alle Dateien in `arc-doc/10-Qualitaetsanforderungen/`
 5. Erstelle eine Zuordnungsmatrix: Qualitätsziel → Strategieansatz → Szenario
 6. Identifiziere Lücken und Widersprüche in der Matrix (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

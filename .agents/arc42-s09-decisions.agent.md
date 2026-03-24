@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 9: Architekturentschei
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/09-Entscheidungen/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/09-Entscheidungen/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/09-Entscheidungen/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/09-Entscheidungen/`.
 
 ## Prüfkriterien
 
@@ -57,7 +57,7 @@ Jede Entscheidung MUSS folgende Abschnitte enthalten:
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/09-Entscheidungen/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/09-Entscheidungen/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
 3. Prüfe jede Entscheidung einzeln gegen das Nygard-ADR-Format
 4. Prüfe inhaltliche Vollständigkeit und Nachvollziehbarkeit

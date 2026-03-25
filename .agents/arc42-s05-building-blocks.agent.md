@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 5: Bausteinsicht**. Du
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/05-Bausteinsicht/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/05-Bausteinsicht/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/05-Bausteinsicht/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/05-Bausteinsicht/`.
 
 ## Prüfkriterien
 
@@ -68,9 +68,9 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 5: Bausteinsicht**. Du
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/05-Bausteinsicht/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/05-Bausteinsicht/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Lies den Kontext aus `src/03-Kontextabgrenzung/` für Konsistenzprüfung
+3. Lies den Kontext aus `arc-doc/03-Kontextabgrenzung/` für Konsistenzprüfung
 4. Prüfe gegen die obigen Kriterien
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

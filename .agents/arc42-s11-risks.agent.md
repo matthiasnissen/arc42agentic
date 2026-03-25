@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 11: Risiken und techni
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/11-Risiken/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/11-Risiken/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/11-Risiken/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/11-Risiken/`.
 
 ## Prüfkriterien
 
@@ -47,7 +47,7 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 11: Risiken und techni
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/11-Risiken/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/11-Risiken/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
 3. Prüfe gegen die obigen Kriterien
 4. Prüfe, ob identifizierte Risiken aus anderen Sektionen (z.B. Kontext, Bausteinsicht) hier aufgegriffen werden

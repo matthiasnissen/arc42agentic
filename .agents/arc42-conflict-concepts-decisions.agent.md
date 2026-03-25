@@ -18,8 +18,8 @@ Probleme entstehen, wenn:
 
 ## Zu prüfende Dateien
 
-- `src/08-Konzepte/` — alle Dateien
-- `src/09-Entscheidungen/` — alle Dateien
+- `arc-doc/08-Konzepte/` — alle Dateien
+- `arc-doc/09-Entscheidungen/` — alle Dateien
 
 ## Review-Modus
 
@@ -58,8 +58,8 @@ Probleme entstehen, wenn:
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien in `src/08-Konzepte/`
-3. Lies alle Dateien in `src/09-Entscheidungen/`
+2. Lies alle Dateien in `arc-doc/08-Konzepte/`
+3. Lies alle Dateien in `arc-doc/09-Entscheidungen/`
 4. Klassifiziere jeden Inhalt: ist es tatsächlich ein Konzept (HOW-Pattern) oder eine Entscheidung (WHAT-Begründung)?
 5. Prüfe inhaltliche Widersprüche zwischen den Sektionen
 6. Identifiziere Lücken (Konzepte ohne Entscheidung und umgekehrt)

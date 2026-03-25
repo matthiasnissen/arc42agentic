@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 4: Lösungsstrategie**
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/04-Loesungsstrategie/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/04-Loesungsstrategie/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/04-Loesungsstrategie/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/04-Loesungsstrategie/`.
 
 ## Prüfkriterien
 
@@ -47,9 +47,9 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 4: Lösungsstrategie**
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/04-Loesungsstrategie/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/04-Loesungsstrategie/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Lies auch `src/01-Einfuehrung-und-Ziele/` um die Qualitätsziele zu kennen
+3. Lies auch `arc-doc/01-Einfuehrung-und-Ziele/` um die Qualitätsziele zu kennen
 4. Prüfe, ob die Lösungsstrategie die Qualitätsziele adressiert
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

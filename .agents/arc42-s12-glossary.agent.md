@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 12: Glossar**. Du prü
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/12-Glossar/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/12-Glossar/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/12-Glossar/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/12-Glossar/`.
 
 ## Prüfkriterien
 
@@ -47,9 +47,9 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 12: Glossar**. Du prü
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/12-Glossar/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/12-Glossar/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Durchsuche die gesamte Dokumentation unter `src/` nach Fachbegriffen, die im Glossar fehlen könnten (im Delta-Modus: nur in geänderten Dateien suchen)
+3. Durchsuche die gesamte Dokumentation unter `arc-doc/` nach Fachbegriffen, die im Glossar fehlen könnten (im Delta-Modus: nur in geänderten Dateien suchen)
 4. Prüfe gegen die obigen Kriterien
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

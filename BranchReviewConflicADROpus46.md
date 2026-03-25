@@ -11,7 +11,7 @@
 
 | Datei | Änderungstyp | Sektion |
 |---|---|---|
-| `src/09-Entscheidungen/09-03-Brettrepraesentation.md` | Added | Sektion 9 |
+| `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` | Added | Sektion 9 |
 
 ---
 
@@ -22,7 +22,7 @@
 #### [S09-01] Widerspruch zur Lösungsstrategie: OO-Domänenmodell vs. Bitboards
 
 **Schwere:** 🔴 Kritisch
-**Datei:** `src/09-Entscheidungen/09-03-Brettrepraesentation.md`
+**Datei:** `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md`
 **Kriterium:** Konsistenz mit Lösungsstrategie (Sektion 4) — keine Widersprüche
 
 **Befund:** ADR 09-03 entscheidet sich für Bitboards als interne Brettrepräsentation. Sektion 4 beschreibt jedoch durchgängig ein objektorientiertes Domänenmodell mit expliziter Priorisierung von Lesbarkeit gegenüber Effizienz:
@@ -41,7 +41,7 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 #### [S09-02] Fehlende Auswirkung auf Qualitätsziel „Analysierbarkeit"
 
 **Schwere:** 🟡 Empfehlung
-**Datei:** `src/09-Entscheidungen/09-03-Brettrepraesentation.md`
+**Datei:** `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md`
 **Kriterium:** Konsequenzen — werden ALLE Konsequenzen aufgeführt (positive, negative, neutrale)?
 
 **Befund:** Die Consequences-Sektion benennt zwar die höhere Codekomplexität und erschwerteres Debugging, adressiert aber nicht explizit die Auswirkung auf das Qualitätsziel *Zugängliches Beispiel (Analysierbarkeit)* aus Sektion 1.2. Bitboards untergraben dieses Qualitätsziel fundamental — das sollte als Konsequenz klar benannt werden.
@@ -55,7 +55,7 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 #### [S09-03] Fehlender Bezug auf bestehende Designphilosophie im Context
 
 **Schwere:** 🟡 Empfehlung
-**Datei:** `src/09-Entscheidungen/09-03-Brettrepraesentation.md`
+**Datei:** `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md`
 **Kriterium:** Kontext — Werden die Kräfte vollständig beschrieben? Werden Spannungen zwischen verschiedenen Aspekten aufgezeigt?
 
 **Befund:** Der Context-Abschnitt listet Randbedingungen, Qualitätsmerkmale und Annahmen auf, benennt aber nicht die bestehende Designphilosophie „Lesbarkeit vor Effizienz" als relevante Gegenkraft. Gerade weil diese ADR eine Abkehr von diesem Prinzip darstellt, müsste die Spannung zwischen Performance-Bedarf und bestehender OO-Designphilosophie explizit im Kontext erscheinen.
@@ -69,7 +69,7 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 #### [S09-04] Abschnitt „Folgen fuer die Weiterentwicklung" unvollständig
 
 **Schwere:** 🟢 Hinweis
-**Datei:** `src/09-Entscheidungen/09-03-Brettrepraesentation.md`
+**Datei:** `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md`
 **Kriterium:** Konsequenzen — Vollständigkeit und Nachvollziehbarkeit
 
 **Befund:** Es fehlt eine Aussage darüber, wie die Bitboard-Entscheidung die in ADR 09-02 beschriebene Immutability-Strategie konkret beeinflusst (z.B. Kopiersemantik bei Bitboards vs. bei OO-Objekten).
@@ -83,7 +83,7 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 #### [S09-05] Stilistische Inkonsistenz bei Consequences-Unterüberschriften
 
 **Schwere:** 🟢 Hinweis
-**Datei:** `src/09-Entscheidungen/09-03-Brettrepraesentation.md`
+**Datei:** `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md`
 **Kriterium:** Konsistenz mit bestehenden ADRs
 
 **Befund:** ADR 09-01 verwendet „Neutrale/Folgen fuer die Weiterentwicklung:" als dritte Consequences-Kategorie, ADR 09-02 verwendet „Folgen fuer die Weiterentwicklung:". ADR 09-03 folgt dem Muster von 09-02. Kein Fehler, aber die Inkonsistenz zu 09-01 fällt auf.
@@ -113,8 +113,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K1 — Direkter Widerspruch
 **Schwere:** 🔴 Kritisch
 **Betroffene Dateien:**
-- `src/04-Loesungsstrategie/04-02-Aufbau.md` — *„Hier wurde bewusst eine bessere Verständlichkeit angestrebt, auf Kosten von Effizienz"* und *„Auch hier ging bei der Implementierung der fachlich motivierten Klasse dazu Lesbarkeit vor Effizienz"*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Entscheidung für Bitboards, explizit begründet mit Performance (Faktor 8–12), auf Kosten von Lesbarkeit und Verständlichkeit
+- `arc-doc/04-Loesungsstrategie/04-02-Aufbau.md` — *„Hier wurde bewusst eine bessere Verständlichkeit angestrebt, auf Kosten von Effizienz"* und *„Auch hier ging bei der Implementierung der fachlich motivierten Klasse dazu Lesbarkeit vor Effizienz"*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Entscheidung für Bitboards, explizit begründet mit Performance (Faktor 8–12), auf Kosten von Lesbarkeit und Verständlichkeit
 
 **Beschreibung:** Die Strategie formuliert zweimal explizit das Prinzip **„Lesbarkeit vor Effizienz"** für die zentralen Datenstrukturen, insbesondere für die Spielsituation (`Stellung`). Die ADR trifft für exakt diese Datenstruktur die diametral entgegengesetzte Abwägung: Bitboards werden **wegen** ihrer Effizienz gewählt, obwohl die ADR selbst anerkennt, dass Lesbarkeit und Verständlichkeit „niedrig" sind. Der Hinweis, dass die öffentlichen Schnittstellen unverändert bleiben, mildert den Widerspruch nicht vollständig, da die Strategie explizit von der **Implementierung** der fachlich motivierten Klasse spricht.
 
@@ -129,8 +129,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K1 — Direkter Widerspruch
 **Schwere:** 🔴 Kritisch
 **Betroffene Dateien:**
-- `src/04-Loesungsstrategie/04-01-Einstieg.md` — Qualitätsziel „Zugängliches Beispiel (Analysierbarkeit)" wird durch *„Explizites, objektorientiertes Domänenmodell"* adressiert
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Kernrepräsentation des Domänenmodells ist nicht mehr objektorientiert, sondern bitbasiert
+- `arc-doc/04-Loesungsstrategie/04-01-Einstieg.md` — Qualitätsziel „Zugängliches Beispiel (Analysierbarkeit)" wird durch *„Explizites, objektorientiertes Domänenmodell"* adressiert
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Kernrepräsentation des Domänenmodells ist nicht mehr objektorientiert, sondern bitbasiert
 
 **Beschreibung:** Die Strategie-Tabelle benennt ein „Explizites, objektorientiertes Domänenmodell" als zentralen Architekturansatz für das Qualitätsziel Analysierbarkeit. Die ADR 09-03 ersetzt das Herzstück dieses Modells — die interne Brettrepräsentation — durch `long`-Werte und bitweise Operationen.
 
@@ -145,8 +145,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K1 — Direkter Widerspruch
 **Schwere:** 🟡 Warnung
 **Betroffene Dateien:**
-- `src/04-Loesungsstrategie/04-01-Einstieg.md` — Qualitätsziel „Einladende Experimentierplattform (Änderbarkeit)"
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — „Einstiegshürde für neue Entwickler: hoch"
+- `arc-doc/04-Loesungsstrategie/04-01-Einstieg.md` — Qualitätsziel „Einladende Experimentierplattform (Änderbarkeit)"
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — „Einstiegshürde für neue Entwickler: hoch"
 
 **Beschreibung:** Die Strategie verfolgt eine „Einladende Experimentierplattform" mit niedriger Einstiegshürde. Die ADR erkennt selbst an, dass Bitboards die Einstiegshürde signifikant erhöhen. Gemildert dadurch, dass Experimentierer auf Modulebene die Bitboard-Interna nicht verstehen müssen — wer jedoch Zuggeneration oder Stellungsbewertung modifizieren will, trifft auf hohe Komplexität.
 
@@ -161,8 +161,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K3 — Veraltete Strategie
 **Schwere:** 🟡 Warnung
 **Betroffene Dateien:**
-- `src/04-Loesungsstrategie/04-03-Spielstrategie.md` — *„Diese einfachen Implementierungen erfüllen unter den gegebenen Randbedingungen bereits die Qualitätsszenarien."*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboard-Notwendigkeit impliziert, dass die einfache Implementierung nicht (mehr) ausreicht
+- `arc-doc/04-Loesungsstrategie/04-03-Spielstrategie.md` — *„Diese einfachen Implementierungen erfüllen unter den gegebenen Randbedingungen bereits die Qualitätsszenarien."*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboard-Notwendigkeit impliziert, dass die einfache Implementierung nicht (mehr) ausreicht
 
 **Beschreibung:** Die Strategie behauptet, einfache Implementierungen reichen für die Qualitätsszenarien. Die ADR rechtfertigt Bitboards damit, dass 2–3 Halbzüge tiefere Suche die Spielstärke „signifikant steigert" und referenziert das Risiko „Spielstärke nicht erreichbar" — dies impliziert, dass die bisherige einfache Implementierung für die gewünschte Spielstärke nicht ausreicht.
 
@@ -177,8 +177,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K3 — Veraltete oder unvollständige Strategie
 **Schwere:** 🟡 Warnung
 **Betroffene Dateien:**
-- `src/04-Loesungsstrategie/04-01-Einstieg.md` — *„Effiziente Implementierung des Domänenmodells"* ohne Konkretisierung
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Fundamentale, strategisch relevante Entscheidung
+- `arc-doc/04-Loesungsstrategie/04-01-Einstieg.md` — *„Effiziente Implementierung des Domänenmodells"* ohne Konkretisierung
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Fundamentale, strategisch relevante Entscheidung
 
 **Beschreibung:** Die ADR 09-03 verändert die Kernrepräsentation, beeinflusst zwei Qualitätsziele (Effizienz, Spielstärke) und kehrt ein geltendes Designprinzip um. Eine Entscheidung dieser Tragweite sollte in der Strategie explizit verankert sein. Der bestehende Punkt „Effiziente Implementierung des Domänenmodells" ist zu unspezifisch.
 
@@ -210,8 +210,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K1 — Direkter Widerspruch
 **Schwere:** 🔴 Kritisch
 **Betroffene Dateien:**
-- `src/08-Konzepte/08-02-Domaenenmodell.md` — *„das intern als zweidimensionales Array (8 x 8) implementiert ist. Falls ein Feld unbesetzt ist, steht null im Array."*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Entscheidung für Bitboards (64-Bit `long`-Werte) statt OO-Modell mit Arrays
+- `arc-doc/08-Konzepte/08-02-Domaenenmodell.md` — *„das intern als zweidimensionales Array (8 x 8) implementiert ist. Falls ein Feld unbesetzt ist, steht null im Array."*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Entscheidung für Bitboards (64-Bit `long`-Werte) statt OO-Modell mit Arrays
 
 **Beschreibung:** Das Domänenmodell in S8 beschreibt die Klasse `Stellung` mit einem konkreten Implementierungsdetail: einem zweidimensionalen 8×8-Array mit `null` für unbesetzte Felder. Die ADR 09-03 entscheidet sich explizit gegen dieses Modell und für Bitboards. Das Konzept in 08-02 ist damit inhaltlich falsch.
 
@@ -226,7 +226,7 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K5 — Fehlende Konzeptbeschreibung
 **Schwere:** 🟡 Warnung
 **Betroffene Dateien:**
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — *„Hilfsfunktionen zur Visualisierung von Bitboards erforderlich", „Dokumentation der Bitmuster und Magic-Bitboard-Tabellen essenziell"*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — *„Hilfsfunktionen zur Visualisierung von Bitboards erforderlich", „Dokumentation der Bitmuster und Magic-Bitboard-Tabellen essenziell"*
 - Sektion 8 — kein entsprechendes Konzept vorhanden
 
 **Beschreibung:** Die ADR benennt zwei querschnittliche Notwendigkeiten: (1) Visualisierungshilfsfunktionen für Debugging und (2) Dokumentation der Bitmuster und Magic-Bitboard-Tabellen. Beides betrifft mehrere Module und steht in Spannung zu `08-06-Logging.md`, das „keine feinkörnigen Logging-Ausgaben" vorsieht.
@@ -242,8 +242,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K1 — Direkter Widerspruch (innerhalb S9)
 **Schwere:** 🟡 Warnung
 **Betroffene Dateien:**
-- `src/09-Entscheidungen/09-02-Stellungsobjekte.md` — Annahme: *„Ein fachliches Objektmodell (Feld, Figur, Zug, Stellung) ist effizient genug implementierbar."*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Das OO-Modell wird als zu langsam verworfen (Faktor 8–12 langsamer)
+- `arc-doc/09-Entscheidungen/09-02-Stellungsobjekte.md` — Annahme: *„Ein fachliches Objektmodell (Feld, Figur, Zug, Stellung) ist effizient genug implementierbar."*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Das OO-Modell wird als zu langsam verworfen (Faktor 8–12 langsamer)
 
 **Beschreibung:** ADR 09-02 formuliert als Annahme, dass ein fachliches Objektmodell effizient genug implementierbar ist. ADR 09-03 widerlegt genau diese Annahme durch Performance-Messungen. Die Rückwirkung auf 09-02 ist nicht dokumentiert.
 
@@ -258,8 +258,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K1 — Indirekter Widerspruch
 **Schwere:** 🟢 Hinweis
 **Betroffene Dateien:**
-- `src/08-Konzepte/08-01-Abhaengigkeiten.md` — *„DokChess soll zum Experimentieren und zum Erweitern der Engine einladen"*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — *„Schwer nachvollziehbar fuer Nicht-Schachprogrammierer", „Einstiegshuerde fuer neue Entwickler: hoch"*
+- `arc-doc/08-Konzepte/08-01-Abhaengigkeiten.md` — *„DokChess soll zum Experimentieren und zum Erweitern der Engine einladen"*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — *„Schwer nachvollziehbar fuer Nicht-Schachprogrammierer", „Einstiegshuerde fuer neue Entwickler: hoch"*
 
 **Beschreibung:** Das Abhängigkeitskonzept betont, dass DokChess „zum Experimentieren einladen" soll. Wer die Engine tatsächlich erweitern will (z.B. Stellungsbewertung), muss trotz Interface-Abstraktion mit Bitboard-Interna arbeiten.
 
@@ -290,8 +290,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K4 — Implizite Verletzung
 **Schwere:** 🔴 Kritisch
 **Betroffene Dateien:**
-- `src/04-Loesungsstrategie/04-02-Aufbau.md` — *„Lesbarkeit vor Effizienz"*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboards priorisieren Effizienz zulasten der Lesbarkeit
+- `arc-doc/04-Loesungsstrategie/04-02-Aufbau.md` — *„Lesbarkeit vor Effizienz"*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboards priorisieren Effizienz zulasten der Lesbarkeit
 
 **Beschreibung:** Das Designprinzip „Lesbarkeit vor Effizienz" ist direkt abgeleitet aus den organisatorischen Randbedingungen (Team-Zusammensetzung, Open-Source-Veröffentlichung für Lern-/Seminarzwecke). Ein Verstoß gegen die Strategie verletzt implizit auch den Rahmen der Randbedingungen.
 
@@ -306,8 +306,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K4 — Implizite Verletzung
 **Schwere:** 🔴 Kritisch
 **Betroffene Dateien:**
-- `src/04-Loesungsstrategie/04-01-Einstieg.md` — *„Explizites, objektorientiertes Domänenmodell"* für Analysierbarkeit
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboards sind nicht-objektorientiert
+- `arc-doc/04-Loesungsstrategie/04-01-Einstieg.md` — *„Explizites, objektorientiertes Domänenmodell"* für Analysierbarkeit
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboards sind nicht-objektorientiert
 
 **Beschreibung:** DokChess dient gerade als Lehrbeispiel, bei dem auch die Implementierung untersucht wird. Die organisatorische Randbedingung „Team" (Workshop-Teilnehmer) setzt implizit voraus, dass der Code zugänglich bleibt.
 
@@ -322,8 +322,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K4 — Implizite Verletzung
 **Schwere:** 🟡 Warnung
 **Betroffene Dateien:**
-- `src/08-Konzepte/08-02-Domaenenmodell.md` — *„zweidimensionales Array (8 x 8)"*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboards ersetzen das 8×8-Array
+- `arc-doc/08-Konzepte/08-02-Domaenenmodell.md` — *„zweidimensionales Array (8 x 8)"*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Bitboards ersetzen das 8×8-Array
 
 **Beschreibung:** Überschneidung mit KKE-01. Das Implementierungsdetail in Sektion 8.2 wäre nach Umsetzung der ADR faktisch falsch.
 
@@ -336,8 +336,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K2 — Organisatorische Constraint-Verletzung
 **Schwere:** 🟡 Warnung
 **Betroffene Dateien:**
-- `src/02-Randbedingungen/02-02-Organisatorisch.md` — *„Stefan Zörner, unterstützt durch Kollegen, Bekannte und Interessierte aus Workshops und Seminaren"*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — *„Bitweise Operationen sind fuer Nicht-Schachprogrammierer schwer nachvollziehbar"*
+- `arc-doc/02-Randbedingungen/02-02-Organisatorisch.md` — *„Stefan Zörner, unterstützt durch Kollegen, Bekannte und Interessierte aus Workshops und Seminaren"*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — *„Bitweise Operationen sind fuer Nicht-Schachprogrammierer schwer nachvollziehbar"*
 
 **Beschreibung:** Die organisatorische Randbedingung beschreibt ein Team, das Lernende und Einsteiger umfasst. Die ADR führt wissentlich eine Implementierung ein, die ein wesentlicher Teil des definierten Teams nicht mehr ohne Weiteres verstehen kann.
 
@@ -352,8 +352,8 @@ Die ADR-Entscheidung für Bitboards kehrt dieses Prinzip um (Effizienz vor Lesba
 **Konflikttyp:** K3 — Konventions-Verletzung
 **Schwere:** 🟢 Hinweis
 **Betroffene Dateien:**
-- `src/02-Randbedingungen/02-03-Konventionen.md` — *„Verwendung deutscher Bezeichner für Klassen, Methoden etc."*
-- `src/09-Entscheidungen/09-03-Brettrepraesentation.md` — Begriffe „Bitboards", „Magic-Bitboard-Tabellen"
+- `arc-doc/02-Randbedingungen/02-03-Konventionen.md` — *„Verwendung deutscher Bezeichner für Klassen, Methoden etc."*
+- `arc-doc/09-Entscheidungen/09-03-Brettrepraesentation.md` — Begriffe „Bitboards", „Magic-Bitboard-Tabellen"
 
 **Beschreibung:** Die Konvention verlangt deutsche Bezeichner. Bitboard-Terminologie ist stark englischsprachig geprägt. Bei der Implementierung besteht die Gefahr, dass englische Fachbegriffe ohne Eindeutschung als Klassen- oder Methodennamen verwendet werden.
 

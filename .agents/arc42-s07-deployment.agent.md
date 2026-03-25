@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 7: Verteilungssicht**.
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/07-Verteilungssicht/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/07-Verteilungssicht/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/07-Verteilungssicht/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/07-Verteilungssicht/`.
 
 ## Prüfkriterien
 
@@ -56,9 +56,9 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 7: Verteilungssicht**.
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/07-Verteilungssicht/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/07-Verteilungssicht/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Vergleiche mit `src/05-Bausteinsicht/` für Konsistenz beim Mapping
+3. Vergleiche mit `arc-doc/05-Bausteinsicht/` für Konsistenz beim Mapping
 4. Prüfe gegen die obigen Kriterien
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

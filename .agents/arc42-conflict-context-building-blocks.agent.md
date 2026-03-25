@@ -11,8 +11,8 @@ Die Kontextabgrenzung (Sektion 3) definiert die Systemgrenzen und alle externen 
 
 ## Zu prüfende Dateien
 
-- `src/03-Kontextabgrenzung/` — alle Dateien
-- `src/05-Bausteinsicht/` — alle Dateien
+- `arc-doc/03-Kontextabgrenzung/` — alle Dateien
+- `arc-doc/05-Bausteinsicht/` — alle Dateien
 
 ## Review-Modus
 
@@ -52,9 +52,9 @@ Die Kontextabgrenzung (Sektion 3) definiert die Systemgrenzen und alle externen 
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien in `src/03-Kontextabgrenzung/`
+2. Lies alle Dateien in `arc-doc/03-Kontextabgrenzung/`
 3. Extrahiere alle externen Partner, Schnittstellen und Datenflüsse
-4. Lies alle Dateien in `src/05-Bausteinsicht/`
+4. Lies alle Dateien in `arc-doc/05-Bausteinsicht/`
 5. Extrahiere alle externen Schnittstellen aus Level 1 (Whitebox Gesamtsystem)
 6. Vergleiche die beiden Listen und identifiziere Diskrepanzen (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

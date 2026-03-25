@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 10: Qualitätsanforder
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/10-Qualitaetsanforderungen/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/10-Qualitaetsanforderungen/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/10-Qualitaetsanforderungen/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/10-Qualitaetsanforderungen/`.
 
 ## Prüfkriterien
 
@@ -60,9 +60,9 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 10: Qualitätsanforder
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/10-Qualitaetsanforderungen/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/10-Qualitaetsanforderungen/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Lies die Qualitätsziele aus `src/01-Einfuehrung-und-Ziele/` für Konsistenzprüfung
+3. Lies die Qualitätsziele aus `arc-doc/01-Einfuehrung-und-Ziele/` für Konsistenzprüfung
 4. Prüfe, ob alle Qualitätsziele aus Sektion 1.2 durch Szenarien adressiert werden
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

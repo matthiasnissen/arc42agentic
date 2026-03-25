@@ -11,10 +11,10 @@ Randbedingungen (Sektion 2) definieren den nicht verhandelbaren Rahmen, innerhal
 
 ## Zu prüfende Dateien
 
-- `src/02-Randbedingungen/` — alle Dateien (Constraints)
-- `src/04-Loesungsstrategie/` — alle Dateien
-- `src/08-Konzepte/` — alle Dateien
-- `src/09-Entscheidungen/` — alle Dateien
+- `arc-doc/02-Randbedingungen/` — alle Dateien (Constraints)
+- `arc-doc/04-Loesungsstrategie/` — alle Dateien
+- `arc-doc/08-Konzepte/` — alle Dateien
+- `arc-doc/09-Entscheidungen/` — alle Dateien
 
 ## Review-Modus
 
@@ -53,10 +53,10 @@ Randbedingungen (Sektion 2) definieren den nicht verhandelbaren Rahmen, innerhal
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien in `src/02-Randbedingungen/` und extrahiere jeden einzelnen Constraint
-3. Lies alle Dateien in `src/04-Loesungsstrategie/`
-4. Lies alle Dateien in `src/08-Konzepte/`
-5. Lies alle Dateien in `src/09-Entscheidungen/`
+2. Lies alle Dateien in `arc-doc/02-Randbedingungen/` und extrahiere jeden einzelnen Constraint
+3. Lies alle Dateien in `arc-doc/04-Loesungsstrategie/`
+4. Lies alle Dateien in `arc-doc/08-Konzepte/`
+5. Lies alle Dateien in `arc-doc/09-Entscheidungen/`
 6. Prüfe jeden Constraint systematisch gegen alle Aussagen in S4, S8, S9
 7. Dokumentiere Verletzungen und Verdachtsfälle (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

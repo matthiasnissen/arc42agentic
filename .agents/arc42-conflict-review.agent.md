@@ -43,7 +43,7 @@ Prüft, ob Risiken die Qualitätsziele bedrohen und ob Gegenmaßnahmen existiere
 
 ## Vorgehen
 
-1. **Bestandsaufnahme**: Prüfe unter `src/`, welche Sektionen in der Dokumentation vorhanden sind.
+1. **Bestandsaufnahme**: Prüfe unter `arc-doc/`, welche Sektionen in der Dokumentation vorhanden sind.
 2. **Delegation**: Rufe ALLE anwendbaren Konflikt-Agenten auf. Überspringe einen Agenten nur, wenn eine der von ihm benötigten Sektionen nicht existiert.
 3. **Konsolidierung**: Fasse die Ergebnisse aller Agenten zu einem Gesamtbild zusammen.
 

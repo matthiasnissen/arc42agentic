@@ -39,13 +39,13 @@
 
 **[KQS-01] Namens- und Klassifikationsinkonsistenz beim Qualitätsziel Spielstärke** 🟡
 
-- **Betroffene Dateien:** [01-02-Qualitaetsziele.md](src/01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md) — „**Akzeptable** Spielstärke (**Funktionale Eignung**)" vs. [04-01-Einstieg.md](src/04-Loesungsstrategie/04-01-Einstieg.md) — „**Attraktive** Spielstärke (**Attraktivität**)"
+- **Betroffene Dateien:** [01-02-Qualitaetsziele.md](arc-doc/01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md) — „**Akzeptable** Spielstärke (**Funktionale Eignung**)" vs. [04-01-Einstieg.md](arc-doc/04-Loesungsstrategie/04-01-Einstieg.md) — „**Attraktive** Spielstärke (**Attraktivität**)"
 - **Beschreibung:** Das vierte Qualitätsziel wird in S1.2 und S4.1 unterschiedlich benannt — sowohl im Adjektiv als auch in der ISO-25010-Zuordnung. Die Adjektive implizieren unterschiedliche Ansprüche: „akzeptabel" setzt die Messlatte bewusst niedrig, „attraktiv" deutet auf eine höhere Erwartung hin. Die ISO-Zuordnungen sind fachlich grundverschieden — Funktionale Eignung misst Korrektheit und Vollständigkeit des Verhaltens, Attraktivität misst Nutzerzufriedenheit. Die Szenarien F01–F04 stützen die Formulierung aus S1.2.
 - **Empfehlung:** Benennung in S4.1 an S1.2 angleichen: „**Akzeptable Spielstärke (Funktionale Eignung)**".
 
 **[KQS-02] Verwaiste Szenarien Z01 und Z02 ohne zugeordnetes Qualitätsziel** 🟡
 
-- **Betroffene Dateien:** [01-02-Qualitaetsziele.md](src/01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md), [10-02-Qualitaetsszenarien.md](src/10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md)
+- **Betroffene Dateien:** [01-02-Qualitaetsziele.md](arc-doc/01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md), [10-02-Qualitaetsszenarien.md](arc-doc/10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md)
 - **Beschreibung:** Die Szenarien Z01 (unzulässiger Zug) und Z02 (unzulässige Stellung) adressieren **Zuverlässigkeit**. In S1.2 existiert kein entsprechendes Qualitätsziel, in S4 wird keine Strategie dafür beschrieben.
 - **Empfehlung:** Z01/Z02 explizit der „Funktionalen Eignung" zuordnen oder ein Qualitätsziel „Zuverlässigkeit" in S1.2 ergänzen.
 
@@ -86,13 +86,13 @@
 
 **[KSE-01] Kernalgorithmus (Minimax/Alpha-Beta) ohne formale Entscheidungsdokumentation** 🟡
 
-- **Betroffene Dateien:** [04-01-Einstieg.md](src/04-Loesungsstrategie/04-01-Einstieg.md), [04-03-Spielstrategie.md](src/04-Loesungsstrategie/04-03-Spielstrategie.md)
+- **Betroffene Dateien:** [04-01-Einstieg.md](arc-doc/04-Loesungsstrategie/04-01-Einstieg.md), [04-03-Spielstrategie.md](arc-doc/04-Loesungsstrategie/04-03-Spielstrategie.md)
 - **Beschreibung:** Die zentrale Algorithmenwahl beeinflusst Spielstärke, Effizienz und Engine-Architektur. Es existiert kein ADR, der Alternativen (Monte-Carlo-Tree-Search, neuronale Bewertung, iterative Tiefensuche) und die Begründung dokumentiert.
 - **Empfehlung:** ADR für Minimax/Alpha-Beta-Wahl erstellen.
 
 **[KSE-02] Reactive Extensions als Architekturansatz ohne Entscheidungsdokumentation** 🟡
 
-- **Betroffene Dateien:** [04-01-Einstieg.md](src/04-Loesungsstrategie/04-01-Einstieg.md), [04-04-Anbindung.md](src/04-Loesungsstrategie/04-04-Anbindung.md)
+- **Betroffene Dateien:** [04-01-Einstieg.md](arc-doc/04-Loesungsstrategie/04-01-Einstieg.md), [04-04-Anbindung.md](arc-doc/04-Loesungsstrategie/04-04-Anbindung.md)
 - **Beschreibung:** Architektonisch weitreichende Entscheidung über den Kommunikationsstil zwischen Engine und Anbindung. Es fehlt ein ADR mit Alternativenabwägung (Callback, Future/Promise, synchron).
 - **Empfehlung:** ADR für den reaktiven Ansatz erstellen.
 
@@ -135,13 +135,13 @@
 
 **[KRC-01] Englische ADR-Strukturbegriffe in S9 vs. deutsche arc42-Terminologie** 🟡
 
-- **Betroffene Dateien:** [02-03-Konventionen.md](src/02-Randbedingungen/02-03-Konventionen.md), [09-01-Anbindung.md](src/09-Entscheidungen/09-01-Anbindung.md), [09-02-Stellungsobjekte.md](src/09-Entscheidungen/09-02-Stellungsobjekte.md)
+- **Betroffene Dateien:** [02-03-Konventionen.md](arc-doc/02-Randbedingungen/02-03-Konventionen.md), [09-01-Anbindung.md](arc-doc/09-Entscheidungen/09-01-Anbindung.md), [09-02-Stellungsobjekte.md](arc-doc/09-Entscheidungen/09-02-Stellungsobjekte.md)
 - **Beschreibung:** Constraint K1 fordert deutsche Terminologie nach arc42-Template v6.0. Beide ADRs verwenden durchgängig englische Überschriften (`Context`, `Decision`, `Consequences`).
 - **Empfehlung:** ADR-Überschriften auf Deutsch umstellen oder als akzeptierte Ausnahme in K1 vermerken.
 
 **[KRC-02] Fehlende Umlaute in S9 vs. deutsche Sprachkonvention** 🟡
 
-- **Betroffene Dateien:** [09-01-Anbindung.md](src/09-Entscheidungen/09-01-Anbindung.md), [09-02-Stellungsobjekte.md](src/09-Entscheidungen/09-02-Stellungsobjekte.md)
+- **Betroffene Dateien:** [09-01-Anbindung.md](arc-doc/09-Entscheidungen/09-01-Anbindung.md), [09-02-Stellungsobjekte.md](arc-doc/09-Entscheidungen/09-02-Stellungsobjekte.md)
 - **Beschreibung:** Beide S9-Dokumente ersetzen systematisch Umlaute durch ASCII-Digraphen (ä→ae, ö→oe, ü→ue). Alle anderen Sektionen verwenden korrekte Umlaute.
 - **Empfehlung:** Umlaute in S9-Dokumenten korrigieren.
 
@@ -176,13 +176,13 @@
 
 **[KKB-01] Endspiele im fachlichen Kontext vorhanden, in Bausteinsicht fehlend** 🟡
 
-- **Betroffene Dateien:** [03-01-Fachlicher-Kontext.md](src/03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md), [05-01-Ebene-1.md](src/05-Bausteinsicht/05-01-Ebene-1.md)
+- **Betroffene Dateien:** [03-01-Fachlicher-Kontext.md](arc-doc/03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md), [05-01-Ebene-1.md](arc-doc/05-Bausteinsicht/05-01-Ebene-1.md)
 - **Beschreibung:** Der fachliche Kontext führt „Endspiele" als vollwertigen Kommunikationspartner. Der technische Kontext vermerkt, dass die Implementierung entfallen ist. In S5 existiert kein Subsystem oder Erweiterungspunkt.
 - **Empfehlung:** Im fachlichen Kontext als nicht realisiert kennzeichnen (analog S3.2).
 
 **[KKB-04] Remisangebote im fachlichen Kontext erwähnt, in S5 als nicht unterstützt** 🟡
 
-- **Betroffene Dateien:** [03-01-Fachlicher-Kontext.md](src/03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md), [05-02-XBoard-Protokoll.md](src/05-Bausteinsicht/05-02-XBoard-Protokoll.md)
+- **Betroffene Dateien:** [03-01-Fachlicher-Kontext.md](arc-doc/03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md), [05-02-XBoard-Protokoll.md](arc-doc/05-Bausteinsicht/05-02-XBoard-Protokoll.md)
 - **Beschreibung:** Der fachliche Kontext nennt Remisangebote als Beispiel für den Informationsaustausch. In S5.2 sind „Remis-Angebote und Aufgabe" explizit als nicht unterstützt aufgelistet.
 - **Empfehlung:** Formulierung in S3.1 einschränken oder Hinweis auf offene Punkte.
 
@@ -213,18 +213,18 @@
 
 **[KSV-01] Namensinkonsistenz „Eröffnung" vs. „Eröffnungsbibliothek"** 🟡
 
-- **Betroffene Dateien:** [05-01-Ebene-1.md](src/05-Bausteinsicht/05-01-Ebene-1.md) — „Eröffnung", [06-01-Zugermittlung.md](src/06-Laufzeitsicht/06-01-Zugermittlung.md) — „Eröffnungsbibliothek"
+- **Betroffene Dateien:** [05-01-Ebene-1.md](arc-doc/05-Bausteinsicht/05-01-Ebene-1.md) — „Eröffnung", [06-01-Zugermittlung.md](arc-doc/06-Laufzeitsicht/06-01-Zugermittlung.md) — „Eröffnungsbibliothek"
 - **Empfehlung:** Einheitliche Benennung in S6 verwenden.
 
 **[KSV-02] Fehlendes Deployment-Szenario mit Eröffnungsbibliothek** 🟡
 
-- **Betroffene Dateien:** [05-05-Eroeffnung.md](src/05-Bausteinsicht/05-05-Eroeffnung.md), [07-01-Infrastruktur-Windows.md](src/07-Verteilungssicht/07-01-Infrastruktur-Windows.md)
+- **Betroffene Dateien:** [05-05-Eroeffnung.md](arc-doc/05-Bausteinsicht/05-05-Eroeffnung.md), [07-01-Infrastruktur-Windows.md](arc-doc/07-Verteilungssicht/07-01-Infrastruktur-Windows.md)
 - **Beschreibung:** S5 beschreibt Eröffnungs-Subsystem ausführlich, S6 zeigt Szenario mit Eröffnungsabfrage, S7 zeigt nur Deployment **ohne** Eröffnungsbibliothek.
 - **Empfehlung:** Zweites Deployment-Szenario mit Eröffnungsbibliothek ergänzen.
 
 **[KSV-05] Nur ein einziges Laufzeitszenario dokumentiert** 🟡
 
-- **Betroffene Dateien:** [06-01-Zugermittlung.md](src/06-Laufzeitsicht/06-01-Zugermittlung.md)
+- **Betroffene Dateien:** [06-01-Zugermittlung.md](arc-doc/06-Laufzeitsicht/06-01-Zugermittlung.md)
 - **Beschreibung:** Mehrere architekturrelevante Abläufe (Partie-Start, Matt/Patt-Erkennung, Eröffnungstreffer, Engine schließen) fehlen als Szenarien.
 - **Empfehlung:** Mindestens ein weiteres Szenario ergänzen (z. B. Eröffnungstreffer oder Spielende durch Matt).
 
@@ -262,13 +262,13 @@
 
 **[KKE-01] Entscheidung „Kein DI-Framework" in Konzept-Sektion eingebettet** 🟡
 
-- **Betroffene Dateien:** [08-01-Abhaengigkeiten.md](src/08-Konzepte/08-01-Abhaengigkeiten.md)
+- **Betroffene Dateien:** [08-01-Abhaengigkeiten.md](arc-doc/08-Konzepte/08-01-Abhaengigkeiten.md)
 - **Beschreibung:** „DokChess verzichtet auf die Verwendung eines speziellen DI Frameworks" ist eine bewusste Architekturentscheidung mit klar existierenden Alternativen (Spring, CDI werden sogar genannt).
 - **Empfehlung:** Neue Entscheidung `09-03-DI-Framework.md` erstellen.
 
 **[KKE-02] Entscheidung „Kein Logging-Framework / Kein Tracing" in Konzept-Sektion eingebettet** 🟡
 
-- **Betroffene Dateien:** [08-06-Logging.md](src/08-Konzepte/08-06-Logging.md)
+- **Betroffene Dateien:** [08-06-Logging.md](arc-doc/08-Konzepte/08-06-Logging.md)
 - **Beschreibung:** Enthält zwei eingebettete Entscheidungen gegen log4j und eigenes Tracing. Hat direkte Auswirkungen auf Analysierbarkeit (Qualitätsziel Nr. 1).
 - **Empfehlung:** Neue Entscheidung `09-04-Logging-Strategie.md` erstellen.
 
@@ -318,7 +318,7 @@
 
 **[KRQ-03] Effizienz-Risiko ohne spezifische Maßnahme** 🟡
 
-- **Betroffene Dateien:** [11-03-Spielstaerke.md](src/11-Risiken/11-03-Spielstaerke.md)
+- **Betroffene Dateien:** [11-03-Spielstaerke.md](arc-doc/11-Risiken/11-03-Spielstaerke.md)
 - **Beschreibung:** R11.3 benennt „zu lange Wartezeiten" als mögliche Manifestation. Die Maßnahmen fokussieren nur auf Spielstärke, nicht auf die konkreten Effizienz-Szenarien E01/E02 (≤ 5 bzw. 10 Sekunden).
 - **Empfehlung:** Spezifische Effizienz-Maßnahme ergänzen (z. B. zeitlich begrenzte Zugsuche, Performance-Benchmarks).
 

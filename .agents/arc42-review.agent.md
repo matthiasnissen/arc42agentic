@@ -23,7 +23,7 @@ Dieses Agentensystem unterstützt drei Review-Modi. Dieses Dokument beschreibt d
 
 ### Phase 1: Sektions-Reviews
 
-1. **Bestandsaufnahme**: Lies die Verzeichnisstruktur unter `src/` um alle vorhandenen arc42-Sektionen zu identifizieren.
+1. **Bestandsaufnahme**: Lies die Verzeichnisstruktur unter `arc-doc/` um alle vorhandenen arc42-Sektionen zu identifizieren.
 2. **Delegation**: Rufe für jede vorhandene Sektion den zuständigen Agenten auf:
    - `arc42-s01-introduction` für Sektion 1 (Einführung und Ziele)
    - `arc42-s02-constraints` für Sektion 2 (Randbedingungen)

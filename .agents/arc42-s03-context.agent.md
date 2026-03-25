@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 3: Kontextabgrenzung**
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/03-Kontextabgrenzung/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/03-Kontextabgrenzung/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/03-Kontextabgrenzung/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/03-Kontextabgrenzung/`.
 
 ## Prüfkriterien
 
@@ -57,7 +57,7 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 3: Kontextabgrenzung**
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/03-Kontextabgrenzung/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/03-Kontextabgrenzung/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
 3. Prüfe gegen die obigen Kriterien
 4. Prüfe, ob die Kontextdiagramme mit der Bausteinsicht (Sektion 5) konsistent sind

@@ -11,8 +11,8 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 1: Einführung und Zie
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `src/01-Einfuehrung-und-Ziele/`.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `src/01-Einfuehrung-und-Ziele/`.
+- **Vollständig-Modus:** Alle Markdown-Dateien im Ordner `arc-doc/01-Einfuehrung-und-Ziele/`.
+- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien in `arc-doc/01-Einfuehrung-und-Ziele/`.
 
 ## Prüfkriterien
 
@@ -58,7 +58,7 @@ Du bist ein spezialisierter arc42-Reviewer für **Sektion 1: Einführung und Zie
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
 2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Ordner `src/01-Einfuehrung-und-Ziele/`
+   - *Vollständig-Modus*: Lies alle Dateien im Ordner `arc-doc/01-Einfuehrung-und-Ziele/`
    - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
 3. Prüfe jeden Unterabschnitt gegen die obigen Kriterien
 4. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag

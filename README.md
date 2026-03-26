@@ -12,7 +12,10 @@ Das Agentensystem besteht aus **22 spezialisierten Agenten** in vier Kategorien:
 - **12 Sektions-Agenten** — prüfen jeweils eine arc42-Sektion
 - **7 Konflikt-Agenten** — analysieren sektionsübergreifende Widersprüche
 
-Gemeinsame Formate (Review-Modi, Befund-Templates, allgemeine Regeln) sind im **Skill [`arc42-review-format`](.github/skills/arc42-review-format/SKILL.md)** zentral definiert und werden von allen Agenten referenziert.
+Zwei Skills stellen gemeinsam genutzte Querschnittsfunktionalität bereit:
+
+- **[`arc42-review-format`](.agents/skills/arc42-review-format/SKILL.md)** — Review-Modi, Befund-Templates und allgemeine Regeln, die von allen Agenten referenziert werden.
+- **[`arc42-doc-layout`](.agents/skills/arc42-doc-layout/SKILL.md)** — Struktur-Erkennung für verschiedene arc42-Dokumentationslayouts (Multi-Folder, Flat-Files, Single-File) und Delegations-Protokoll für Orchestratoren.
 
 ### Review-Modi
 
@@ -21,6 +24,18 @@ Gemeinsame Formate (Review-Modi, Befund-Templates, allgemeine Regeln) sind im **
 | **Vollständiges Review** | `arc42-review` | Prüft alle Sektionen und führt Konfliktanalyse durch |
 | **Branch-Review** | `arc42-branch-review` | Reviewt nur die geänderten Dateien eines Git-Branches |
 | **Nur Konfliktanalyse** | `arc42-conflict-review` | Führt nur die sektionsübergreifende Konsistenzprüfung durch |
+
+## Unterstützte Dokumentationsstrukturen
+
+Das System erkennt automatisch drei verschiedene Layouts einer arc42-Dokumentation — gesteuert durch den Skill [`arc42-doc-layout`](.agents/skills/arc42-doc-layout/SKILL.md):
+
+| Typ | Erkennungsmerkmal | Typisches Beispiel |
+|---|---|---|
+| **Multi-Folder** | Unterordner mit nummerierten Namen | `01-Einfuehrung-und-Ziele/`, `02-Randbedingungen/` |
+| **Flat-Files** | Nur `.md`-Dateien im Verzeichnis, nummeriert oder mit Schlüsselwörtern | `chap-01-Anforderungen.md`, `chap-02-Randbedingungen.md` |
+| **Single-File** | Eine (oder wenige) `.md`-Datei(en) mit allen Kapiteln als `##`-Überschriften | `architecture.md`, `biking2-architecture.md` |
+
+Der Orchestrator erkennt den Typ automatisch, erstellt ein Sektion-zu-Datei-Mapping und übergibt jedem Sektions-Agenten die zugehörigen Dateipfade oder (bei Single-File) den extrahierten Inline-Content. Kein Sektions-Agent muss das Dokumentationslayout selbst kennen — das übernimmt der Skill.
 
 ## Voraussetzungen
 
@@ -200,7 +215,7 @@ Die Agenten-Definitionen (`.agents/`) sind eigenständige Werkzeuge und kein abg
 Arc42Agents/
 ├── README.md               ← Diese Datei
 ├── LICENSE                  MIT License (gilt für .agents/)
-├── .agents/                 22 Agent-Definitionen (.agent.md)
+├── .agents/                 22 Agent-Definitionen (.agent.md) + 2 Skills
 │   ├── arc42-review.agent.md
 │   ├── arc42-branch-review.agent.md
 │   ├── arc42-conflict-review.agent.md
@@ -209,7 +224,10 @@ Arc42Agents/
 │   ├── arc42-s12-glossary.agent.md
 │   ├── arc42-conflict-quality-strategy.agent.md
 │   ├── ...
-│   └── arc42-conflict-risks-quality.agent.md
+│   ├── arc42-conflict-risks-quality.agent.md
+│   └── skills/
+│       ├── arc42-doc-layout/    Struktur-Erkennung, Delegations-Protokoll
+│       └── arc42-review-format/ Befund-Formate, Review-Modi
 └── arc-doc/                     Beispiel-Dokumentation (DokChess, CC BY-NC-SA 4.0)
     ├── LICENSE.md           CC BY-NC-SA 4.0 Lizenz
     ├── 01-Einfuehrung-und-Ziele/

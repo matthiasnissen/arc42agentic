@@ -20,9 +20,10 @@ Widersprüche oder Lücken in diesem Strang untergraben die Architekturbegründu
 
 ## Zu prüfende Dateien
 
-- Sektionsordner `01-Einfuehrung-und-Ziele/` des Dokumentationspfads — insbesondere Qualitätsziele
-- Sektionsordner `04-Loesungsstrategie/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `10-Qualitaetsanforderungen/` des Dokumentationspfads — alle Dateien
+> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+> - **Sektion 1** (Qualitätsziele) — insbesondere Qualitätsziele
+> - **Sektion 4** (Lösungsstrategie) — alle Dateien
+> - **Sektion 10** (Qualitätsanforderungen) — alle Dateien
 
 ## Review-Modus
 
@@ -62,9 +63,9 @@ Widersprüche oder Lücken in diesem Strang untergraben die Architekturbegründu
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Qualitätsziele aus dem Sektionsordner `01-Einfuehrung-und-Ziele/` des Dokumentationspfads
-3. Lies alle Dateien im Sektionsordner `04-Loesungsstrategie/` des Dokumentationspfads
-4. Lies alle Dateien im Sektionsordner `10-Qualitaetsanforderungen/` des Dokumentationspfads
+2. Lies alle Qualitätsziele aus Sektion 1 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
+3. Lies alle Dateien aus Sektion 4 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
+4. Lies alle Dateien aus Sektion 10 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
 5. Erstelle eine Zuordnungsmatrix: Qualitätsziel → Strategieansatz → Szenario
 6. Identifiziere Lücken und Widersprüche in der Matrix (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

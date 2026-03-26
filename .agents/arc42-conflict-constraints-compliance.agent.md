@@ -15,10 +15,11 @@ Randbedingungen (Sektion 2) definieren den nicht verhandelbaren Rahmen, innerhal
 
 ## Zu prüfende Dateien
 
-- Sektionsordner `02-Randbedingungen/` des Dokumentationspfads — alle Dateien (Constraints)
-- Sektionsordner `04-Loesungsstrategie/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `08-Konzepte/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `09-Entscheidungen/` des Dokumentationspfads — alle Dateien
+> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+> - **Sektion 2** (Randbedingungen) — alle Dateien (Constraints)
+> - **Sektion 4** (Lösungsstrategie) — alle Dateien
+> - **Sektion 8** (Konzepte) — alle Dateien
+> - **Sektion 9** (Entscheidungen) — alle Dateien
 
 ## Review-Modus
 
@@ -57,10 +58,10 @@ Randbedingungen (Sektion 2) definieren den nicht verhandelbaren Rahmen, innerhal
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien im Sektionsordner `02-Randbedingungen/` des Dokumentationspfads und extrahiere jeden einzelnen Constraint
-3. Lies alle Dateien im Sektionsordner `04-Loesungsstrategie/` des Dokumentationspfads
-4. Lies alle Dateien im Sektionsordner `08-Konzepte/` des Dokumentationspfads
-5. Lies alle Dateien im Sektionsordner `09-Entscheidungen/` des Dokumentationspfads
+2. Lies alle Dateien aus Sektion 2 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere jeden einzelnen Constraint
+3. Lies alle Dateien aus Sektion 4 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
+4. Lies alle Dateien aus Sektion 8 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
+5. Lies alle Dateien aus Sektion 9 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
 6. Prüfe jeden Constraint systematisch gegen alle Aussagen in S4, S8, S9
 7. Dokumentiere Verletzungen und Verdachtsfälle (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

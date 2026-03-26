@@ -20,9 +20,10 @@ Inkonsistenzen zwischen diesen Sichten erzeugen Verwirrung und deuten auf eine u
 
 ## Zu prüfende Dateien
 
-- Sektionsordner `05-Bausteinsicht/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `06-Laufzeitsicht/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `07-Verteilungssicht/` des Dokumentationspfads — alle Dateien
+> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+> - **Sektion 5** (Bausteinsicht) — alle Dateien
+> - **Sektion 6** (Laufzeitsicht) — alle Dateien
+> - **Sektion 7** (Verteilungssicht) — alle Dateien
 
 ## Review-Modus
 
@@ -67,9 +68,9 @@ Inkonsistenzen zwischen diesen Sichten erzeugen Verwirrung und deuten auf eine u
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien im Sektionsordner `05-Bausteinsicht/` des Dokumentationspfads und extrahiere alle definierten Bausteine (Name, Verantwortlichkeit, Schnittstellen)
-3. Lies alle Dateien im Sektionsordner `06-Laufzeitsicht/` des Dokumentationspfads und extrahiere alle referenzierten Bausteine und deren Interaktionen
-4. Lies alle Dateien im Sektionsordner `07-Verteilungssicht/` des Dokumentationspfads und extrahiere das Software-Hardware-Mapping
+2. Lies alle Dateien aus Sektion 5 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere alle definierten Bausteine (Name, Verantwortlichkeit, Schnittstellen)
+3. Lies alle Dateien aus Sektion 6 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere alle referenzierten Bausteine und deren Interaktionen
+4. Lies alle Dateien aus Sektion 7 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere das Software-Hardware-Mapping
 5. Erstelle eine Kreuzreferenz-Matrix aller Bausteine über alle drei Sichten
 6. Identifiziere Diskrepanzen (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

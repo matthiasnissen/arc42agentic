@@ -18,9 +18,10 @@ Risiken (Sektion 11) und Qualitätsziele (Sektion 1.2) / Qualitätsanforderungen
 
 ## Zu prüfende Dateien
 
-- Sektionsordner `01-Einfuehrung-und-Ziele/` des Dokumentationspfads — insbesondere Qualitätsziele
-- Sektionsordner `10-Qualitaetsanforderungen/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `11-Risiken/` des Dokumentationspfads — alle Dateien
+> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+> - **Sektion 1** (Qualitätsziele) — insbesondere Qualitätsziele
+> - **Sektion 10** (Qualitätsanforderungen) — alle Dateien
+> - **Sektion 11** (Risiken) — alle Dateien
 
 ## Review-Modus
 
@@ -59,9 +60,9 @@ Risiken (Sektion 11) und Qualitätsziele (Sektion 1.2) / Qualitätsanforderungen
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Qualitätsziele aus dem Sektionsordner `01-Einfuehrung-und-Ziele/` des Dokumentationspfads
-3. Lies alle Qualitätsszenarien aus dem Sektionsordner `10-Qualitaetsanforderungen/` des Dokumentationspfads
-4. Lies alle Risiken und Maßnahmen aus dem Sektionsordner `11-Risiken/` des Dokumentationspfads
+2. Lies alle Qualitätsziele aus Sektion 1 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
+3. Lies alle Qualitätsszenarien aus Sektion 10 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
+4. Lies alle Risiken und Maßnahmen aus Sektion 11 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
 5. Erstelle eine Zuordnungsmatrix: Qualitätsziel → Risiko → Maßnahme
 6. Identifiziere Lücken und Widersprüche (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

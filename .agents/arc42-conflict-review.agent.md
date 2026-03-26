@@ -47,8 +47,12 @@ Prüft, ob Risiken die Qualitätsziele bedrohen und ob Gegenmaßnahmen existiere
 
 ## Vorgehen
 
-1. **Bestandsaufnahme**: Prüfe im Dokumentationspfad, welche Sektionen in der Dokumentation vorhanden sind.
-2. **Delegation**: Rufe ALLE anwendbaren Konflikt-Agenten auf. Überspringe einen Agenten nur, wenn eine der von ihm benötigten Sektionen nicht existiert.
+1. **Bestandsaufnahme und Struktur-Erkennung**: Wende den Skill `arc42-doc-layout` an:
+   - Lies die Verzeichnisstruktur im Dokumentationspfad
+   - Erkenne den Strukturtyp (Multi-Folder / Flat-Files / Single-File)
+   - Erstelle das Sektion-zu-Datei-Mapping für alle vorhandenen Sektionen
+   - Lies bei Single-File-Dokumentationen die Datei und extrahiere die Sektionsinhalte
+2. **Delegation**: Rufe ALLE anwendbaren Konflikt-Agenten auf und übergib jedem die gemäß `arc42-doc-layout` ermittelten Dateipfade oder Inline-Inhalte für die betreffenden Sektionen **explizit** im Aufruf. Überspringe einen Agenten nur, wenn eine der von ihm benötigten Sektionen nicht existiert.
 3. **Konsolidierung**: Fasse die Ergebnisse aller Agenten zu einem Gesamtbild zusammen.
 
 ## Ausgabeformat

@@ -32,9 +32,14 @@ Du ermittelst die geänderten Dateien im aktuellen Branch (im Vergleich zum Basi
    Falls `origin/main` nicht existiert, versuche `main`, `master` oder `origin/master`.
 3. Ermittle auch die noch nicht committeten Änderungen über `get_changed_files`.
 
-### Phase 2: Betroffene Sektionen identifizieren
+### Phase 2: Dokumentationsstruktur erkennen und betroffene Sektionen identifizieren
 
-Ordne jede geänderte Datei der jeweiligen arc42-Sektion zu. Die Sektionsordner liegen direkt im Dokumentationspfad:
+Wende den Skill `arc42-doc-layout` an:
+- Erkenne den Strukturtyp der Dokumentation (Multi-Folder / Flat-Files / Single-File)
+- Erstelle das Sektion-zu-Datei-Mapping für das gesamte Dokumentationsverzeichnis
+- Ordne jede geänderte Datei der jeweiligen arc42-Sektion zu, indem du sie gegen das ermittelte Mapping prüfst
+
+Standard-Zuordnung für **Multi-Folder** (Typ A):
 
 | Sektionsordner | Sektion | Agent |
 |---|---|---|
@@ -50,6 +55,8 @@ Ordne jede geänderte Datei der jeweiligen arc42-Sektion zu. Die Sektionsordner 
 | `10-Qualitaetsanforderungen/` | Sektion 10 | `arc42-s10-quality` |
 | `11-Risiken/` | Sektion 11 | `arc42-s11-risks` |
 | `12-Glossar/` | Sektion 12 | `arc42-s12-glossary` |
+
+Für **Flat-Files** (Typ B) und **Single-File** (Typ C) ordne geänderte Dateien / Abschnitte anhand des Keyword-Mappings aus dem Skill `arc42-doc-layout` den Sektionen zu.
 
 ### Phase 3: Änderungs-Kontext bereitstellen
 

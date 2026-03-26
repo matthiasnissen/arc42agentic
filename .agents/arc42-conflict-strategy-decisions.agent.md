@@ -23,8 +23,9 @@ Probleme entstehen, wenn:
 
 ## Zu prüfende Dateien
 
-- Sektionsordner `04-Loesungsstrategie/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `09-Entscheidungen/` des Dokumentationspfads — alle Dateien
+> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+> - **Sektion 4** (Lösungsstrategie) — alle Dateien
+> - **Sektion 9** (Entscheidungen) — alle Dateien
 
 ## Review-Modus
 
@@ -64,8 +65,8 @@ Probleme entstehen, wenn:
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien im Sektionsordner `04-Loesungsstrategie/` des Dokumentationspfads
-3. Lies alle Dateien im Sektionsordner `09-Entscheidungen/` des Dokumentationspfads
+2. Lies alle Dateien aus Sektion 4 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
+3. Lies alle Dateien aus Sektion 9 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
 4. Extrahiere alle strategischen Festlegungen und alle akzeptierten Entscheidungen
 5. Prüfe jede Entscheidung gegen jede strategische Festlegung auf Widerspruch oder Redundanz
 6. Prüfe, ob alle strategischen Festlegungen durch Entscheidungen unterstützt werden

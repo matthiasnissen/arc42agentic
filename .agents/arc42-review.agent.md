@@ -27,8 +27,13 @@ Dieses Agentensystem unterstützt drei Review-Modi. Dieses Dokument beschreibt d
 
 ### Phase 1: Sektions-Reviews
 
-1. **Bestandsaufnahme**: Lies die Verzeichnisstruktur im Dokumentationspfad, um alle vorhandenen arc42-Sektionen zu identifizieren.
-2. **Delegation**: Rufe für jede vorhandene Sektion den zuständigen Agenten auf:
+1. **Bestandsaufnahme und Struktur-Erkennung**: Wende den Skill `arc42-doc-layout` an:
+   - Lies die Verzeichnisstruktur im Dokumentationspfad
+   - Erkenne den Strukturtyp (Multi-Folder / Flat-Files / Single-File)
+   - Erstelle das Sektion-zu-Datei-Mapping für alle vorhandenen Sektionen
+   - Lies bei Single-File-Dokumentationen die Datei und extrahiere die Sektionsinhalte
+
+2. **Delegation**: Rufe für jede vorhandene Sektion den zuständigen Agenten auf und übergib dabei die gemäß `arc42-doc-layout` ermittelten Dateipfade oder Inline-Inhalte **explizit** im Aufruf:
    - `arc42-s01-introduction` für Sektion 1 (Einführung und Ziele)
    - `arc42-s02-constraints` für Sektion 2 (Randbedingungen)
    - `arc42-s03-context` für Sektion 3 (Kontextabgrenzung)
@@ -44,7 +49,7 @@ Dieses Agentensystem unterstützt drei Review-Modi. Dieses Dokument beschreibt d
 
 ### Phase 2: Sektionsübergreifende Konfliktanalyse
 
-3. **Konfliktanalyse**: Rufe die spezialisierten Konflikt-Agenten direkt auf (nicht über `arc42-conflict-review`, da verschachtelte Sub-Agenten-Aufrufe nicht unterstützt werden):
+3. **Konfliktanalyse**: Rufe die spezialisierten Konflikt-Agenten direkt auf (nicht über `arc42-conflict-review`, da verschachtelte Sub-Agenten-Aufrufe nicht unterstützt werden). Übergib jedem Konflikt-Agenten die gemäß `arc42-doc-layout` ermittelten Dateipfade oder Inline-Inhalte für die betreffenden Sektionen explizit:
    - `arc42-conflict-quality-strategy` — Qualitätsstrang (S1 ↔ S4 ↔ S10)
    - `arc42-conflict-strategy-decisions` — Strategie-Entscheidungs-Alignment (S4 ↔ S9)
    - `arc42-conflict-constraints-compliance` — Constraint-Compliance (S2 ↔ S4/S8/S9)

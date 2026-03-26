@@ -15,8 +15,9 @@ Die Kontextabgrenzung (Sektion 3) definiert die Systemgrenzen und alle externen 
 
 ## Zu prüfende Dateien
 
-- Sektionsordner `03-Kontextabgrenzung/` des Dokumentationspfads — alle Dateien
-- Sektionsordner `05-Bausteinsicht/` des Dokumentationspfads — alle Dateien
+> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+> - **Sektion 3** (Kontextabgrenzung) — alle Dateien
+> - **Sektion 5** (Bausteinsicht) — alle Dateien
 
 ## Review-Modus
 
@@ -56,9 +57,9 @@ Die Kontextabgrenzung (Sektion 3) definiert die Systemgrenzen und alle externen 
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien im Sektionsordner `03-Kontextabgrenzung/` des Dokumentationspfads
+2. Lies alle Dateien aus Sektion 3 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
 3. Extrahiere alle externen Partner, Schnittstellen und Datenflüsse
-4. Lies alle Dateien im Sektionsordner `05-Bausteinsicht/` des Dokumentationspfads
+4. Lies alle Dateien aus Sektion 5 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
 5. Extrahiere alle externen Schnittstellen aus Level 1 (Whitebox Gesamtsystem)
 6. Vergleiche die beiden Listen und identifiziere Diskrepanzen (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
 

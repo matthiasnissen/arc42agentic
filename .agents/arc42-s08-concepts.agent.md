@@ -15,8 +15,10 @@ Der Pfad zum Wurzelverzeichnis der arc42-Dokumentation wird dir vom Aufrufer im 
 
 ## Zu prüfende Dateien
 
-- **Vollständig-Modus:** Alle Markdown-Dateien im Sektionsordner `08-Konzepte/` innerhalb des Dokumentationspfads.
-- **Delta-Modus:** Nur die vom Aufrufer genannten geänderten Dateien im Sektionsordner `08-Konzepte/` des Dokumentationspfads.
+> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an:
+> - **Dateipfad(e) erhalten**: Lies diese Dateien direkt
+> - **Inline-Content erhalten**: Analysiere ihn direkt (keine Dateien lesen)
+> - **Nichts erhalten (Standalone-Aufruf)**: Lies `AGENTS.md`, erkenne den Strukturtyp und suche die Dateien dieser Sektion selbst
 
 ## Prüfkriterien
 
@@ -53,10 +55,8 @@ Der Pfad zum Wurzelverzeichnis der arc42-Dokumentation wird dir vom Aufrufer im 
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen (geänderte Dateien, Diffs) mitgeliefert hat
-2. **Dateien lesen**:
-   - *Vollständig-Modus*: Lies alle Dateien im Sektionsordner `08-Konzepte/` des Dokumentationspfads
-   - *Delta-Modus*: Lies nur die als geändert gemeldeten Dateien. Lies unveränderte Dateien der Sektion nur bei Bedarf als Kontext
-3. Lies die Bausteinsicht (Sektionsordner `05-Bausteinsicht/` des Dokumentationspfads) um Querverweise zu prüfen
+2. **Inhalte erschließen**: Wende das Empfangs-Protokoll aus dem Skill `arc42-doc-layout` (Teil B) an (Pfade / Inline-Content / Standalone-Fallback)
+3. Lies die Bausteinsicht aus Sektion 5 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) um Querverweise zu prüfen
 4. Prüfe gegen die obigen Kriterien
 5. Erstelle für jede Abweichung einen konkreten Änderungsvorschlag
 

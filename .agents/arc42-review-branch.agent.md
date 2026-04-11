@@ -43,18 +43,18 @@ Standard-Zuordnung für **Multi-Folder** (Typ A):
 
 | Sektionsordner | Sektion | Agent |
 |---|---|---|
-| `01-Einfuehrung-und-Ziele/` | Sektion 1 | `arc42-s01-introduction` |
-| `02-Randbedingungen/` | Sektion 2 | `arc42-s02-constraints` |
-| `03-Kontextabgrenzung/` | Sektion 3 | `arc42-s03-context` |
-| `04-Loesungsstrategie/` | Sektion 4 | `arc42-s04-solution-strategy` |
-| `05-Bausteinsicht/` | Sektion 5 | `arc42-s05-building-blocks` |
-| `06-Laufzeitsicht/` | Sektion 6 | `arc42-s06-runtime` |
-| `07-Verteilungssicht/` | Sektion 7 | `arc42-s07-deployment` |
-| `08-Konzepte/` | Sektion 8 | `arc42-s08-concepts` |
-| `09-Entscheidungen/` | Sektion 9 | `arc42-s09-decisions` |
-| `10-Qualitaetsanforderungen/` | Sektion 10 | `arc42-s10-quality` |
-| `11-Risiken/` | Sektion 11 | `arc42-s11-risks` |
-| `12-Glossar/` | Sektion 12 | `arc42-s12-glossary` |
+| `01-Einfuehrung-und-Ziele/` | Sektion 1 | `arc42-review-s01-introduction` |
+| `02-Randbedingungen/` | Sektion 2 | `arc42-review-s02-constraints` |
+| `03-Kontextabgrenzung/` | Sektion 3 | `arc42-review-s03-context` |
+| `04-Loesungsstrategie/` | Sektion 4 | `arc42-review-s04-solution-strategy` |
+| `05-Bausteinsicht/` | Sektion 5 | `arc42-review-s05-building-blocks` |
+| `06-Laufzeitsicht/` | Sektion 6 | `arc42-review-s06-runtime` |
+| `07-Verteilungssicht/` | Sektion 7 | `arc42-review-s07-deployment` |
+| `08-Konzepte/` | Sektion 8 | `arc42-review-s08-concepts` |
+| `09-Entscheidungen/` | Sektion 9 | `arc42-review-s09-decisions` |
+| `10-Qualitaetsanforderungen/` | Sektion 10 | `arc42-review-s10-quality` |
+| `11-Risiken/` | Sektion 11 | `arc42-review-s11-risks` |
+| `12-Glossar/` | Sektion 12 | `arc42-review-s12-glossary` |
 
 Für **Flat-Files** (Typ B) und **Single-File** (Typ C) ordne geänderte Dateien / Abschnitte anhand des Keyword-Mappings aus dem Skill `arc42-doc-layout` den Sektionen zu.
 
@@ -116,65 +116,24 @@ neue Konflikte einführen oder bestehende verschärfen.
 
 | Geänderte Sektion | Auszulösende Konflikt-Analyse |
 |---|---|
-| S1 (Qualitätsziele) | `arc42-conflict-quality-strategy`, `arc42-conflict-risks-quality` |
-| S2 (Randbedingungen) | `arc42-conflict-constraints-compliance` |
-| S3 (Kontext) | `arc42-conflict-context-building-blocks` |
-| S4 (Strategie) | `arc42-conflict-quality-strategy`, `arc42-conflict-strategy-decisions`, `arc42-conflict-constraints-compliance` |
-| S5 (Bausteinsicht) | `arc42-conflict-context-building-blocks`, `arc42-conflict-views-consistency` |
-| S6 (Laufzeitsicht) | `arc42-conflict-views-consistency` |
-| S7 (Verteilungssicht) | `arc42-conflict-views-consistency` |
-| S8 (Konzepte) | `arc42-conflict-concepts-decisions`, `arc42-conflict-constraints-compliance` |
-| S9 (Entscheidungen) | `arc42-conflict-strategy-decisions`, `arc42-conflict-concepts-decisions`, `arc42-conflict-constraints-compliance` |
-| S10 (Qualitätsanforderungen) | `arc42-conflict-quality-strategy`, `arc42-conflict-risks-quality` |
-| S11 (Risiken) | `arc42-conflict-risks-quality` |
+| S1 (Qualitätsziele) | `arc42-review-conflict-quality-strategy`, `arc42-review-conflict-risks-quality` |
+| S2 (Randbedingungen) | `arc42-review-conflict-constraints-compliance` |
+| S3 (Kontext) | `arc42-review-conflict-context-building-blocks` |
+| S4 (Strategie) | `arc42-review-conflict-quality-strategy`, `arc42-review-conflict-strategy-decisions`, `arc42-review-conflict-constraints-compliance` |
+| S5 (Bausteinsicht) | `arc42-review-conflict-context-building-blocks`, `arc42-review-conflict-views-consistency` |
+| S6 (Laufzeitsicht) | `arc42-review-conflict-views-consistency` |
+| S7 (Verteilungssicht) | `arc42-review-conflict-views-consistency` |
+| S8 (Konzepte) | `arc42-review-conflict-concepts-decisions`, `arc42-review-conflict-constraints-compliance` |
+| S9 (Entscheidungen) | `arc42-review-conflict-strategy-decisions`, `arc42-review-conflict-concepts-decisions`, `arc42-review-conflict-constraints-compliance` |
+| S10 (Qualitätsanforderungen) | `arc42-review-conflict-quality-strategy`, `arc42-review-conflict-risks-quality` |
+| S11 (Risiken) | `arc42-review-conflict-risks-quality` |
 | S12 (Glossar) | — (nur sektionsintern) |
 
 **Wichtig**: Jede Konflikt-Analyse nur EINMAL auslösen, auch wenn mehrere Trigger zutreffen.
 
 ### Phase 6: Zusammenfassung
 
-Erstelle einen konsolidierten Änderungs-Review-Bericht.
-
-## Ausgabeformat
-
-```markdown
-# arc42 Branch-Review
-
-## Überblick
-
-**Branch:** `<branch-name>`
-**Basis:** `<base-branch>`
-**Geänderte Dateien:** <Anzahl>
-**Betroffene Sektionen:** <Liste>
-
-## Geänderte Dateien
-
-| Datei | Änderungstyp | Sektion |
-|---|---|---|
-| `pfad/zur/datei.md` | Added/Modified/Deleted | Sektion X |
-
-## Sektions-Reviews
-
-### Sektion X: <Name>
-<Ergebnisse des Sektions-Agenten, fokussiert auf die Änderungen>
-
-## Konfliktanalyse
-
-### <Konfliktagent-Name>
-<Ergebnisse der Konfliktanalyse>
-
-## Zusammenfassung
-
-| Kategorie | Anzahl |
-|---|---|
-| 🔴 Kritische Befunde | n |
-| 🟡 Warnungen | n |
-| 🟢 Hinweise | n |
-| ❌ Konflikte | n |
-
-### Handlungsempfehlungen
-1. ...
-```
+Erstelle den konsolidierten Änderungs-Review-Bericht gemäß dem Template **„Branch-Review"** aus dem Skill `arc42-orchestrator-format`. Wende die dort definierte Ampellogik an, um den Status jeder Sektion und Konfliktdimension zu bestimmen.
 
 ## Einschränkungen
 

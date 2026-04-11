@@ -20,8 +20,8 @@ Dieses Agentensystem unterstützt drei Review-Modi. Dieses Dokument beschreibt d
 | Modus | Orchestrator | Beschreibung |
 |---|---|---|
 | **Vollständiges Review** | `arc42-review` (dieser Agent) | Prüft alle Sektionen + Konfliktanalyse |
-| **Branch-Review** | `arc42-branch-review` | Prüft nur geänderte Dateien eines Branches |
-| **Nur Konfliktanalyse** | `arc42-conflict-review` | Nur sektionsübergreifende Konsistenzprüfung |
+| **Branch-Review** | `arc42-review-branch` | Prüft nur geänderte Dateien eines Branches |
+| **Nur Konfliktanalyse** | `arc42-review-conflict` | Nur sektionsübergreifende Konsistenzprüfung |
 
 ## Vorgehen
 
@@ -34,71 +34,35 @@ Dieses Agentensystem unterstützt drei Review-Modi. Dieses Dokument beschreibt d
    - Lies bei Single-File-Dokumentationen die Datei und extrahiere die Sektionsinhalte
 
 2. **Delegation**: Rufe für jede vorhandene Sektion den zuständigen Agenten auf und übergib dabei die gemäß `arc42-doc-layout` ermittelten Dateipfade oder Inline-Inhalte **explizit** im Aufruf:
-   - `arc42-s01-introduction` für Sektion 1 (Einführung und Ziele)
-   - `arc42-s02-constraints` für Sektion 2 (Randbedingungen)
-   - `arc42-s03-context` für Sektion 3 (Kontextabgrenzung)
-   - `arc42-s04-solution-strategy` für Sektion 4 (Lösungsstrategie)
-   - `arc42-s05-building-blocks` für Sektion 5 (Bausteinsicht)
-   - `arc42-s06-runtime` für Sektion 6 (Laufzeitsicht)
-   - `arc42-s07-deployment` für Sektion 7 (Verteilungssicht)
-   - `arc42-s08-concepts` für Sektion 8 (Querschnittliche Konzepte)
-   - `arc42-s09-decisions` für Sektion 9 (Architekturentscheidungen)
-   - `arc42-s10-quality` für Sektion 10 (Qualitätsanforderungen)
-   - `arc42-s11-risks` für Sektion 11 (Risiken und technische Schulden)
-   - `arc42-s12-glossary` für Sektion 12 (Glossar)
+   - `arc42-review-s01-introduction` für Sektion 1 (Einführung und Ziele)
+   - `arc42-review-s02-constraints` für Sektion 2 (Randbedingungen)
+   - `arc42-review-s03-context` für Sektion 3 (Kontextabgrenzung)
+   - `arc42-review-s04-solution-strategy` für Sektion 4 (Lösungsstrategie)
+   - `arc42-review-s05-building-blocks` für Sektion 5 (Bausteinsicht)
+   - `arc42-review-s06-runtime` für Sektion 6 (Laufzeitsicht)
+   - `arc42-review-s07-deployment` für Sektion 7 (Verteilungssicht)
+   - `arc42-review-s08-concepts` für Sektion 8 (Querschnittliche Konzepte)
+   - `arc42-review-s09-decisions` für Sektion 9 (Architekturentscheidungen)
+   - `arc42-review-s10-quality` für Sektion 10 (Qualitätsanforderungen)
+   - `arc42-review-s11-risks` für Sektion 11 (Risiken und technische Schulden)
+   - `arc42-review-s12-glossary` für Sektion 12 (Glossar)
 
 ### Phase 2: Sektionsübergreifende Konfliktanalyse
 
-3. **Konfliktanalyse**: Rufe die spezialisierten Konflikt-Agenten direkt auf (nicht über `arc42-conflict-review`, da verschachtelte Sub-Agenten-Aufrufe nicht unterstützt werden). Übergib jedem Konflikt-Agenten die gemäß `arc42-doc-layout` ermittelten Dateipfade oder Inline-Inhalte für die betreffenden Sektionen explizit:
-   - `arc42-conflict-quality-strategy` — Qualitätsstrang (S1 ↔ S4 ↔ S10)
-   - `arc42-conflict-strategy-decisions` — Strategie-Entscheidungs-Alignment (S4 ↔ S9)
-   - `arc42-conflict-constraints-compliance` — Constraint-Compliance (S2 ↔ S4/S8/S9)
-   - `arc42-conflict-context-building-blocks` — Kontext-Baustein-Konsistenz (S3 ↔ S5)
-   - `arc42-conflict-views-consistency` — Sichten-Konsistenz (S5 ↔ S6 ↔ S7)
-   - `arc42-conflict-concepts-decisions` — Konzept-Entscheidungs-Abgrenzung (S8 ↔ S9)
-   - `arc42-conflict-risks-quality` — Risiko-Qualitäts-Abdeckung (S11 ↔ S1/S10)
+3. **Konfliktanalyse**: Rufe die spezialisierten Konflikt-Agenten direkt auf (nicht über `arc42-review-conflict`, da verschachtelte Sub-Agenten-Aufrufe nicht unterstützt werden). Übergib jedem Konflikt-Agenten die gemäß `arc42-doc-layout` ermittelten Dateipfade oder Inline-Inhalte für die betreffenden Sektionen explizit:
+   - `arc42-review-conflict-quality-strategy` — Qualitätsstrang (S1 ↔ S4 ↔ S10)
+   - `arc42-review-conflict-strategy-decisions` — Strategie-Entscheidungs-Alignment (S4 ↔ S9)
+   - `arc42-review-conflict-constraints-compliance` — Constraint-Compliance (S2 ↔ S4/S8/S9)
+   - `arc42-review-conflict-context-building-blocks` — Kontext-Baustein-Konsistenz (S3 ↔ S5)
+   - `arc42-review-conflict-views-consistency` — Sichten-Konsistenz (S5 ↔ S6 ↔ S7)
+   - `arc42-review-conflict-concepts-decisions` — Konzept-Entscheidungs-Abgrenzung (S8 ↔ S9)
+   - `arc42-review-conflict-risks-quality` — Risiko-Qualitäts-Abdeckung (S11 ↔ S1/S10)
    
    Überspringe einen Agenten nur, wenn eine der von ihm benötigten Sektionen nicht existiert.
 
 ### Phase 3: Konsolidierung
 
-4. **Zusammenfassung**: Erstelle einen konsolidierten Prüfbericht mit:
-   - Gesamtbewertung (Ampel: grün/gelb/rot pro Sektion)
-   - Kritische Befunde (sofort zu beheben)
-   - Empfehlungen (nice-to-have Verbesserungen)
-   - Sektionsübergreifende Konflikte und Inkonsistenzen
-
-## Ausgabeformat
-
-```markdown
-# arc42 Dokumentations-Review
-
-## Gesamtübersicht
-
-| Sektion | Status | Befunde |
-|---------|--------|---------|
-| 1. Einführung und Ziele | 🟢/🟡/🔴 | Kurzbeschreibung |
-| ... | ... | ... |
-
-## Kritische Befunde
-...
-
-## Empfehlungen
-...
-
-## Sektionsübergreifende Konflikte
-<Zusammenfassung der Ergebnisse aus der Konfliktanalyse>
-
-| Konfliktdimension | Status | Befunde |
-|---|---|---|
-| Qualitätsstrang (S1↔S4↔S10) | ✅/⚠️/❌ | Kurzbeschreibung |
-| Strategie↔Entscheidungen (S4↔S9) | ✅/⚠️/❌ | Kurzbeschreibung |
-| Constraint-Compliance (S2↔S4/S8/S9) | ✅/⚠️/❌ | Kurzbeschreibung |
-| Kontext↔Bausteine (S3↔S5) | ✅/⚠️/❌ | Kurzbeschreibung |
-| Sichten-Konsistenz (S5↔S6↔S7) | ✅/⚠️/❌ | Kurzbeschreibung |
-| Konzepte↔Entscheidungen (S8↔S9) | ✅/⚠️/❌ | Kurzbeschreibung |
-| Risiken↔Qualität (S11↔S1/S10) | ✅/⚠️/❌ | Kurzbeschreibung |
-```
+4. **Zusammenfassung**: Erstelle den konsolidierten Prüfbericht gemäß dem Template **„Vollständiges Review"** aus dem Skill `arc42-orchestrator-format`. Wende die dort definierte Ampellogik an, um den Status jeder Sektion und Konfliktdimension zu bestimmen.
 
 ## Einschränkungen
 

@@ -82,3 +82,7 @@ Das PREFIX wird vom jeweiligen Konflikt-Agenten definiert (z.B. KQS, KKB, KRC, K
 - Schlage bei jedem Befund eine **KONKRETE, direkt übernehmbare Änderung** vor
 - Berücksichtige, dass die Dokumentation auf **Deutsch** verfasst ist
 - Befund-IDs müssen eindeutig und fortlaufend nummeriert sein
+
+## Verwandte Skills
+
+- **`arc42-doc-layout`**: Struktur-Erkennung und Delegations-Protokoll für verschiedene Dokumentations-Layouts (Multi-Folder, Flat-Files, Single-File). Muss von Orchestratoren geladen werden, damit Section-Agenten korrekte Dateipfade oder Inline-Content erhalten.

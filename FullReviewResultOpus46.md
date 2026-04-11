@@ -2,348 +2,708 @@
 
 ## Gesamtübersicht
 
-| Sektion | Status | Kritisch | Empfehlung | Hinweis | Kurzbefund |
-|---------|--------|----------|------------|---------|------------|
-| 1. Einführung und Ziele | 🟡 | 0 | 4 | 2 | Stakeholder-Tabelle weicht vom arc42-Template ab; Endanwender-Perspektive fehlt; treibende Kräfte nicht explizit |
-| 2. Randbedingungen | 🟢 | 0 | 2 | 3 | Solide Struktur; Konsequenzen/Freiheitsgrade könnten expliziter sein |
-| 3. Kontextabgrenzung | 🟡 | 0 | 3 | 4 | Keine Schnittstellentabelle; fehlendes Mapping fachlich↔technisch |
-| 4. Lösungsstrategie | 🟡 | 1 | 1 | 3 | Inkonsistente Benennung Qualitätsziel „Spielstärke" (kritisch); fehlende Klammer |
-| 5. Bausteinsicht | 🟡 | 0 | 3 | 4 | Keine Begründung der Zerlegung; Tippfehler „Püft" |
-| 6. Laufzeitsicht | 🔴 | 1 | 3 | 1 | Nur ein einziges Szenario (kritisch); Fehlerszenarien fehlen |
-| 7. Verteilungssicht | 🟡 | 1 | 3 | 2 | Kein Baustein-zu-Infrastruktur-Mapping (kritisch); Eröffnungsbibliothek fehlt |
-| 8. Querschnittliche Konzepte | 🟡 | 0 | 6 | 3 | Systematisch fehlende Querverweise zu Sektion 5; Tippfehler |
-| 9. Architekturentscheidungen | 🟢 | 0 | 2 | 2 | Nur 2 ADRs; weitere architekturrelevante Entscheidungen ohne ADR |
-| 10. Qualitätsanforderungen | 🟡 | 0 | 4 | 2 | Qualitätsbaum nur als Bild; terminologische Abweichung zu S1.2 |
-| 11. Risiken und techn. Schulden | 🔴 | 2 | 5 | 1 | Keine Übersichtstabelle (kritisch); technische Schulden nicht dokumentiert (kritisch) |
-| 12. Glossar | 🟡 | 1 | 3 | 3 | Zentrale Domänenbegriffe (Stellung, Zug, Figur, Feld) fehlen (kritisch) |
+| Sektion | Status | Befunde |
+|---------|--------|---------|
+| 1. Einführung und Ziele | 🟡 | Qualitätsziele unscharf formuliert, Stakeholder-Tabelle weicht vom arc42-Template ab, Endbenutzer fehlen |
+| 2. Randbedingungen | 🟡 | Konsequenzen und Freiheitsgrade nicht dokumentiert, Tippfehler |
+| 3. Kontextabgrenzung | 🟡 | Fachliche Ein-/Ausgaben nicht systematisch, Mapping fachlich↔technisch fehlt |
+| 4. Lösungsstrategie | 🔴 | Inkonsistente Benennung „Attraktive" vs. „Akzeptable" Spielstärke gegenüber S1 |
+| 5. Bausteinsicht | 🟡 | Begründung der Zerlegung fehlt, Endspiel-Schnittstelle aus S3 nicht erwähnt |
+| 6. Laufzeitsicht | 🟡 | Nur ein Szenario, Fehler-/Ausnahmefälle und Eröffnungstreffer fehlen |
+| 7. Verteilungssicht | 🟡 | Motivation fehlt, kein Baustein-Mapping, nur Windows dokumentiert |
+| 8. Querschnittliche Konzepte | 🟡 | Vermischung von Konzepten und Entscheidungen in 8.1 und 8.6, fehlende Rückverweise |
+| 9. Architekturentscheidungen | 🟡 | ADRs für Reactive Extensions, Algorithmuswahl etc. fehlen |
+| 10. Qualitätsanforderungen | 🟡 | Qualitätsbaum nur als Bild, Szenarien nicht explizit strukturiert |
+| 11. Risiken und techn. Schulden | 🔴 | Technische Schulden fehlen vollständig, keine Priorisierung |
+| 12. Glossar | 🟡 | Zentrale Begriffe „Stellung" und „Spielbaum" fehlen |
 
-**Legende:** 🟢 = gut, wenige Hinweise | 🟡 = akzeptabel, Verbesserungsbedarf | 🔴 = wesentliche Lücken
+## Sektions-Reviews
 
----
+### Sektion 1: Einführung und Ziele
 
-## Kritische Befunde
+| ID | Schwere | Titel |
+|---|---|---|
+| S01-01 | 🟢 | Redundante Überschriftenebenen in allen drei Dateien |
+| S01-02 | 🟢 | Fehlender Verweis auf Anforderungsdokumente |
+| S01-03 | 🟡 | Treibende Kräfte / Business-Ziele nicht explizit herausgearbeitet |
+| S01-04 | 🟡 | Qualitätsziele nicht ausreichend messbar formuliert |
+| S01-05 | 🟡 | Stakeholder-Tabelle weicht vom arc42-Template ab |
+| S01-06 | 🟡 | Fehlende Stakeholder-Gruppe: Endbenutzer (Schachspieler) |
 
-Diese Befunde sollten zeitnah behoben werden:
+#### [S01-01] Redundante Überschriftenebenen in allen drei Dateien
 
-### 1. [S04-01] Inkonsistente Benennung Qualitätsziel „Spielstärke"
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md`, `01-02-Qualitaetsziele.md`, `01-03-Stakeholder.md`
+**Kriterium:** Formale Struktur
 
-**Datei:** `arc-doc/04-Loesungsstrategie/04-01-Einstieg.md`
+**Befund:** Alle drei Dateien enthalten eine `#`-Überschrift (z. B. `# Aufgabenstellung`) gefolgt von einer `##`-Überschrift mit identischem bzw. nummeriertem Inhalt (`## 1.1 Aufgabenstellung`). Diese Dopplung ist redundant, da die Sektionsnummer bereits durch die Dateistruktur gegeben ist.
 
-In der Strategietabelle steht „Attraktive Spielstärke (Attraktivität)" statt „Akzeptable Spielstärke (Funktionale Eignung)" wie in Sektion 1.2. Sowohl der Name als auch das ISO-25010-Merkmal weichen ab.
-
-> **Fix:** In Zeile 9 der Tabelle ändern zu `| Akzeptable Spielstärke (Funktionale Eignung) |`
-
----
-
-### 2. [S06-01] Nur ein einziges Laufzeitszenario
-
-**Datei:** `arc-doc/06-Laufzeitsicht/`
-
-Die gesamte Laufzeitsicht besteht aus einem einzigen Szenario (Zugermittlung). Fehler-, Start- und Alternativpfad-Szenarien fehlen vollständig.
-
-> **Fix:** Mindestens ein weiteres Szenario ergänzen (z.B. Eröffnungstreffer, ungültiger Zug).
+**Änderungsvorschlag:**
+> Jeweils die `#`-Überschrift entfernen und die `##`-Überschrift als Hauptüberschrift beibehalten, oder die `##`-Überschrift entfernen und die `#`-Überschrift mit Nummerierung versehen (z. B. `# 1.1 Aufgabenstellung`).
 
 ---
 
-### 3. [S07-02] Kein Baustein-zu-Infrastruktur-Mapping
+#### [S01-02] Fehlender Verweis auf Anforderungsdokumente
 
-**Datei:** `arc-doc/07-Verteilungssicht/07-01-Infrastruktur-Windows.md`
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md`
+**Kriterium:** Formale Prüfung – Verweise auf existierende Anforderungsdokumente
 
-Die vier Subsysteme aus Sektion 5 werden nicht auf die Infrastruktur-Elemente gemappt. Nur „DokChess.jar" und „dokchess.bat" werden genannt.
+**Befund:** Es existiert kein Verweis auf weiterführende Anforderungsdokumente (z. B. ein Backlog, eine Feature-Liste oder ein Requirements-Dokument). Für ein Demonstrationsprojekt wie DokChess ist das tolerierbar, aber ein expliziter Hinweis, dass keine separaten Anforderungsdokumente existieren, würde die Vollständigkeit der Sektion verbessern.
 
-> **Fix:** Zuordnungstabelle (Baustein → Artefakt → Infrastruktur) ergänzen:
+**Änderungsvorschlag:**
+> Am Ende des Abschnitts „Wesentliche Features" folgenden Satz ergänzen:
+>
+> _Eine separate, ausführlichere Anforderungsdokumentation existiert für DokChess nicht. Die hier aufgeführten Features stellen den vollständigen funktionalen Umfang dar._
+
+---
+
+#### [S01-03] Treibende Kräfte / Business-Ziele nicht explizit herausgearbeitet
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md`
+**Kriterium:** Inhaltliche Prüfung – Business-Ziele und treibende Kräfte
+
+**Befund:** Die Business-Ziele (Lehr- und Anschauungszweck) sind im Fließtext unter „Was ist DokChess?" eingebettet, aber nicht als eigenständiger Aspekt hervorgehoben. Arc42 empfiehlt, die treibenden Kräfte explizit herauszuarbeiten, damit Leser sofort erkennen, warum das System existiert.
+
+**Änderungsvorschlag:**
+> Einen zusätzlichen Unterabschnitt oder eine explizite Einleitung ergänzen:
 >
 > ```markdown
-> ### Zuordnung Bausteine zu Infrastruktur
+> ### Treibende Kräfte
 >
-> Alle Subsysteme aus der Bausteinsicht Ebene 1 werden gemeinsam in *DokChess.jar* paketiert und laufen in einer einzigen JVM-Instanz auf dem Windows-PC:
+> DokChess wurde primär als Anschauungsmaterial für Architekturdokumentation,
+> -entwurf und -bewertung konzipiert. Es soll in Workshops, Seminaren und
+> Fachbüchern eingesetzt werden. Eine möglichst hohe Spielstärke ist dabei
+> nachrangig gegenüber Verständlichkeit und Erweiterbarkeit.
+> ```
+
+---
+
+#### [S01-04] Qualitätsziele nicht ausreichend messbar formuliert
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md`
+**Kriterium:** Inhaltliche Prüfung – Konkretheit und Messbarkeit der Qualitätsziele
+
+**Befund:** Mehrere Qualitätsziele verwenden unscharfe Formulierungen, die für sich allein nicht messbar sind: „erschließen sich … rasch", „leicht implementiert", „mit angemessenem Aufwand", „stark genug", „rasch". Der Verweis auf Sektion 10 mildert dies ab, da dort Szenarien definiert werden. Dennoch sollten die Qualitätsziele selbst konkreter gefasst sein, damit die Tabelle auch ohne Sektion 10 aussagekräftig ist.
+
+**Änderungsvorschlag:**
+> Die Tabelle um eine Spalte „Messkriterium" erweitern oder die Formulierungen präzisieren, z. B.:
 >
-> | Baustein (Sektion 5) | Deployment-Artefakt | Infrastruktur-Element |
+> | Qualitätsziel | Motivation und Erläuterung | Messkriterium |
+> | --- | --- | --- |
+> | Zugängliches Beispiel (Analysierbarkeit) | … | Ein Entwickler kann die Struktur innerhalb von 1 Stunde verstehen |
+> | Schnelles Antworten auf Züge (Effizienz) | … | Antwortzeit < 10 Sekunden pro Zug in typischen Mittelspielpositionen |
+
+---
+
+#### [S01-05] Stakeholder-Tabelle: Spaltenstruktur weicht vom arc42-Template ab
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/01-Einfuehrung-und-Ziele/01-03-Stakeholder.md`
+**Kriterium:** Formale Prüfung – Stakeholder-Tabelle mit Rolle, Name/Beschreibung und Erwartungen
+
+**Befund:** Die Tabelle verwendet die Spalten „Wer?" und „Interesse, Bezug". Das arc42-Template sieht die Spalten „Rolle", „Kontakt" und „Erwartungshaltung" vor. Die aktuelle Struktur vermischt Rollen und konkrete Personen/Organisationen in derselben Spalte, ohne klare Unterscheidung.
+
+**Änderungsvorschlag:**
+> Tabelle umstrukturieren:
+>
+> | Rolle | Kontakt | Erwartungshaltung |
+> | --- | --- | --- |
+> | Softwarearchitekt:innen | (diverse Leser:innen) | Wollen ein Gefühl bekommen, wie Architekturdokumentation aussehen kann |
+> | Entwickler:innen | (diverse Leser:innen) | Suchen Anregungen zur Implementierung einer Schach-Engine |
+> | Autor / Initiator | Stefan Zörner | Benötigt Beispiele für Buch, Workshops und Vorträge |
+> | Schulungsunternehmen | oose Innovative Informatik | Nutzt DokChess als Schulungsmaterial |
+
+---
+
+#### [S01-06] Fehlende Stakeholder-Gruppe: Endbenutzer (Schachspieler)
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/01-Einfuehrung-und-Ziele/01-03-Stakeholder.md`
+**Kriterium:** Inhaltliche Prüfung – Vollständigkeit der Stakeholder-Gruppen
+
+**Befund:** Schachspieler:innen, die DokChess tatsächlich zum Spielen nutzen, fehlen in der Stakeholder-Tabelle. Da in der Aufgabenstellung explizit „Partien, die Gelegenheitsspielern Freude bereiten" erwähnt wird, sind diese als Stakeholder zu berücksichtigen.
+
+**Änderungsvorschlag:**
+> Folgenden Eintrag in die Stakeholder-Tabelle aufnehmen:
+>
+> | Schachspieler:innen (Gelegenheitsspieler) | Erwarten akzeptable Spielstärke, regelkonformes Verhalten und flüssige Interaktion über das Schach-Frontend |
+
+---
+
+### Sektion 2: Randbedingungen
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S02-01 | 🟡 | Fehlende Konsequenzen der Randbedingungen |
+| S02-02 | 🟡 | Fehlende Darstellung der Freiheitsgrade |
+| S02-03 | 🟢 | Tippfehler „Schulungsunternehmenin" |
+| S02-04 | 🟡 | Fehlende Design- und Entwicklungseinschränkungen |
+| S02-05 | 🟢 | Fehlende einleitende Übersicht zur Sektion |
+
+#### [S02-01] Fehlende Konsequenzen der Randbedingungen
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** Alle drei Dateien der Sektion
+**Kriterium:** Werden die Konsequenzen der Constraints erläutert?
+
+**Befund:** Die Tabellen enthalten jeweils die Spalten „Randbedingung" und „Erläuterungen, Hintergrund". Hintergrund und Motivation werden gut beschrieben, jedoch fehlt eine explizite Darstellung der Konsequenzen für die Architektur.
+
+**Änderungsvorschlag:**
+> Ergänze in jeder Tabelle eine dritte Spalte **„Konsequenzen"** oder füge unter jeder Tabelle einen Absatz hinzu, der die architektonischen Auswirkungen zusammenfasst.
+
+---
+
+#### [S02-02] Fehlende Darstellung der Freiheitsgrade
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** Alle drei Dateien der Sektion
+**Kriterium:** Ist klar, wo die Architekten Freiheitsgrade haben und wo nicht?
+
+**Befund:** Die Randbedingungen beschreiben, was eingeschränkt ist, aber es wird nicht explizit gemacht, wo die Architekten Gestaltungsspielraum haben.
+
+**Änderungsvorschlag:**
+> Ergänze am Ende der Sektion einen Abschnitt „Freiheitsgrade", der die nicht eingeschränkten Entscheidungsbereiche auflistet (z.B. Architekturstil, Bibliothekenwahl, interne Datenstrukturen).
+
+---
+
+#### [S02-03] Tippfehler in organisatorischen Randbedingungen
+
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/02-Randbedingungen/02-02-Organisatorisch.md`
+**Kriterium:** Formale Korrektheit
+
+**Befund:** Im Zeitplan-Eintrag ist „Schulungsunternehmenin" zusammengeschrieben statt „Schulungsunternehmen in".
+
+**Änderungsvorschlag:**
+> Ersetze `Schulungsunternehmenin` durch `Schulungsunternehmen in`.
+
+---
+
+#### [S02-04] Fehlende Design- und Entwicklungseinschränkungen im technischen Abschnitt
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/02-Randbedingungen/02-01-Technisch.md`
+**Kriterium:** Werden Design- und Entwicklungseinschränkungen erfasst?
+
+**Befund:** Die technischen Randbedingungen konzentrieren sich auf Hardware, Betriebssystem, Programmiersprache und Fremdsoftware. Explizite Design-Einschränkungen fehlen — etwa Offline-Fähigkeit und Verzicht auf eine Datenbank.
+
+**Änderungsvorschlag:**
+> Ergänze in der Tabelle zusätzliche Zeilen für Offline-Betrieb und fehlende externe Datenbank.
+
+---
+
+#### [S02-05] Fehlende einleitende Übersicht zur Sektion
+
+**Schwere:** 🟢 Hinweis
+**Datei:** Alle drei Dateien der Sektion
+**Kriterium:** Formale Vollständigkeit
+
+**Befund:** Es fehlt eine kurze einleitende Beschreibung, die die drei Kategorien von Randbedingungen einordnet.
+
+**Änderungsvorschlag:**
+> Ergänze am Anfang einen kurzen Einleitungstext, der die Kategorien (technisch, organisatorisch, Konventionen) einordnet.
+
+---
+
+### Sektion 3: Kontextabgrenzung
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S03-01 | 🟡 | Fachliche Ein-/Ausgaben nicht systematisch spezifiziert |
+| S03-02 | 🟡 | Datenflüsse bei Eröffnungen und Endspielen nicht beschrieben |
+| S03-03 | 🟡 | Kein explizites Mapping fachlich ↔ technisch |
+| S03-04 | 🟢 | Endspiele im technischen Kontext nur als Negativabgrenzung |
+| S03-05 | 🟡 | Keine Qualitätsanforderungen an externe Schnittstellen |
+| S03-06 | 🟢 | Konsistenz mit Bausteinsicht gegeben (kein Befund) |
+
+#### [S03-01] Fachliche Ein-/Ausgaben nicht systematisch spezifiziert
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md`
+**Kriterium:** Werden alle Kommunikationspartner mit fachlichen Ein-/Ausgaben spezifiziert?
+
+**Befund:** Für den menschlichen Gegner werden beispielhaft Züge und Remisangebote als Austauschdaten genannt. Für die Fremdsysteme Eröffnungen und Endspiele fehlt eine explizite Angabe. Eine begleitende Tabelle der Kommunikationspartner mit ihren Ein-/Ausgaben fehlt vollständig.
+
+**Änderungsvorschlag:**
+> Nach dem Diagramm eine Tabelle ergänzen:
+>
+> | Kommunikationspartner | Fachliche Eingabe | Fachliche Ausgabe |
 > |---|---|---|
-> | XBoard-Protokoll | DokChess.jar | JVM auf Windows-PC |
-> | Spielregeln | DokChess.jar | JVM auf Windows-PC |
-> | Engine | DokChess.jar | JVM auf Windows-PC |
-> | Eröffnung | DokChess.jar | JVM auf Windows-PC |
-> ```
+> | Menschlicher Gegner | Züge, Remisangebote, Aufgabe | Züge, Remisangebote |
+> | Computergegner | Züge, Remisangebote, Aufgabe | Züge, Remisangebote |
+> | Eröffnungsbibliothek | Aktuelle Stellung | Eröffnungszug (optional) |
+> | Endspielbibliothek | Aktuelle Stellung | Bewertung, optimaler Zug |
 
 ---
 
-### 4. [S11-01] Fehlende Risiko-Übersichtstabelle
+#### [S03-02] Datenflüsse bei Eröffnungen und Endspielen nicht beschrieben
 
-**Datei:** `arc-doc/11-Risiken/`
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md`
+**Kriterium:** Werden Datenflüsse im fachlichen Kontext gezeigt?
 
-Keine konsolidierte Tabelle mit Priorisierung, Eintrittswahrscheinlichkeit, Schadenspotenzial und Status. Für Management-Stakeholder nicht nutzbar.
+**Befund:** Die Abschnitte zu Eröffnungen und Endspielen beschreiben den Zweck, aber nicht die konkreten Datenflüsse.
 
-> **Fix:** Datei `11-00-Uebersicht.md` mit priorisierter Risikotabelle anlegen:
->
-> ```markdown
-> # Risiken und technische Schulden
->
-> ## Übersicht
->
-> | ID | Risiko | Eintrittswahrscheinlichkeit | Schadenspotenzial | Priorität | Maßnahmen | Status |
-> | --- | --- | --- | --- | --- | --- | --- |
-> | 11.1 | Anbindung an das Frontend schlägt fehl | Mittel | Hoch | 1 | Proof of Concept | Umgesetzt |
-> | 11.2 | Aufwand der Implementierung zu hoch | Mittel | Hoch | 2 | Scope-Reduktion | Umgesetzt |
-> | 11.3 | Erreichen der Spielstärke scheitert | Mittel | Mittel | 3 | Testfälle aus Schachliteratur | Umgesetzt |
-> ```
+**Änderungsvorschlag:**
+> Im Abschnitt "Eröffnungen" ergänzen: „DokChess übergibt die aktuelle Spielstellung an die Eröffnungsbibliothek und erhält – sofern vorhanden – einen geeigneten Eröffnungszug zurück."
 
 ---
 
-### 5. [S11-03] Technische Schulden nicht dokumentiert
+#### [S03-03] Kein explizites Mapping zwischen fachlichem und technischem Kontext
 
-**Datei:** `arc-doc/11-Risiken/`
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/03-Kontextabgrenzung/03-02-Technischer-Kontext.md`
+**Kriterium:** Gibt es ein Mapping zwischen fachlichen Ein-/Ausgaben und technischen Kanälen?
 
-Bewusst nicht implementierte Features (50-Züge-Regel, Stellungswiederholung, Endspieldatenbanken) werden nirgends als technische Schulden klassifiziert.
+**Befund:** Der technische Kontext stellt kein explizites Mapping zu den fachlichen Kommunikationspartnern aus Abschnitt 3.1 her.
 
-> **Fix:** Datei `11-04-Technische-Schulden.md` mit Tabelle der bewussten Schulden anlegen:
+**Änderungsvorschlag:**
+> Am Anfang von Abschnitt 3.2 eine Mapping-Tabelle ergänzen:
 >
-> ```markdown
-> # Technische Schulden
->
-> ## 11.4 Bewusst in Kauf genommene technische Schulden
->
-> | ID | Beschreibung | Auswirkung | Referenz |
-> | --- | --- | --- | --- |
-> | TS-1 | 50-Züge-Regel nicht implementiert | Keine Erkennung von Remis nach 50 Zügen ohne Bauernzug oder Schlagzug | 11-02-Aufwand.md |
-> | TS-2 | Stellungswiederholung nicht implementiert | Keine Erkennung von Remis durch dreifache Stellungswiederholung | 11-02-Aufwand.md |
-> | TS-3 | Keine Anbindung von Endspieldatenbanken | Schwächere Spielführung im Endspiel | 03-02-Technischer-Kontext.md |
-> | TS-4 | Eröffnungsbibliotheken niedrig priorisiert | Engine muss Eröffnungen selbst berechnen | 11-02-Aufwand.md |
-> ```
+> | Fachlicher Partner | Technischer Kanal | Protokoll/Format |
+> |---|---|---|
+> | Menschlicher Gegner / Computergegner | XBoard Client | XBoard-Protokoll (Stdin/Stdout) |
+> | Eröffnungsbibliothek | Polyglot Opening Book | Binäres Dateiformat (lesend) |
+> | Endspielbibliothek | — (nicht implementiert) | — |
 
 ---
 
-### 6. [S12-01] Zentrale Domänenbegriffe fehlen im Glossar
+#### [S03-04] Endspiele im technischen Kontext nur als Negativabgrenzung
 
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/03-Kontextabgrenzung/03-02-Technischer-Kontext.md`
+**Kriterium:** Werden ALLE externen Schnittstellen auch im technischen Kontext abgebildet?
+
+**Befund:** Endspiele werden lediglich als nicht implementiert vermerkt, ohne potenzielle technische Schnittstelle zu skizzieren. Für eine bewusste Designentscheidung ist die Dokumentation akzeptabel.
+
+---
+
+#### [S03-05] Keine Qualitätsanforderungen an externe Schnittstellen
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/03-Kontextabgrenzung/03-02-Technischer-Kontext.md`
+**Kriterium:** Werden Qualitätsanforderungen an externen Schnittstellen beachtet?
+
+**Befund:** Der technische Kontext beschreibt weder Performanz- noch Verfügbarkeitsanforderungen der externen Schnittstellen.
+
+**Änderungsvorschlag:**
+> Im Abschnitt „XBoard Client" ergänzen: „Die Kommunikation erfolgt synchron über Stdin/Stdout. DokChess muss innerhalb der vom Frontend vorgegebenen Bedenkzeit antworten."
+
+---
+
+### Sektion 4: Lösungsstrategie
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S04-01 | 🔴 | Inkonsistente Bezeichnung „Attraktive Spielstärke (Attraktivität)" vs. „Akzeptable Spielstärke (Funktionale Eignung)" in S1 |
+| S04-02 | 🟡 | Fehlende schließende Klammer im Querverweis |
+| S04-03 | 🟢 | Fehlende organisatorische Entscheidungen |
+| S04-04 | 🟢 | Grammatikfehler „geeigneter" → „geeigneten" |
+
+#### [S04-01] Inkonsistente Bezeichnung des Qualitätsziels „Spielstärke"
+
+**Schwere:** 🔴 Kritisch
+**Datei:** `arc-doc/04-Loesungsstrategie/04-01-Einstieg.md`
+**Kriterium:** Konsistenz mit Qualitätszielen aus Sektion 1.2
+
+**Befund:** In der Zuordnungstabelle wird das Qualitätsziel als **„Attraktive Spielstärke (Attraktivität)"** bezeichnet. In `01-02-Qualitaetsziele.md` heißt es jedoch **„Akzeptable Spielstärke (Funktionale Eignung)"**. Sowohl der Name als auch das zugeordnete Qualitätsmerkmal weichen voneinander ab.
+
+**Änderungsvorschlag:**
+> In `04-01-Einstieg.md` die Bezeichnung an S1.2 angleichen:
+>
+> | Akzeptable Spielstärke (Funktionale Eignung) | - Integration von Eröffnungsbibliotheken → **(d)** <br> - Implementierung des Minimax-Algorithmus und einer geeigneten Stellungsbewertung, → **(e)** <br> - Integrationstests mit Schachaufgaben für taktische Motive und Mattsituationen |
+
+---
+
+#### [S04-02] Fehlende schließende Klammer im Querverweis
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/04-Loesungsstrategie/04-02-Aufbau.md`
+**Kriterium:** Formale Korrektheit der Verweise
+
+**Befund:** Fehlende schließende Klammer `)` bei kombinierten Querverweisen auf Sektion 5 und Konzept 8.1.
+
+---
+
+#### [S04-03] Fehlende organisatorische Entscheidungen
+
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/04-Loesungsstrategie/` (gesamte Sektion)
+**Kriterium:** Dokumentation relevanter organisatorischer Entscheidungen
+
+**Befund:** Die Lösungsstrategie enthält keine Angaben zu organisatorischen Aspekten (Entwicklungsprozess, Build-Werkzeuge). Für ein Beispielprojekt nachvollziehbar.
+
+---
+
+#### [S04-04] Grammatikfehler in Tabellenzelle
+
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/04-Loesungsstrategie/04-01-Einstieg.md`
+**Kriterium:** Formale Qualität
+
+**Befund:** „einer **geeigneter** Stellungsbewertung" — korrekt wäre „einer **geeigneten** Stellungsbewertung".
+
+---
+
+### Sektion 5: Bausteinsicht
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S05-01 | 🟡 | Fehlende Begründung der Zerlegung auf Ebene 1 |
+| S05-02 | 🟢 | Tippfehler „Püft" in Spielregeln |
+| S05-03 | 🟡 | Endspiel-Schnittstelle aus S3 nicht erwähnt |
+| S05-04 | 🟡 | Interne Schnittstellen nur implizit dokumentiert |
+| S05-05 | 🟢 | Vage Source-Code-Verweise mit Auslassungszeichen |
+| S05-06 | 🟢 | Fehlende Qualitäts-/Leistungsmerkmale (optional) |
+
+#### [S05-01] Fehlende Begründung der Zerlegung auf Ebene 1
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/05-Bausteinsicht/05-01-Ebene-1.md`
+**Kriterium:** Whitebox Gesamtsystem — Begründung der Zerlegung
+
+**Befund:** Die Ebene 1 beschreibt die vier Subsysteme und ihre Abhängigkeiten, liefert aber keine Begründung, *warum* das System in genau diese vier Bausteine zerlegt wurde.
+
+**Änderungsvorschlag:**
+> Nach dem Diagramm einen Absatz „Begründung der Zerlegung" einfügen, der die fachliche Motivation der Aufteilung erklärt.
+
+---
+
+#### [S05-02] Tippfehler in Spielregeln-Schnittstellenbeschreibung
+
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/05-Bausteinsicht/05-03-Spielregeln.md`
+**Kriterium:** Formale Qualität
+
+**Befund:** In der Methodentabelle steht bei `aufSchachPruefen` „Püft" statt „Prüft".
+
+---
+
+#### [S05-03] Endspiel-Schnittstelle aus Sektion 3 nicht in Bausteinsicht erwähnt
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/05-Bausteinsicht/05-01-Ebene-1.md`
+**Kriterium:** Konsistenz mit Sektion 3
+
+**Befund:** Der fachliche Kontext (S3.1) nennt „Endspiele" als externes Fremdsystem. In der Bausteinsicht fehlt jegliche Erwähnung dieser bewusst nicht umgesetzten Schnittstelle.
+
+**Änderungsvorschlag:**
+> Am Ende von `05-01-Ebene-1.md` einen Abschnitt „Bewusst nicht umgesetzte Schnittstellen" ergänzen, der auf die Endspiel-Entscheidung verweist.
+
+---
+
+#### [S05-04] Interne Schnittstellen zwischen Subsystemen nur implizit dokumentiert
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/05-Bausteinsicht/05-01-Ebene-1.md`
+**Kriterium:** Beschreibung wichtiger interner Schnittstellen
+
+**Befund:** Die Abhängigkeiten zwischen den vier Subsystemen werden im Diagramm als gestrichelte Pfeile dargestellt, die Art dieser Abhängigkeiten (welche Schnittstelle genutzt wird) wird auf Ebene 1 nicht beschrieben.
+
+**Änderungsvorschlag:**
+> Eine Tabelle der internen Abhängigkeiten ergänzen:
+>
+> | Von | Nach | Schnittstelle |
+> | --- | --- | --- |
+> | XBoard-Protokoll | Spielregeln | `Spielregeln` (Interface) |
+> | XBoard-Protokoll | Engine | `Engine` (Interface) |
+> | Engine | Spielregeln | `Spielregeln` (Interface) |
+> | Engine | Eröffnung | `Eroeffnungsbibliothek` (Interface, optional) |
+
+---
+
+### Sektion 6: Laufzeitsicht
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S06-01 | 🟡 | Fehlende Fehler- und Ausnahmeszenarien |
+| S06-02 | 🟡 | Fehlendes Szenario für Eröffnungsbibliothek-Treffer |
+| S06-03 | 🟢 | Ebene-2-Bausteine nicht explizit in Szenarien benannt |
+| S06-04 | 🟢 | Matt-/Patt-Situation als Szenario fehlt |
+
+#### [S06-01] Fehlende Fehler- und Ausnahmeszenarien
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/06-Laufzeitsicht/06-01-Zugermittlung.md`
+**Kriterium:** Werden bei Bedarf Fehler- und Ausnahmeszenarien beschrieben?
+
+**Befund:** Die Laufzeitsicht enthält kein Szenario für Fehlerfälle (ungültige Züge, Matt/Patt, fehlende Eröffnungsbibliothek).
+
+**Änderungsvorschlag:**
+> Ergänzung eines Szenarios „Ungültiger Zug", das zeigt, wie das XBoard-Protokoll-Subsystem über die Spielregeln den Zug validiert und bei Ungültigkeit eine Fehlermeldung sendet.
+
+---
+
+#### [S06-02] Fehlendes Szenario für Eröffnungsbibliothek-Treffer
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/06-Laufzeitsicht/06-01-Zugermittlung.md`
+**Kriterium:** Werden die wichtigsten Use Cases als Szenarien dargestellt?
+
+**Befund:** Das vorhandene Szenario zeigt explizit den Fall, dass die Eröffnungsbibliothek keinen Treffer liefert. Der komplementäre Pfad — ein Treffer — fehlt, obwohl er architekturrelevant ist (Zugsuche und Stellungsbewertung werden übersprungen).
+
+---
+
+#### [S06-03] Ebene-2-Bausteine der Engine nicht explizit in Szenarien benannt
+
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/06-Laufzeitsicht/06-01-Zugermittlung.md`
+**Kriterium:** Werden sowohl kleine als auch große Bausteine in Szenarien eingesetzt?
+
+**Befund:** Das Sequenzdiagramm operiert ausschließlich auf Ebene-1-Subsystemen. Die Ebene-2-Module „Zugsuche" und „Stellungsbewertung" werden nicht namentlich genannt.
+
+**Änderungsvorschlag:**
+> Im Fließtext die Ebene-2-Bausteine explizit benennen: „…durchsucht die **Zugsuche** den Spielbaum und verwendet dabei die **Stellungsbewertung**…"
+
+---
+
+### Sektion 7: Verteilungssicht
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S07-01 | 🟡 | Fehlende Motivation für Verteilungsstruktur |
+| S07-02 | 🟡 | Kein explizites Baustein-Mapping auf Infrastruktur |
+| S07-03 | 🟡 | Nur Windows-Deployment dokumentiert |
+| S07-04 | 🟡 | Deployment-Variante mit Eröffnungsbibliothek fehlt |
+| S07-05 | 🟢 | Keine Qualitäts-/Performance-Merkmale |
+| S07-06 | 🟢 | Fehlende Entwicklungs-/Testumgebung |
+
+#### [S07-01] Fehlende Motivation für die Verteilungsstruktur
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/07-Verteilungssicht/07-01-Infrastruktur-Windows.md`
+**Kriterium:** Beschreibung der Motivation für die gewählte Deployment-Struktur
+
+**Befund:** Es wird beschrieben, *wie* DokChess verteilt wird, aber nicht *warum* diese Deployment-Struktur gewählt wurde.
+
+---
+
+#### [S07-02] Kein explizites Mapping der Bausteine auf Infrastruktur-Elemente
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/07-Verteilungssicht/07-01-Infrastruktur-Windows.md`
+**Kriterium:** Mapping von Software-Bausteinen auf Hardware-/Infrastruktur-Elemente
+
+**Befund:** Es wird nicht explizit gesagt, dass alle vier Subsysteme innerhalb des einen Jar auf demselben Rechner in derselben JVM laufen.
+
+**Änderungsvorschlag:**
+> Ergänzen: „Sämtliche Subsysteme aus der Bausteinsicht — XBoard-Protokoll, Spielregeln, Engine und Eröffnung — sind im Artefakt *DokChess.jar* zusammengefasst und laufen innerhalb einer einzigen JVM-Instanz."
+
+---
+
+#### [S07-03] Nur Windows-Deployment dokumentiert
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/07-Verteilungssicht/07-01-Infrastruktur-Windows.md`
+**Kriterium:** Dokumentation verschiedener Umgebungen
+
+**Befund:** Da DokChess Java-basiert und plattformunabhängig ist, fehlt ein Hinweis auf Deployment unter Linux/macOS.
+
+---
+
+#### [S07-04] Deployment-Variante mit Eröffnungsbibliothek fehlt
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/07-Verteilungssicht/07-01-Infrastruktur-Windows.md`
+**Kriterium:** Vollständigkeit der Infrastrukturdarstellung
+
+**Befund:** Die Variante mit Eröffnungsbibliothek (Polyglot-Datei) wird nirgends dargestellt.
+
+---
+
+### Sektion 8: Querschnittliche Konzepte
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S08-01 | 🟡 | Fehlende Rückverweise von Konzepten zu Bausteinen (S5) |
+| S08-02 | 🟡 | Vermischung von Konzept und Entscheidung in 8.1 (Abhängigkeiten) |
+| S08-03 | 🟡 | Vermischung von Konzept und Entscheidung in 8.6 (Logging) |
+| S08-04 | 🟢 | Querschnittlichkeit von 8.3 (Benutzungsoberfläche) unklar |
+| S08-05 | 🟢 | Fehlender Verweis auf Code-Beispiele/Tests in 8.4 und 8.5 |
+
+#### [S08-02] Vermischung von Konzept und Entscheidung in 8.1 (Abhängigkeiten)
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/08-Konzepte/08-01-Abhaengigkeiten.md`
+**Kriterium:** Werden Konzepte von Entscheidungen abgegrenzt?
+
+**Befund:** Das Konzept beschreibt den DI-Ansatz (HOW), enthält aber auch die Entscheidung, kein DI-Framework zu verwenden (WHAT). Diese Entscheidung wäre in Sektion 9 besser aufgehoben.
+
+**Änderungsvorschlag:**
+> Den Entscheidungsteil als eigenständigen ADR in Sektion 9 auslagern und in 8.1 nur einen Verweis setzen.
+
+---
+
+#### [S08-03] Vermischung von Konzept und Entscheidung in 8.6 (Logging)
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/08-Konzepte/08-06-Logging.md`
+**Kriterium:** Werden Konzepte von Entscheidungen abgegrenzt?
+
+**Befund:** 8.6 beschreibt weniger ein Logging-Konzept als die bewusste Entscheidung, auf Logging zu verzichten. Das ist primär eine Architekturentscheidung.
+
+---
+
+### Sektion 9: Architekturentscheidungen
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S09-01 | 🟡 | Zeitliche Diskrepanz Untersuchung (2011) vs. ADR-Status (2026) |
+| S09-02 | 🟡 | Fehlende ADRs für Reactive Extensions, Algorithmuswahl, Polyglot-Format |
+| S09-03 | 🟢 | Uneinheitliche Benennung der Konsequenz-Kategorien |
+| S09-04 | 🟢 | Redundanzprüfung mit Sektion 4 — kein Befund |
+
+#### [S09-01] Zeitliche Diskrepanz zwischen Untersuchung und ADR-Status
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/09-Entscheidungen/09-01-Anbindung.md`
+**Kriterium:** Nachvollziehbarkeit / Zeitstempel
+
+**Befund:** Die Untersuchung der Frontends ist mit „Stand 2011" datiert, der ADR-Status jedoch mit „2026-03-10". Für Leser ist unklar, ob die Entscheidung 2011 getroffen und 2026 nur formalisiert wurde.
+
+**Änderungsvorschlag:**
+> Im Context-Abschnitt ergänzen: „Die Untersuchung wurde 2011 durchgeführt. Die Ergebnisse wurden bei der Formalisierung als ADR (2026) auf Aktualität geprüft und als weiterhin gültig bewertet."
+
+---
+
+#### [S09-02] Fehlende ADRs für weitere architekturrelevante Entscheidungen
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/09-Entscheidungen/` (Verzeichnis)
+**Kriterium:** Relevanz — Werden alle architekturrelevanten Entscheidungen dokumentiert?
+
+**Befund:** Mehrere fundamentale Architekturansätze aus Sektion 4 haben keine ADRs:
+- **Reactive Extensions** für nebenläufige Zugermittlung
+- **Polyglot Opening Book** als Eröffnungsbibliotheksformat
+- **Dependency Injection** als Kompositionsmechanismus
+
+**Änderungsvorschlag:**
+> Für mindestens die Entscheidung „Reactive Extensions für nebenläufige Zugermittlung" einen eigenen ADR anlegen.
+
+---
+
+### Sektion 10: Qualitätsanforderungen
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S10-01 | 🟡 | Qualitätsbaum ausschließlich als Bild ohne textuelle Alternative |
+| S10-02 | 🟡 | Szenarien ohne explizite Strukturierung nach Quelle/Stimulus/Metrik |
+| S10-03 | 🟢 | Kürzel-Legende nur teilweise aufgelöst |
+
+#### [S10-01] Qualitätsbaum ausschließlich als Bild ohne textuelle Alternative
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/10-Qualitaetsanforderungen/10-01-Qualitaetsbaum.md`
+**Kriterium:** Qualitätsübersicht soll strukturiert als Tabelle, Liste oder Mindmap vorliegen
+
+**Befund:** Der gesamte Qualitätsbaum ist ausschließlich als PNG-Bild eingebettet. Es existiert keine textuelle Repräsentation. Falls das Bild nicht darstellbar ist, geht die Information verloren.
+
+**Änderungsvorschlag:**
+> Ergänze unterhalb des Bildes eine textuelle Darstellung als Tabelle mit den Spalten: Qualitätsmerkmal, Untermerkmal, Szenarien, Qualitätsziel.
+
+---
+
+#### [S10-02] Szenarien ohne explizite Strukturierung
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md`
+**Kriterium:** Qualitätsszenarien sollen Kontext, Quelle/Stimulus und Metrik enthalten
+
+**Befund:** Die Szenarien sind als zweispaltige Tabelle (ID, Szenario) mit Fließtext dokumentiert. Die Bestandteile (Akteur, Aktion, Akzeptanzkriterium) sind implizit vorhanden, aber nicht explizit strukturiert.
+
+---
+
+#### [S10-03] Kürzel-Legende nur teilweise aufgelöst
+
+**Schwere:** 🟢 Hinweis
+**Datei:** `arc-doc/10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md`
+**Kriterium:** Szenarien sollen eindeutig Qualitätsmerkmalen zugeordnet sein
+
+**Befund:** Nur „W" = Wartbarkeit wird explizit erklärt. K, F, E, Z und P bleiben unerklärt.
+
+**Änderungsvorschlag:**
+> Ersetze den Erklärungssatz durch: „**W** = Wartbarkeit, **K** = Kompatibilität, **F** = Funktionale Eignung, **E** = Effizienz, **Z** = Zuverlässigkeit, **P** = Portabilität (Übertragbarkeit)."
+
+---
+
+### Sektion 11: Risiken und technische Schulden
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S11-01 | 🔴 | Technische Schulden fehlen vollständig |
+| S11-02 | 🟡 | Keine Priorisierung der Risiken |
+| S11-03 | 🟡 | Keine tabellarische Übersicht aller Risiken |
+| S11-04 | 🟡 | Risikoquellen zu einseitig |
+| S11-05 | 🟢 | Bekannte Probleme nicht als solche dokumentiert |
+| S11-06 | 🟢 | Gute Querverweise zu anderen Sektionen (positiv) |
+
+#### [S11-01] Technische Schulden fehlen vollständig
+
+**Schwere:** 🔴 Kritisch
+**Datei:** `arc-doc/11-Risiken/` (alle Dateien)
+**Kriterium:** Werden technische Schulden identifiziert?
+
+**Befund:** Die Sektion dokumentiert ausschließlich Risiken. Technische Schulden werden nirgends erfasst. Dabei liefert die Dokumentation selbst Hinweise auf bewusst eingegangene Schulden: 50-Züge-Regel nicht implementiert, Stellungswiederholung nicht implementiert, keine Endspieldatenbanken.
+
+**Änderungsvorschlag:**
+> Eine neue Datei `11-04-Technische-Schulden.md` anlegen mit einer Tabelle bewusst eingegangener technischer Schulden (50-Züge-Regel, Stellungswiederholung, fehlende Endspieldatenbanken, fehlende Eröffnungsbibliothek-Anbindung).
+
+---
+
+#### [S11-02] Keine Priorisierung der Risiken
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/11-Risiken/` (alle Dateien)
+**Kriterium:** Sind die Risiken nach Priorität geordnet?
+
+**Befund:** Die drei Risiken sind durchnummeriert, aber es fehlt eine explizite Priorisierung nach Eintrittswahrscheinlichkeit und/oder Schadenshöhe.
+
+---
+
+#### [S11-04] Risikoquellen zu einseitig
+
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/11-Risiken/` (alle Dateien)
+**Kriterium:** Wurden verschiedene Perspektiven berücksichtigt?
+
+**Befund:** Alle Risiken konzentrieren sich auf Machbarkeit der Kernentwicklung. Es fehlen Risiken zu externen Abhängigkeiten (XBoard-Protokoll, Polyglot-Format) und zum Veralten der Dokumentation.
+
+---
+
+### Sektion 12: Glossar
+
+| ID | Schwere | Titel |
+|---|---|---|
+| S12-01 | 🟡 | Zentraler Domänenbegriff „Stellung" fehlt |
+| S12-02 | 🟡 | Begriff „Spielbaum" fehlt |
+| S12-03 | 🟢 | Konsistenz mit Domänenmodell — „Zug"/„Feld" fehlen |
+| S12-04 | 🟢 | FEN-Eintrag: unvollständiger Wikipedia-Verweis |
+| S12-05 | 🟢 | „Schach960" ohne Bezug zur Dokumentation |
+| S12-06 | 🟢 | Spaltenbezeichnung „Erklärung" statt „Definition" |
+
+#### [S12-01] Zentraler Domänenbegriff „Stellung" fehlt im Glossar
+
+**Schwere:** 🟡 Empfehlung
 **Datei:** `arc-doc/12-Glossar/12-02-Begriffe.md`
+**Kriterium:** Begriffsauswahl — domänenspezifische Begriffe
 
-Die vier Kernklassen des Domänenmodells (Figur, Feld, Zug, Stellung) aus Sektion 8.2 fehlen im Glossar, obwohl sie in der gesamten Dokumentation verwendet werden.
+**Befund:** „Stellung" ist ein zentrales Konzept im Domänenmodell und wird in der gesamten Dokumentation durchgängig verwendet. Für Wenig- oder Gelegenheitsspieler ist dieser Begriff nicht selbstverständlich.
 
-> **Fix:** Vier Einträge alphabetisch einsortieren:
->
-> | Feld | Ein Quadrat auf dem Schachbrett, bezeichnet durch Linie (a–h) und Reihe (1–8), z.B. „e4". Kann von maximal einer *Figur* besetzt sein. |
-> | Figur | Eine Schachfigur, gekennzeichnet durch Farbe (schwarz oder weiß) und Art (König, Dame, Turm, Läufer, Springer oder Bauer). |
-> | Stellung | Die aktuelle Spielsituation auf dem Schachbrett: Welche *Figuren* auf welchen *Feldern* stehen, wer am Zug ist, ob noch *Rochaden* möglich sind und ob *en passant* geschlagen werden kann. Siehe auch *FEN*. |
-> | Zug | Die Bewegung einer *Figur* von einem *Feld* zu einem anderen. Spezialfälle sind *Rochade*, *en passant* und *Umwandlung*. |
+**Änderungsvorschlag:**
+> Eintrag ergänzen: „Stellung — Beschreibung der aktuellen Spielsituation auf dem Brett. Umfasst die Position aller Figuren, die Information, wer am Zug ist, ob noch Rochaden möglich sind und ob en passant geschlagen werden kann."
 
 ---
 
-## Sektions-Reviews im Detail
+#### [S12-02] Begriff „Spielbaum" fehlt im Glossar
 
-### Sektion 1 — Einführung und Ziele
+**Schwere:** 🟡 Empfehlung
+**Datei:** `arc-doc/12-Glossar/12-02-Begriffe.md`
+**Kriterium:** Begriffsauswahl — technische Begriffe
 
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S01-01 | 🟡 Empfehlung | Fehlende Verweise auf existierende Anforderungsdokumente |
-| S01-02 | 🟡 Empfehlung | Treibende Kräfte und Business-Ziele nicht explizit hervorgehoben |
-| S01-03 | 🟢 Hinweis | Qualitätsziele ohne zugeordnete Kurzszenarien |
-| S01-04 | 🟡 Empfehlung | Stakeholder-Tabelle weicht vom arc42-Template ab (3 Spalten empfohlen) |
-| S01-05 | 🟡 Empfehlung | Fehlende Stakeholder-Gruppe: Endanwender (Schachspieler) |
-| S01-06 | 🟢 Hinweis | Kein Verweis von Stakeholder-Erwartungen auf Qualitätsziele |
-
-**Gesamtbewertung:** Solide Grundlage. Aufgabenstellung, Qualitätsziele und Stakeholder sind vorhanden und nachvollziehbar. Verbesserungspotenzial bei Tabellenstruktur und Vollständigkeit der Stakeholder.
-
----
-
-### Sektion 2 — Randbedingungen
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S02-01 | 🟢 Hinweis | Tippfehler „Schulungsunternehmenin" |
-| S02-02 | 🟡 Empfehlung | Fehlende Darstellung von Freiheitsgraden und Konsequenzen |
-| S02-03 | 🟡 Empfehlung | Technische Constraints ohne Design-/Architekturvorgaben |
-| S02-04 | 🟢 Hinweis | Fehlende Einleitung / Überblick für Sektion 2 |
-| S02-05 | 🟢 Hinweis | Fehlender Bezug zu Constraints durch das XBoard-Protokoll |
-
-**Gesamtbewertung:** Gut aufgebaut mit klarer Kategorisierung. Hauptverbesserungspotenzial bei expliziten Konsequenzen der Constraints.
-
----
-
-### Sektion 3 — Kontextabgrenzung
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S03-01 | 🟡 Empfehlung | Fehlende Schnittstellentabelle im fachlichen Kontext |
-| S03-02 | 🟡 Empfehlung | Fehlende explizite Datenflüsse im fachlichen Kontext |
-| S03-03 | 🟡 Empfehlung | Fehlendes Mapping zwischen fachlichem und technischem Kontext |
-| S03-04 | 🟢 Hinweis | Kommunikationskanal für XBoard nicht beschrieben |
-| S03-05 | 🟢 Hinweis | Computergegner fehlt im technischen Kontext |
-| S03-06 | 🟢 Hinweis | Keine Qualitätsanforderungen an Schnittstellen |
-| S03-07 | 🟢 Hinweis | Konsistenzcheck Bausteinsicht — konsistent, kein Handlungsbedarf |
-
-**Gesamtbewertung:** Keine kritischen Befunde. Beide Kontexte vorhanden mit Diagrammen. Empfehlungen betreffen strukturierte Tabellen und Mapping.
-
----
-
-### Sektion 4 — Lösungsstrategie
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S04-01 | 🔴 Kritisch | Inkonsistente Benennung des Qualitätsziels „Spielstärke" |
-| S04-02 | 🟡 Empfehlung | Fehlende schließende Klammer im Markdown-Link |
-| S04-03 | 🟢 Hinweis | Fehlende organisatorische Entscheidungen |
-| S04-04 | 🟢 Hinweis | Kein expliziter Verweis auf S8 in der Einstiegstabelle |
-| S04-05 | 🟢 Hinweis | Fehlende Begründung für Sprachwahl Deutsch |
-
-**Gesamtbewertung:** Gut strukturiert und kompakt. Die Zuordnung Qualitätsziele→Lösungsansätze ist ein Pluspunkt. Der Namenskonflikt bei „Spielstärke" ist zeitnah zu beheben.
-
----
-
-### Sektion 5 — Bausteinsicht
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S05-01 | 🟡 Empfehlung | Fehlende Begründung der Zerlegung auf Ebene 1 |
-| S05-02 | 🟡 Empfehlung | Fehlende Zuordnung externer Schnittstellen aus dem Kontext |
-| S05-03 | 🟢 Hinweis | Endspiele aus dem Kontext nicht in Bausteinsicht adressiert |
-| S05-04 | 🟢 Hinweis | Tippfehler „Püft" statt „Prüft" |
-| S05-05 | 🟡 Empfehlung | Fehlende Begründung der Zerlegung auf Ebene 2 (Engine) |
-| S05-06 | 🟢 Hinweis | Tabellenunterschriften als Tabellenzeilen formatiert |
-| S05-07 | 🟢 Hinweis | Referenz nur auf S3.2, fachlicher Kontext (S3.1) fehlt |
-
-**Gesamtbewertung:** Gut strukturiert und hierarchisch aufgebaut. Keine kritischen Mängel. Empfehlungen betreffen Begründungen der Zerlegung.
-
----
-
-### Sektion 6 — Laufzeitsicht
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S06-01 | 🔴 Kritisch | Nur ein einziges Laufzeitszenario |
-| S06-02 | 🟡 Empfehlung | Fehler-/Ausnahmeszenario fehlt |
-| S06-03 | 🟡 Empfehlung | Ebene-2-Bausteine nicht explizit im Szenario benannt |
-| S06-04 | 🟡 Empfehlung | Erfolgreicher Eröffnungsbibliothek-Pfad nicht gezeigt |
-| S06-05 | 🟢 Hinweis | Begriffliche Inkonsistenz „Reactive Extensions" vs. Bausteinsicht |
-
-**Gesamtbewertung:** Das vorhandene Szenario ist gut beschrieben. Hauptdefizit ist die geringe Anzahl — mindestens ein bis zwei weitere Szenarien nötig.
-
----
-
-### Sektion 7 — Verteilungssicht
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S07-01 | 🟡 Empfehlung | Fehlende Motivation / Begründung der Deployment-Struktur |
-| S07-02 | 🔴 Kritisch | Unvollständiges Software-Hardware-Mapping |
-| S07-03 | 🟡 Empfehlung | Fehlende Beschreibung weiterer Umgebungen |
-| S07-04 | 🟡 Empfehlung | Fehlende Beschreibung der Kommunikationskanäle |
-| S07-05 | 🟢 Hinweis | Fehlende Qualitäts-/Performance-Merkmale der Infrastruktur |
-| S07-06 | 🟢 Hinweis | Keine Infrastrukturebene 2 — bei einfachem Desktop-Deployment akzeptabel |
-
-**Gesamtbewertung:** Grundlegendes Deployment korrekt beschrieben. Kritischste Lücke ist das fehlende Baustein-zu-Infrastruktur-Mapping.
-
----
-
-### Sektion 8 — Querschnittliche Konzepte
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S08-01 | 🟡 Empfehlung | Fehlende Querverweise von 08-01 (Abhängigkeiten) zu Bausteinen in S5 |
-| S08-02 | 🟡 Empfehlung | Fehlende Querverweise von 08-02 (Domänenmodell) zu Bausteinen in S5 |
-| S08-03 | 🟡 Empfehlung | Fehlende Hyperlinks zu Subsystemen in 08-04 (Validierung) |
-| S08-04 | 🟡 Empfehlung | Fehlende Hyperlinks zu Subsystemen in 08-05 (Fehlerbehandlung) |
-| S08-05 | 🟡 Empfehlung | Keine Verweise auf Bausteine in 08-06 (Logging) |
-| S08-06 | 🟡 Empfehlung | Fehlende Querverweise in 08-07 (Testbarkeit) zu S5 und Konzept 8.1 |
-| S08-07 | 🟢 Hinweis | Tippfehler „inder Regel" in 08-03 |
-| S08-08 | 🟢 Hinweis | Fehlende schließende Klammer in 08-05 |
-| S08-09 | 🟢 Hinweis | 08-06 Logging: Abgrenzung Konzept vs. Entscheidung unklar |
-
-**Gesamtbewertung:** 7 relevante Konzepte gut strukturiert. Hauptschwäche: systematisch fehlende Rückverweise zu Sektion 5.
-
----
-
-### Sektion 9 — Architekturentscheidungen
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S09-01 | 🟡 Empfehlung | Veraltete Evaluationsbasis in ADR 09-01 (Stand 2011) |
-| S09-02 | 🟢 Hinweis | Prototyp-Testbedingungen nicht dokumentiert |
-| S09-03 | 🟡 Empfehlung | Geringe Abdeckung architekturrelevanter Entscheidungen (nur 2 ADRs) |
-| S09-04 | 🟢 Hinweis | Konsequenzen-Kategorie „neutral" nicht explizit benannt in 09-02 |
-
-**Gesamtbewertung:** Beide vorhandenen ADRs sind formal solide. Hauptdefizit: Zu wenige ADRs — weitere Entscheidungen (Reactive Extensions, Suchalgorithmus, DI) verdienen eigene ADRs.
-
----
-
-### Sektion 10 — Qualitätsanforderungen
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S10-01 | 🟡 Empfehlung | Qualitätsbaum nur als Bild ohne textuelle Entsprechung |
-| S10-02 | 🟡 Empfehlung | ID-Präfix-Konvention nur mit einem Beispiel erklärt |
-| S10-03 | 🟡 Empfehlung | Terminologische Abweichung zwischen S1.2 und S10.2 |
-| S10-04 | 🟢 Hinweis | Szenarien ohne explizite Quelle/Stimulus/Metrik-Trennung |
-| S10-05 | 🟡 Empfehlung | Einzelne Szenarien mit unzureichend messbaren Akzeptanzkriterien (W02 „unverzüglich") |
-| S10-06 | 🟢 Hinweis | Zuverlässigkeitsszenarien Z01/Z02 nicht in Qualitätszielen verankert |
-
-**Gesamtbewertung:** Alle Qualitätsziele aus S1.2 werden durch Szenarien abgedeckt. Hauptverbesserung: textuelle Aufbereitung des Qualitätsbaums und Terminologie-Konsistenz.
-
----
-
-### Sektion 11 — Risiken und technische Schulden
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S11-01 | 🔴 Kritisch | Fehlende Übersichtstabelle der Risiken |
-| S11-02 | 🟡 Empfehlung | Keine Priorisierung der Risiken |
-| S11-03 | 🔴 Kritisch | Technische Schulden nicht dokumentiert |
-| S11-04 | 🟡 Empfehlung | Fehlende Risikoanalyse der Java-Plattformwahl |
-| S11-05 | 🟡 Empfehlung | Keine Risikoanalyse externer Schnittstellen jenseits Frontend |
-| S11-06 | 🟡 Empfehlung | Fehlende Risiken zu Analysierbarkeit und Änderbarkeit |
-| S11-07 | 🟢 Hinweis | Veraltete Zeitreferenzen (2011) |
-| S11-08 | 🟡 Empfehlung | Fehlende Statusangaben zu den Risiken |
-
-**Gesamtbewertung:** Die drei projektspezifischen Risiken sind gut beschrieben. Kritische Lücken: fehlende Übersichtstabelle und fehlende technische Schulden.
-
----
-
-### Sektion 12 — Glossar
-
-| ID | Schwere | Kurztitel |
-|---|---|---|
-| S12-01 | 🔴 Kritisch | Zentrale Domänenbegriffe (Figur, Feld, Zug, Stellung) fehlen |
-| S12-02 | 🟡 Empfehlung | Alphabetische Sortierung falsch bei „en passant" |
-| S12-03 | 🟡 Empfehlung | Begriff „Spielbaum" fehlt |
-| S12-04 | 🟢 Hinweis | Grammatikfehler „bei die Anfangsstellung" |
-| S12-05 | 🟡 Empfehlung | Begriff „Eröffnungsbibliothek" fehlt als eigenständiger Eintrag |
-| S12-06 | 🟢 Hinweis | Begriff „UCI" fehlt als Gegenstück zu „XBoard-Protokoll" |
-| S12-07 | 🟢 Hinweis | Externer Link auf FIDE-Regeln über HTTP statt HTTPS |
-
-**Gesamtbewertung:** Grundsätzlich vorhanden und gut strukturiert. Kritischste Lücke: Domänenbegriffe aus dem Domänenmodell fehlen.
-
----
-
-## Empfehlungen
-
-### Struktur und Vollständigkeit
-- **[S01-04]** Stakeholder-Tabelle auf drei Spalten umstellen (Rolle, Kontakt, Erwartung an Architektur)
-- **[S01-05]** Endanwender (Schachspieler) als Stakeholder-Gruppe ergänzen
-- **[S03-01]** Schnittstellentabelle im fachlichen Kontext ergänzen
-- **[S03-03]** Mapping-Tabelle fachlicher↔technischer Kontext ergänzen
-- **[S05-01]** Begründung der Zerlegung auf Ebene 1 ergänzen
-- **[S05-05]** Begründung der Zerlegung auf Ebene 2 (Engine) ergänzen
-- **[S10-01]** Qualitätsbaum zusätzlich als Text/Tabelle darstellen (nicht nur Bild)
-- **[S11-02]** Risiken mit Eintrittswahrscheinlichkeit und Schadenspotenzial priorisieren
-- **[S11-08]** Statusangaben (offen/mitigiert/geschlossen) zu allen Risiken ergänzen
-
-### Konsistenz und Querverweise
-- **[S08-01 bis S08-06]** Systematisch Hyperlinks von Konzepten zu Bausteinen in Sektion 5 ergänzen (6 Befunde)
-- **[S10-02]** ID-Präfixe aller Szenariokategorien aufschlüsseln (nicht nur „W")
-- **[S10-03]** Terminologische Zuordnung S1.2 ↔ S10 explizit machen
-
-### Inhaltliche Vertiefung
-- **[S06-02]** Fehler-/Ausnahmeszenario ergänzen (ungültiger Zug)
-- **[S06-03]** Ebene-2-Bausteine (Zugsuche, Stellungsbewertung) im Szenario namentlich benennen
-- **[S09-03]** Weitere ADRs für architekturrelevante Entscheidungen (Reactive Extensions, Suchalgorithmus, DI)
-- **[S07-03]** Weitere Umgebungen (Entwicklung, andere Betriebssysteme) beschreiben
-
-### Formale Korrekturen
-- **[S05-04]** Tippfehler „Püft" → „Prüft" in `05-03-Spielregeln.md`
-- **[S08-07]** Tippfehler „inder Regel" → „in der Regel" in `08-03-Benutzungsoberflaeche.md`
-- **[S04-02]** Fehlende schließende Klammer in `04-02-Aufbau.md`
-- **[S08-08]** Fehlende schließende Klammer in `08-05-Fehlerbehandlung.md`
-- **[S12-02]** Alphabetische Sortierung korrigieren (en passant vor Endspiel)
-- **[S12-04]** Grammatikfehler „bei die Anfangsstellung" → „bei der die Anfangsstellung"
+**Befund:** „Spielbaum" wird in der Lösungsstrategie und der Bausteinsicht verwendet, ohne im Glossar definiert zu sein. Er ist ein Fachbegriff aus der Spieltheorie/Informatik.
 
 ---
 
@@ -351,211 +711,118 @@ Die vier Kernklassen des Domänenmodells (Figur, Feld, Zug, Stellung) aus Sektio
 
 | Konfliktdimension | Status | Befunde |
 |---|---|---|
-| Qualitätsstrang (S1↔S4↔S10) | ⚠️ | 2 Warnungen, 3 Hinweise |
-| Strategie↔Entscheidungen (S4↔S9) | ⚠️ | 3 Warnungen, 3 Hinweise |
-| Constraint-Compliance (S2↔S4/S8/S9) | ✅ | 1 Warnung, 1 Hinweis |
-| Kontext↔Bausteine (S3↔S5) | ⚠️ | 2 Warnungen, 2 Hinweise |
-| Sichten-Konsistenz (S5↔S6↔S7) | ⚠️ | 3 Warnungen, 2 Hinweise |
-| Konzepte↔Entscheidungen (S8↔S9) | ⚠️ | 2 Warnungen, 2 Hinweise |
-| Risiken↔Qualität (S11↔S1/S10) | ⚠️ | 4 Warnungen, 1 Hinweis |
+| Qualitätsstrang (S1 ↔ S4 ↔ S10) | 🟡 | Namensinkonsistenz „Spielstärke", Widerspruch „effizientes Domänenmodell", verwaiste Szenarien Z01/Z02 |
+| Strategie ↔ Entscheidungen (S4 ↔ S9) | 🟡 | Reactive Extensions, Minimax-Wahl, Polyglot-Format und DI ohne ADR |
+| Constraint-Compliance (S2 ↔ S4/S8/S9) | 🟡 | ADR-Überschriften auf Englisch, ASCII-Transliteration statt UTF-8 in ADRs |
+| Kontext ↔ Bausteine (S3 ↔ S5) | 🟡 | Endspiele ohne Baustein-Gegenstück, Remisangebote in S3 erwähnt aber in S5 ausgeschlossen |
+| Sichten-Konsistenz (S5 ↔ S6 ↔ S7) | 🟡 | Eröffnung ohne Deployment-Szenario, Ebene-2-Bausteine nicht namentlich in S6, kein Baustein-Mapping in S7 |
+| Konzepte ↔ Entscheidungen (S8 ↔ S9) | 🟡 | Verzicht auf DI-Framework und Logging-Framework sind Entscheidungen in S8 statt S9 |
+| Risiken ↔ Qualität (S11 ↔ S1/S10) | 🟡 | Höchstpriorisierte Ziele (Analysierbarkeit, Änderbarkeit) ohne Risikobetrachtung |
+
+### 1. Qualitätsstrang (S1 ↔ S4 ↔ S10)
+
+| ID | Schwere | Titel |
+|---|---|---|
+| KQS-01 | 🟡 | Inkonsistente Benennung des Qualitätsziels „Spielstärke" (S1: „Akzeptable/Funktionale Eignung" vs. S4: „Attraktive/Attraktivität") |
+| KQS-02 | 🟡 | Widerspruch zur Effizienz des Domänenmodells: S4-01 nennt „Effiziente Implementierung", S4-02 sagt „Lesbarkeit vor Effizienz" |
+| KQS-03 | 🟡 | Verwaiste Szenarien Z01/Z02 (Zuverlässigkeit) — kein zugehöriges Qualitätsziel in S1 |
+| KQS-04 | 🟢 | Leichte Prioritätsumkehr: Funktionale Eignung (Prio 4) hat 4 Szenarien, Interoperabilität (Prio 3) nur 1 |
+
+### 2. Strategie ↔ Entscheidungen (S4 ↔ S9)
+
+| ID | Schwere | Titel |
+|---|---|---|
+| KSE-01 | 🟡 | Reactive Extensions: Technologieentscheidung in S4 gesetzt, aber kein ADR in S9 |
+| KSE-02 | 🟢 | Minimax-/Alpha-Beta-Algorithmuswahl ohne Entscheidungsdokumentation |
+| KSE-03 | 🟢 | Polyglot Opening Book Format ohne Entscheidungsdokumentation |
+| KSE-04 | 🟢 | Dependency Injection als Architekturansatz ohne Entscheidungsdokumentation |
+
+### 3. Constraint-Compliance (S2 ↔ S4/S8/S9)
+
+| ID | Schwere | Titel |
+|---|---|---|
+| KRC-01 | 🟡 | ADR-Strukturelemente in englischer Sprache (Status, Context, Decision, Consequences) — Konvention KC-3 fordert Deutsch |
+| KRC-02 | 🟡 | ASCII-Transliteration statt UTF-8-Umlaute in ADRs (z.B. „Qualitaetsziel" statt „Qualitätsziel") |
+
+### 4. Kontext ↔ Bausteine (S3 ↔ S5)
+
+| ID | Schwere | Titel |
+|---|---|---|
+| KKB-01 | 🟡 | Endspiele im fachlichen Kontext als externer Partner dargestellt, aber ohne Entsprechung in Bausteinsicht |
+| KKB-02 | 🟡 | Remisangebote im fachlichen Kontext erwähnt, in Bausteinsicht explizit als nicht unterstützt aufgeführt |
+| KKB-03 | 🟢 | Terminologie-Unterschied: „Eröffnungen" (S3) vs. „Eröffnung" (S5) vs. „Eröffnungsbibliothek" (Interface) |
+| KKB-04 | 🟢 | Bausteinsicht referenziert nur technischen Kontext (S3.2), nicht fachlichen Kontext (S3.1) |
+
+### 5. Sichten-Konsistenz (S5 ↔ S6 ↔ S7)
+
+| ID | Schwere | Titel |
+|---|---|---|
+| KSV-01 | 🟡 | Eröffnungs-Subsystem ohne aktives Laufzeit- und Deployment-Szenario |
+| KSV-02 | 🟡 | Granularitäts-Mismatch: Ebene-2-Verhalten in S6 ohne Benennung der Ebene-2-Bausteine |
+| KSV-03 | 🟡 | Verteilungssicht ohne explizites Baustein-zu-Infrastruktur-Mapping |
+| KSV-04 | 🟢 | Bezeichnung „Eröffnungsbibliothek" vs. Subsystem-Name „Eröffnung" |
+| KSV-05 | 🟢 | Nur ein Laufzeitszenario deckt nicht alle Subsystem-Interaktionen ab |
+
+### 6. Konzepte ↔ Entscheidungen (S8 ↔ S9)
+
+| ID | Schwere | Titel |
+|---|---|---|
+| KKE-01 | 🟡 | Verzicht auf DI-Framework als Entscheidung in S8 dokumentiert statt als ADR in S9 |
+| KKE-02 | 🟡 | Verzicht auf Logging-Framework als Entscheidung in S8 dokumentiert statt als ADR in S9 |
+| KKE-03 | 🟢 | Ausschließliche Verwendung von Runtime Exceptions ohne Entscheidungsgrundlage |
+
+### 7. Risiken ↔ Qualität (S11 ↔ S1/S10)
+
+| ID | Schwere | Titel |
+|---|---|---|
+| KRQ-01 | 🟡 | Höchstpriorisiertes Qualitätsziel „Analysierbarkeit" ohne Risikobetrachtung |
+| KRQ-02 | 🟢 | Qualitätsziel „Änderbarkeit" ohne Risikobetrachtung |
+| KRQ-03 | 🟢 | Effizienz in R3 nur implizit adressiert — keine eigene Maßnahme |
+| KRQ-04 | 🟢 | Zuverlässigkeitsszenarien Z01/Z02 implizieren nicht dokumentierte Risiken |
+| KRQ-05 | 🟡 | Risikoabdeckung invers zur Qualitätsziel-Priorisierung (Prio 1–2 ohne Risiko, Prio 3–5 mit Risiko) |
 
 ---
 
-### Qualitätsstrang (S1 ↔ S4 ↔ S10)
+## Konfliktkarte
 
-#### [KQS-01] Inkonsistente Benennung des Qualitätsziels „Spielstärke"
-
-**Konflikttyp:** K2 — Widersprüchliche Ansätze
-**Schwere:** 🟡 Warnung
-**Betroffene Dateien:**
-- `01-02-Qualitaetsziele.md` — „**Akzeptable** Spielstärke (**Funktionale Eignung**)"
-- `04-01-Einstieg.md` — „**Attraktive** Spielstärke (**Attraktivität**)"
-
-**Beschreibung:** Doppelter Widerspruch — sowohl semantisch („akzeptabel" vs. „attraktiv") als auch bei der ISO-25010-Zuordnung.
-
-**Lösungsvorschlag:** In `04-01-Einstieg.md` an S1.2 angleichen: `| Akzeptable Spielstärke (Funktionale Eignung) |`
-
-#### [KQS-02] Verwaiste Szenarien Z01 und Z02
-
-**Konflikttyp:** K4 — Szenarien ohne strategische Grundlage
-**Schwere:** 🟡 Warnung
-**Betroffene Dateien:**
-- `10-02-Qualitaetsszenarien.md` — Z01, Z02 (Zuverlässigkeit)
-- `01-02-Qualitaetsziele.md` — kein Qualitätsziel für Zuverlässigkeit
-
-**Beschreibung:** Die Szenarien Z01/Z02 betreffen Zuverlässigkeit, die in S1.2 kein Qualitätsziel hat und in S4 keine Strategie besitzt.
-
-**Lösungsvorschlag:** Entweder ein Qualitätsziel ergänzen oder in S10 als „ergänzende Szenarien ohne Verankerung in den Top-Qualitätszielen" kennzeichnen.
-
-#### [KQS-03] Prioritätsumkehr bei Szenarioanzahl
-
-**Schwere:** 🟢 Hinweis
-
-Das viertpriorisierte Ziel „Funktionale Eignung" hat mit 4 Szenarien die höchste Abdeckung. Erläuternden Absatz in S10.2 ergänzen.
-
-#### [KQS-04] Szenario W02 ohne messbares Akzeptanzkriterium
-
-**Schwere:** 🟢 Hinweis
-
-„findet ihn unverzüglich" → „findet ihn innerhalb von einer Minute" konkretisieren.
-
-#### [KQS-05] Trade-off Verständlichkeit vs. Effizienz nur in Strategie-Detail
-
-**Schwere:** 🟢 Hinweis
-
-Zielkonflikt fehlt in der Strategieübersichtstabelle. Expliziten Absatz „Zielkonflikte" ergänzen.
+| Sektion | Involviert in Konflikten |
+|---|---|
+| S5 — Bausteinsicht | 9 |
+| S9 — Entscheidungen | 9 |
+| S4 — Lösungsstrategie | 6 |
+| S1 — Einführung/Ziele | 6 |
+| S10 — Qualitätsanforderungen | 6 |
+| S8 — Konzepte | 5 |
+| S11 — Risiken | 5 |
+| S3 — Kontextabgrenzung | 4 |
+| S6 — Laufzeitsicht | 4 |
+| S7 — Verteilungssicht | 3 |
+| S2 — Randbedingungen | 2 |
 
 ---
 
-### Strategie ↔ Entscheidungen (S4 ↔ S9)
+## Zusammenfassung
 
-#### [KSE-01] Fehlende Entscheidung zur Wahl der Programmiersprache Java
-**Schwere:** 🟡 Warnung — Java wird als Hebel für zwei Qualitätsziele genutzt, ohne ADR.
+| Kategorie | Anzahl |
+|---|---|
+| 🔴 Kritische Befunde | 2 |
+| 🟡 Warnungen / Empfehlungen | 48 |
+| 🟢 Hinweise | 38 |
 
-#### [KSE-02] Fehlende Entscheidung zum Suchalgorithmus (Minimax/Alpha-Beta)
-**Schwere:** 🟡 Warnung — Zentrale architektonische Entscheidung ohne ADR.
+### Handlungsempfehlungen
 
-#### [KSE-03] Fehlende Entscheidung zum reaktiven Ansatz (Reactive Extensions)
-**Schwere:** 🟡 Warnung — Spezifisches Architekturmuster prominent in S4, ohne ADR.
+1. **Terminologie in S4 an S1 angleichen** (🔴 S04-01): In `04-01-Einstieg.md` „Attraktive Spielstärke (Attraktivität)" zu „Akzeptable Spielstärke (Funktionale Eignung)" korrigieren, um Konsistenz mit den Qualitätszielen herzustellen.
 
-#### [KSE-04] Fehlende Entscheidung zum Eröffnungsbibliotheksformat
-**Schwere:** 🟢 Hinweis — Geringere Tragweite, Austauschbarkeit bereits architektonisch verankert.
+2. **Technische Schulden in S11 dokumentieren** (🔴 S11-01): Eine Datei `11-04-Technische-Schulden.md` anlegen, die bewusst eingegangene Schulden erfasst (50-Züge-Regel, Stellungswiederholung, fehlende Endspieldatenbank).
 
-#### [KSE-05] Fehlende Entscheidung zur Design-Philosophie „Lesbarkeit vor Effizienz"
-**Schwere:** 🟢 Hinweis — Grundlegendes Designprinzip, indirekt durch ADR 09-02 gestützt.
+3. **Widerspruch „effizientes Domänenmodell" in S4 auflösen** (🟡 KQS-02): Die Strategietabelle widerspricht der eigenen Aussage „Lesbarkeit vor Effizienz" — den Eintrag in `04-01-Einstieg.md` präzisieren.
 
-#### [KSE-06] Fehlende Entscheidung zu Dependency Injection
-**Schwere:** 🟢 Hinweis — Etabliertes Muster, in Konzept 8.1 erläutert.
+4. **Entscheidungen aus S8 in S9 überführen** (🟡 KKE-01/02, S08-02/03): Verzicht auf DI-Framework und Logging-Framework als eigenständige ADRs in Sektion 9 dokumentieren.
 
-**Gesamtbewertung:** Von 8 strategischen Festlegungen sind nur 2 durch formale ADRs unterlegt. Keine Widersprüche, aber signifikante Dokumentationslücken.
+5. **ADR für Reactive Extensions anlegen** (🟡 KSE-01): Eine weitreichende Technologieentscheidung mit klaren Alternativen, die bisher nur in S4 als Fakt beschrieben wird.
 
----
+6. **ADR-Sprache auf Deutsch umstellen** (🟡 KRC-01/02): Englische Strukturüberschriften und ASCII-Transliteration in den ADRs an die übrige deutschsprachige Dokumentation anpassen.
 
-### Constraint-Compliance (S2 ↔ S4/S8/S9)
+7. **Risikobetrachtung für höchstpriorisierte Qualitätsziele ergänzen** (🟡 KRQ-01/05): Analysierbarkeit und Änderbarkeit haben keine Risikobetrachtung — zumindest eine bewusste Einschätzung dokumentieren.
 
-#### [KRC-01] Englische Strukturüberschriften in Architekturentscheidungen
-
-**Schwere:** 🟡 Warnung
-
-Die ADRs verwenden englische Überschriften (Status, Context, Decision, Consequences), obwohl die Sprachkonvention Deutsch vorsieht.
-
-**Lösungsvorschlag:** Überschriften verdeutschen: Context → Kontext, Decision → Entscheidung, Consequences → Konsequenzen.
-
-#### [KRC-02] ADR-Format weicht von arc42-v6.0-Konvention ab
-**Schwere:** 🟢 Hinweis — MADR-Format statt arc42-v6.0-Stil. Konvention sollte das erlaubte Format explizit benennen.
-
-**Gesamtbewertung:** Alle 15 technischen und organisatorischen Constraints werden eingehalten. Nur formale Konventionsabweichungen in S9.
-
----
-
-### Kontext ↔ Bausteine (S3 ↔ S5)
-
-#### [KKB-01] Computergegner im fachlichen Kontext fehlt in der Bausteinsicht
-**Schwere:** 🟡 Warnung — S3.1 führt den Computergegner als separaten Partner, S5.2 spricht nur von „Client".
-
-**Lösungsvorschlag:** In `05-02-XBoard-Protokoll.md` ergänzen: „…einer grafischen Oberfläche oder einer anderen Schach-Engine…"
-
-#### [KKB-02] Endspiele ohne Entsprechung in der Bausteinsicht
-**Schwere:** 🟢 Hinweis — Bewusster Verzicht in S3.2, aber nicht in S5 vermerkt.
-
-#### [KKB-03] Terminologie-Unterschied: „Eröffnungen" (Plural) vs. „Eröffnung" (Singular)
-**Schwere:** 🟢 Hinweis — Kein zwingender Handlungsbedarf.
-
-#### [KKB-04] Remisangebote im Kontext genannt, in S5 explizit nicht unterstützt
-**Schwere:** 🟡 Warnung — Fachlicher Kontext suggeriert Austausch von Remisangeboten, S5.2 listet dies als „nicht unterstützt".
-
-**Lösungsvorschlag:** Im fachlichen Kontext den Verzicht benennen oder den beispielhaften Charakter stärker hervorheben.
-
----
-
-### Sichten-Konsistenz (S5 ↔ S6 ↔ S7)
-
-#### [KSV-01] Namensinkonsistenz: „Eröffnung" (S5) vs. „Eröffnungsbibliothek" (S6)
-**Schwere:** 🟡 Warnung — Subsystem-Name und Schnittstellenname werden vermischt.
-
-**Lösungsvorschlag:** In S6 den Subsystem-Namen „Eröffnung" verwenden.
-
-#### [KSV-02] Deployment ohne Eröffnungsbibliothek, obwohl S5/S6 sie nutzen
-**Schwere:** 🟡 Warnung — S7 zeigt Deployment explizit „ohne Eröffnungsbibliothek". Alternatives Deployment-Szenario fehlt.
-
-#### [KSV-03] Polyglot Opening Book-Datei fehlt als Infrastruktur-Artefakt
-**Schwere:** 🟡 Warnung — Die Binärdatei wird nirgends als Deployment-Artefakt aufgeführt.
-
-#### [KSV-04] Keine explizite Subsystem-zu-Artefakt-Zuordnung in S7
-**Schwere:** 🟢 Hinweis — „sämtliche Module" ohne Aufschlüsselung.
-
-#### [KSV-05] Level-2-Bausteine nur implizit im Laufzeitszenario
-**Schwere:** 🟢 Hinweis — Zugsuche und Stellungsbewertung nicht namentlich in S6.
-
----
-
-### Konzepte ↔ Entscheidungen (S8 ↔ S9)
-
-#### [KKE-01] Entscheidung „Kein DI-Framework" in Konzept-Sektion versteckt
-**Schwere:** 🟡 Warnung — `08-01-Abhaengigkeiten.md` enthält eine implizite Architekturentscheidung ohne eigenen ADR.
-
-**Lösungsvorschlag:** ADR `09-03-Dependency-Injection.md` anlegen. In 08-01 auf die neue Entscheidung verweisen.
-
-#### [KKE-02] Entscheidung „Kein Logging-Framework" in Konzept-Sektion versteckt
-**Schwere:** 🟡 Warnung — `08-06-Logging.md` trifft zwei Architekturentscheidungen ohne ADR.
-
-**Lösungsvorschlag:** ADR `09-04-Logging-Strategie.md` anlegen.
-
-#### [KKE-03] Fehlerbehandlungsstrategie (Runtime Exceptions) ohne formale Entscheidung
-**Schwere:** 🟢 Hinweis — Geringere Tragweite, optional als ADR formalisieren.
-
-#### [KKE-04] Überschneidung: XBoard-Protokolldetails in S8 und S9
-**Schwere:** 🟢 Hinweis — Minimale Redundanz, kein Widerspruch. Kein Handlungsbedarf.
-
-**Gesamtbewertung:** Keine inhaltlichen Widersprüche. Hauptschwäche: Zwei implizite Entscheidungen in S8 gehören nach S9.
-
----
-
-### Risiken ↔ Qualität (S11 ↔ S1/S10)
-
-#### [KRQ-01] Analysierbarkeit (Prio 1) ohne Risikobetrachtung
-**Schwere:** 🟡 Warnung — Das höchstpriorisierte Qualitätsziel hat kein Risiko in S11, obwohl R11.3 den Zielkonflikt explizit benennt.
-
-**Lösungsvorschlag:** In `11-03-Spielstaerke.md` Risikominderung für Analysierbarkeit ergänzen.
-
-#### [KRQ-02] Änderbarkeit (Prio 2) ohne Risikobetrachtung
-**Schwere:** 🟡 Warnung — Zweitwichtigstes Ziel ohne eigenes Risiko.
-
-**Lösungsvorschlag:** In `11-02-Aufwand.md` als Nebeneffekt aufnehmen.
-
-#### [KRQ-03] Effizienz-Risiko ohne explizite Maßnahme
-**Schwere:** 🟡 Warnung — R11.3 erwähnt „zu lange Wartezeiten", aber alle Maßnahmen adressieren nur Spielstärke.
-
-**Lösungsvorschlag:** Effizienz-Tests (gegen E01/E02-Zeitgrenzen) als Maßnahme ergänzen.
-
-#### [KRQ-04] Zuverlässigkeitsszenarien Z01/Z02 implizieren undokumentiertes Risiko
-**Schwere:** 🟢 Hinweis — Komplexität der Spielregeln als Risiko für fehlerhafte Validierung.
-
-#### [KRQ-05] R11.3 sichert nur die niedrigpriore Seite des Zielkonflikts ab
-**Schwere:** 🟡 Warnung — Priorisierungsregel fehlt: Analysierbarkeit vor Spielstärke.
-
-**Lösungsvorschlag:** Explizit machen: „Im Zielkonflikt hat Analysierbarkeit (Prio 1) Vorrang vor Spielstärke (Prio 4)."
-
-**Gesamtbewertung:** Risiken decken niedrigpriorisierte Ziele gut ab. Wesentliche Lücke: Die beiden höchstpriorisierten Ziele (Analysierbarkeit, Änderbarkeit) haben keinen Risikoschutz.
-
----
-
-## Übergreifende Muster
-
-1. **ADR-Lücke:** Sektion 9 enthält nur 2 formale ADRs. Mindestens 3–4 weitere architekturrelevante Entscheidungen (Suchalgorithmus, Reactive Extensions, kein DI-Framework, kein Logging-Framework) sind über Sektion 4 und 8 verstreut, ohne eigene ADR-Dokumentation.
-
-2. **Risiko-Qualitäts-Asymmetrie:** Die Risikoanalyse adressiert primär die niedrigpriorisierten Qualitätsziele (Interoperabilität Prio 3, Spielstärke Prio 4), während die höchstpriorisierten Ziele (Analysierbarkeit Prio 1, Änderbarkeit Prio 2) ohne Risikoschutz bleiben.
-
-3. **Querverweise S8→S5:** Alle Konzepte werden von der Bausteinsicht referenziert, aber kein einziges Konzept verlinkt systematisch zurück auf die betroffenen Bausteine. Dies ist ein durchgängiges Muster über 6 von 7 Konzept-Dateien.
-
-4. **Namensinkonsistenzen:** Die Benennung des Eröffnungs-Subsystems wechselt zwischen „Eröffnung" (S5), „Eröffnungsbibliothek" (S6) und „Eröffnungen" (S3). Das Qualitätsziel Spielstärke heißt in S1 „Akzeptable Spielstärke" und in S4 „Attraktive Spielstärke".
-
----
-
-## Statistik
-
-| Kategorie | 🔴 Kritisch | 🟡 Empfehlung/Warnung | 🟢 Hinweis | Gesamt |
-|---|---|---|---|---|
-| Sektions-Reviews | 6 | 38 | 27 | 71 |
-| Konfliktanalysen | 0 | 17 | 14 | 31 |
-| **Gesamt** | **6** | **55** | **41** | **102** |
+8. **Fachlichen Kontext nachziehen** (🟡 KKB-01/02): Endspiele als nicht implementiert kennzeichnen, Remisangebote als nicht unterstützt markieren.

@@ -250,21 +250,19 @@ So lässt sich das Delta-Review in der Praxis ausprobieren und überprüfen, ob 
 
 ## Lizenz
 
-Dieses Repository enthält zwei unabhängige Komponenten mit unterschiedlichen Lizenzen:
+Dieses Repository steht unter der [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) Lizenz.
 
 | Komponente | Pfad | Lizenz |
 |---|---|---|
-| arc42agentic | `.agents/` | [MIT License](LICENSE) |
+| arc42agentic | `.agents/` | [CC BY-NC-SA 4.0](LICENSE) |
 | DokChess-Beispieldokumentation | `arc-doc/` | [CC BY-NC-SA 4.0](arc-doc/LICENSE.md) von Stefan Zörner / [dokchess.de](https://www.dokchess.de/) |
-
-Die Agenten-Definitionen (`.agents/`) sind eigenständige Werkzeuge und kein abgeleitetes Werk der Beispieldokumentation. Sie stehen unter der MIT-Lizenz und können frei verwendet, verändert und weitergegeben werden.
 
 ## Projektstruktur
 
 ```
 arc42agentic/
 ├── README.md               ← Diese Datei
-├── LICENSE                  MIT License (gilt für .agents/)
+├── LICENSE                  CC BY-NC-SA 4.0
 ├── .agents/                 24 Agent-Definitionen (.agent.md) + 16 Skills
 │   ├── arc42-review.agent.md
 │   ├── arc42-review-branch.agent.md

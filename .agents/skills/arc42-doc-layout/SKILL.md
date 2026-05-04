@@ -149,4 +149,3 @@ Wenn du Inline-Content aus einer Single-File-Dokumentation erhältst:
 - Querverweise wie "siehe Sektion 4" beziehen sich auf andere Abschnitte im selben Quelldokument
 - Fehlende Unterabschnitte müssen differenziert bewertet werden: Prüfe, ob der Inhalt unter dem übergeordneten Heading steht, bevor du fehlende Gliederung bemängelst
 - Die Granularität der Gliederung kann bei Single-File-Dokumentationen geringer sein — das ist kein Befund, sondern eine Eigenschaft des Formats
-

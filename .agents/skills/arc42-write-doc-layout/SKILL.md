@@ -105,4 +105,3 @@ Falls der User ein anderes Layout wünscht:
 ```
 
 Verwende `## 1. Einführung und Ziele` als Überschriften-Ebene für Sektionen.
-

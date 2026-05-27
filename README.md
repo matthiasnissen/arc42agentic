@@ -59,13 +59,12 @@ APM funktioniert in Terminal, Zed, Cursor, VS Code und anderen APM-kompatiblen T
 
 Voraussetzung: [VS Code](https://code.visualstudio.com/) mit [GitHub Copilot](https://github.com/features/copilot).
 
-Die Agent-Dateien unter `.agents/` werden von VS Code/Copilot nicht automatisch erkannt. Es ist ein Symlink von `.agents/` nach `.github/agents/` erforderlich.
+Die Agent-Dateien unter `.agents/` werden von VS Code/Copilot nicht automatisch erkannt. In diesem Repository sind die Agenten daher bereits zusätzlich unter `.github/agents/` enthalten.
 
-Beispiel (macOS/Linux):
+Falls du nur `.agents/` in ein anderes Repository übernimmst, kannst du `.agents/` nach `.github/agents/` verlinken (macOS/Linux, aus dem Repo-Root):
 
-```bash
-ln -s .agents .github/agents
-```
+    mkdir -p .github
+    ln -s .agents .github/agents
 
 ## Verwendung
 

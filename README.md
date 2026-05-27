@@ -1,6 +1,6 @@
 # arc42agentic
 
-Ein agentenbasiertes System für [arc42](https://docs.arc42.org/home/)-Architekturdokumentation in VS Code — zum **Reviewen** und **Schreiben**. Das System prüft arc42-Dokumente formal und inhaltlich gegen die arc42-Anforderungen und unterstützt beim Erstellen neuer Dokumentation — automatisiert, strukturiert und sektionsübergreifend.
+Ein agentenbasiertes System für [arc42](https://docs.arc42.org/home/)-Architekturdokumentation in APM-kompatiblen Tools/IDEs — zum **Reviewen** und **Schreiben**. Das System prüft arc42-Dokumente formal und inhaltlich gegen die arc42-Anforderungen und unterstützt beim Erstellen neuer Dokumentation — automatisiert, strukturiert und sektionsübergreifend.
 
 ## Überblick
 
@@ -42,10 +42,24 @@ Das System erkennt automatisch drei verschiedene Layouts einer arc42-Dokumentati
 
 Der Orchestrator erkennt den Typ automatisch, erstellt ein Sektion-zu-Datei-Mapping und übergibt jedem Sektions-Agenten die zugehörigen Dateipfade oder (bei Single-File) den extrahierten Inline-Content. Kein Sektions-Agent muss das Dokumentationslayout selbst kennen — das übernimmt der Skill.
 
-## Voraussetzungen
+## Installation
 
-- [Github Copilot CLI](https://github.com/features/copilot/cli) oder [VS Code](https://code.visualstudio.com/) mit [GitHub Copilot](https://github.com/features/copilot)
-- Die Agent-Dateien unter `.agents/` werden von VS Code/Copilot nicht automatisch erkannt. Es ist ein symlink von `.agents`nach `.github/agents` erforderlich.
+### Option A — APM (empfohlen, IDE-unabhängig)
+
+Installiere die Pakete aus [`matthiasnissen/arc42agentic-packages`](https://github.com/matthiasnissen/arc42agentic-packages):
+
+```bash
+apm install matthiasnissen/arc42agentic-packages/arc42agenticreview
+apm install matthiasnissen/arc42agentic-packages/arc42agenticwrite
+```
+
+APM funktioniert in Terminal, Zed, Cursor, VS Code und anderen APM-kompatiblen Tools. Einstieg: [APM Quick Start](https://microsoft.github.io/apm/getting-started/quick-start/).
+
+### Option B — VS Code (manuell via Symlink)
+
+Voraussetzung: [VS Code](https://code.visualstudio.com/) mit [GitHub Copilot](https://github.com/features/copilot).
+
+Die Agent-Dateien unter `.agents/` werden von VS Code/Copilot nicht automatisch erkannt. Es ist ein Symlink von `.agents/` nach `.github/agents/` erforderlich.
 
 ## Verwendung
 
@@ -294,3 +308,4 @@ arc42agentic/
 - [arc42 — Dokumentation für Softwarearchitektur](https://docs.arc42.org/home/)
 - [DokChess — Die Beispiel-Dokumentation](https://www.dokchess.de/)
 - [arc42-Template auf GitHub](https://github.com/arc42/arc42-template)
+- [arc42agentic-packages — APM-Pakete für die Agenten](https://github.com/matthiasnissen/arc42agentic-packages)

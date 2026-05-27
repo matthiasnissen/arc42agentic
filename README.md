@@ -1,6 +1,6 @@
 # arc42agentic
 
-Ein agentenbasiertes System für [arc42](https://docs.arc42.org/home/)-Architekturdokumentation in APM-kompatiblen Tools/IDEs — zum **Reviewen** und **Schreiben**. Das System prüft arc42-Dokumente formal und inhaltlich gegen die arc42-Anforderungen und unterstützt beim Erstellen neuer Dokumentation — automatisiert, strukturiert und sektionsübergreifend.
+Ein agentenbasiertes System für [arc42](https://docs.arc42.org/home/)-Architekturdokumentation, das in verschiedenen Tools/IDEs genutzt werden kann (z. B. via APM oder in VS Code/GitHub Copilot) — zum **Reviewen** und **Schreiben**. Das System prüft arc42-Dokumente formal und inhaltlich gegen die arc42-Anforderungen und unterstützt beim Erstellen neuer Dokumentation — automatisiert, strukturiert und sektionsübergreifend.
 
 ## Überblick
 

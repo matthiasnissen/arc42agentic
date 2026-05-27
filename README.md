@@ -61,6 +61,12 @@ Voraussetzung: [VS Code](https://code.visualstudio.com/) mit [GitHub Copilot](ht
 
 Die Agent-Dateien unter `.agents/` werden von VS Code/Copilot nicht automatisch erkannt. Es ist ein Symlink von `.agents/` nach `.github/agents/` erforderlich.
 
+Beispiel (macOS/Linux):
+
+```bash
+ln -s .agents .github/agents
+```
+
 ## Verwendung
 
 Wähle den jewiligen Agenten in GitHub Copilot aus. Verwende keine Delegation über `@arc42-review` da Copilot aktuell nur eine ebene der Delegation unterstützt, die Subagenten würden sonst sequentiell im gleichen Context ausgeführt.

@@ -1,0 +1,150 @@
+{
+  "$comment": "Maschinenlesbarer Vertrag für arc42-Wissensgraphen. Quelle der Wahrheit für Vokabular, Pflichtattribute, Kantensignaturen und Evidence-Regeln. Wird von scripts/validate_graph.py gelesen; die Tabellen in SKILL.md beschreiben denselben Vertrag in Prosa.",
+  "schema_version": "1.0.0",
+
+  "graphml": {
+    "namespace": "http://graphml.graphdrawing.org/xmlns",
+    "graph_id": "Arc42KnowledgeGraph",
+    "edgedefault": "directed",
+    "keys": {
+      "node": {
+        "d0": {"name": "label", "type": "string", "required": true},
+        "d1": {"name": "type", "type": "string", "required": true},
+        "d2": {"name": "section", "type": "string", "required": true},
+        "d3": {"name": "description", "type": "string", "required": true},
+        "d4": {"name": "status", "type": "string", "required": true},
+        "d5": {"name": "priority", "type": "string", "required": true},
+        "d6": {"name": "category", "type": "string", "required": true},
+        "d7": {"name": "source_file", "type": "string", "required": true},
+        "d8": {"name": "source_anchor", "type": "string", "required": true},
+        "d9": {"name": "changed", "type": "boolean", "required": false},
+        "d10": {"name": "change_type", "type": "string", "required": false}
+      },
+      "edge": {
+        "e0": {"name": "label", "type": "string", "required": true},
+        "e1": {"name": "description", "type": "string", "required": true},
+        "e2": {"name": "evidence", "type": "string", "required": true},
+        "e3": {"name": "changed", "type": "boolean", "required": false}
+      }
+    },
+    "edge_id_pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+  },
+
+  "id_patterns": {
+    "node": "^s\\d{2}-[a-z0-9]+(-[a-z0-9]+)*$",
+    "community": "^c-(s\\d{2}|qs|sd|cc|cb|vc|ke|rq)$"
+  },
+
+  "provenance_required": ["label", "section", "source_file", "source_anchor"],
+  "section_attribute_pattern": "^\\d{1,2}([._ -].*)?$",
+  "doc_extensions": [".md", ".markdown", ".adoc", ".asciidoc", ".rst"],
+  "evidence_values": ["explicit", "structural", "inferred"],
+  "explicit_description_markers": ["„", "“", "\"", "»", "«", "→", "->", "siehe", "see ", "Tabelle", "Table", "Abschnitt", "Section", "Kapitel", "Chapter", "ADR"],
+
+  "node_types": {
+    "Requirement":         {"sections": [1],  "required": ["description"]},
+    "QualityGoal":         {"sections": [1],  "required": ["description", "priority"],
+                            "patterns": {"priority": "^[1-9][0-9]*$"}},
+    "Stakeholder":         {"sections": [1],  "required": ["description", "category"]},
+    "Constraint":          {"sections": [2],  "required": ["description", "category"],
+                            "enums": {"category": ["technisch", "organisatorisch", "konvention"]}},
+    "ExternalPartner":     {"sections": [3],  "required": ["description", "category"],
+                            "enums": {"category": ["mensch", "system"]}},
+    "StrategyApproach":    {"sections": [4],  "required": ["description"],
+                            "patterns": {"priority": "^[1-9][0-9]*$"}},
+    "BuildingBlock":       {"sections": [5],  "required": ["description", "priority", "category"],
+                            "enums": {"category": ["blackbox", "whitebox"]},
+                            "patterns": {"priority": "^[1-9]$"}},
+    "InternalInterface":   {"sections": [5],  "required": ["description"]},
+    "RuntimeScenario":     {"sections": [6],  "required": ["description", "category"],
+                            "enums": {"category": ["normal", "fehler", "betrieb"]}},
+    "InfrastructureNode":  {"sections": [7],  "required": ["description", "priority"],
+                            "patterns": {"priority": "^[1-9]$"}},
+    "CrossCuttingConcept": {"sections": [8],  "required": ["description", "category"],
+                            "suggested": {"category": ["muster", "regel", "prinzip", "domänenmodell"]}},
+    "DomainModelElement":  {"sections": [8],  "required": ["description"]},
+    "ArchitectureDecision":{"sections": [9],  "required": ["description", "status", "source_anchor"],
+                            "enums": {"status": ["proposed", "accepted", "deprecated", "superseded"]}},
+    "QualityScenario":     {"sections": [10], "required": ["description", "category"],
+                            "enums": {"category": ["usage", "change", "fault"]}},
+    "Risk":                {"sections": [11], "required": ["description", "priority", "category"],
+                            "enums": {"priority": ["hoch", "mittel", "niedrig", "nicht angegeben"]},
+                            "$comment": "Beispiele auf examples.arc42.org bewerten Risiken meist nicht; wo doch, mit Low/Medium/High (docToolchain: Wahrscheinlichkeit x Auswirkung -> Priorität; NFDI4Earth: high/medium/low). Nur die in der Doku genannte Bewertung übernehmen, sonst 'nicht angegeben'. Wahrscheinlichkeit/Auswirkung gehören in description."},
+    "Mitigation":          {"sections": [11], "required": ["description"]},
+    "GlossaryTerm":        {"sections": [12], "required": ["description"]},
+    "System":              {"sections": [0],  "required": ["description"]},
+    "Community":           {"sections": [],   "required": ["label", "description"], "provenance": false}
+  },
+
+  "edge_types": {
+    "addresses":         {"source": ["StrategyApproach"], "target": ["QualityGoal"], "evidence": ["explicit", "inferred"]},
+    "concretizes":       {"source": ["QualityScenario"], "target": ["QualityGoal"], "evidence": ["explicit", "inferred"]},
+    "realizes":          {"source": ["ArchitectureDecision"], "target": ["StrategyApproach"], "evidence": ["explicit", "inferred"]},
+    "supersedes":        {"source": ["ArchitectureDecision"], "target": ["ArchitectureDecision"], "evidence": ["explicit"]},
+    "constrains":        {"source": ["Constraint"], "target": ["StrategyApproach", "CrossCuttingConcept", "ArchitectureDecision", "BuildingBlock"], "evidence": ["explicit", "inferred"]},
+    "communicates_with": {"source": ["ExternalPartner", "BuildingBlock"], "target": ["BuildingBlock", "ExternalPartner"], "bidirectional": true, "evidence": ["explicit", "inferred"]},
+    "contains":          {"source": ["BuildingBlock"], "target": ["BuildingBlock"], "evidence": ["structural", "explicit"]},
+    "provides":          {"source": ["BuildingBlock"], "target": ["InternalInterface"], "evidence": ["explicit", "inferred"]},
+    "consumes":          {"source": ["BuildingBlock"], "target": ["InternalInterface"], "evidence": ["explicit", "inferred"]},
+    "involves":          {"source": ["RuntimeScenario"], "target": ["BuildingBlock"], "evidence": ["explicit", "inferred"]},
+    "deployed_on":       {"source": ["BuildingBlock"], "target": ["InfrastructureNode"], "evidence": ["explicit", "inferred"]},
+    "refines":           {"source": ["InfrastructureNode"], "target": ["InfrastructureNode"], "evidence": ["structural", "explicit"]},
+    "affects":           {"source": ["CrossCuttingConcept"], "target": ["BuildingBlock"], "evidence": ["explicit", "inferred"]},
+    "models":            {"source": ["CrossCuttingConcept"], "target": ["DomainModelElement"], "evidence": ["explicit", "inferred"]},
+    "based_on":          {"source": ["CrossCuttingConcept"], "target": ["ArchitectureDecision"], "evidence": ["explicit", "inferred"]},
+    "requires_concept":  {"source": ["ArchitectureDecision"], "target": ["CrossCuttingConcept"], "evidence": ["explicit", "inferred"]},
+    "threatens":         {"source": ["Risk"], "target": ["QualityGoal"], "evidence": ["explicit", "inferred"]},
+    "mitigates":         {"source": ["Risk", "Mitigation"], "target": ["StrategyApproach", "QualityScenario", "BuildingBlock"], "evidence": ["explicit", "inferred"]},
+    "contradicts":       {"source": ["Risk", "Mitigation"], "target": ["QualityScenario"], "evidence": ["explicit", "inferred"]},
+    "defines_term_for":  {"source": ["GlossaryTerm"], "target": ["*"], "evidence": ["explicit", "inferred"]},
+    "references":        {"source": ["*"], "target": ["*"], "evidence": ["explicit", "inferred"]},
+    "member_of":         {"source": ["*"], "target": ["Community"], "evidence": ["structural"]}
+  },
+
+  "communities": {
+    "sections": {
+      "c-s00": {"section": 0, "required": false, "label": "Sektion 0: Überblick"},
+      "c-s01": {"section": 1, "required": true, "label": "Sektion 1: Einführung und Ziele"},
+      "c-s02": {"section": 2, "required": true, "label": "Sektion 2: Randbedingungen"},
+      "c-s03": {"section": 3, "required": true, "label": "Sektion 3: Kontextabgrenzung"},
+      "c-s04": {"section": 4, "required": true, "label": "Sektion 4: Lösungsstrategie"},
+      "c-s05": {"section": 5, "required": true, "label": "Sektion 5: Bausteinsicht"},
+      "c-s06": {"section": 6, "required": true, "label": "Sektion 6: Laufzeitsicht"},
+      "c-s07": {"section": 7, "required": true, "label": "Sektion 7: Verteilungssicht"},
+      "c-s08": {"section": 8, "required": true, "label": "Sektion 8: Querschnittliche Konzepte"},
+      "c-s09": {"section": 9, "required": true, "label": "Sektion 9: Architekturentscheidungen"},
+      "c-s10": {"section": 10, "required": true, "label": "Sektion 10: Qualitätsanforderungen"},
+      "c-s11": {"section": 11, "required": true, "label": "Sektion 11: Risiken und technische Schulden"},
+      "c-s12": {"section": 12, "required": true, "label": "Sektion 12: Glossar"}
+    },
+    "conflict_dimensions": {
+      "c-qs": {"sections": [1, 4, 10], "label": "Qualitätsstrang (S1 ↔ S4 ↔ S10)"},
+      "c-sd": {"sections": [4, 9], "label": "Strategie ↔ Entscheidungen (S4 ↔ S9)"},
+      "c-cc": {"sections": [2, 4, 8, 9], "label": "Constraint-Compliance (S2 ↔ S4/S8/S9)"},
+      "c-cb": {"sections": [3, 5], "label": "Kontext ↔ Bausteinsicht (S3 ↔ S5)"},
+      "c-vc": {"sections": [5, 6, 7], "label": "Sichten-Konsistenz (S5 ↔ S6 ↔ S7)"},
+      "c-ke": {"sections": [8, 9], "label": "Konzepte ↔ Entscheidungen (S8 ↔ S9)"},
+      "c-rq": {"sections": [1, 10, 11], "label": "Risiken ↔ Qualität (S11 ↔ S1/S10)"}
+    }
+  },
+
+  "extraction": {
+    "$comment": "Zwischenformat, das das Modell schreibt und scripts/build_graph.py in GraphML + Manifest überführt. Communities, member_of-Kanten, Kanten-IDs, Hashes und Manifest erzeugt das Skript.",
+    "node_fields": {
+      "required": ["id", "type", "label", "section", "description", "source_file", "source_anchor"],
+      "optional": ["status", "priority", "category"]
+    },
+    "edge_fields": {
+      "required": ["source", "target", "label", "evidence", "description"],
+      "optional": []
+    },
+    "top_level": ["nodes", "edges"],
+    "forbidden_node_types": ["Community"],
+    "forbidden_edge_labels": ["member_of"]
+  },
+
+  "manifest": {
+    "top_level_required": ["doc_path", "graph", "files"],
+    "file_entry_required": ["sha256", "nodes", "edges"]
+  }
+}

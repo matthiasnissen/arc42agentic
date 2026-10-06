@@ -11,11 +11,12 @@ Das Agentensystem besteht aus **24 spezialisierten Agenten** in fünf Kategorien
 - **7 Konflikt-Agenten** — analysieren sektionsübergreifende Widersprüche
 - **2 Write-Agenten** — erstellen arc42-Dokumentation interaktiv oder aus Code
 
-Drei Skills stellen gemeinsam genutzte Querschnittsfunktionalität bereit:
+Vier Skills stellen gemeinsam genutzte Querschnittsfunktionalität bereit:
 
 - **[`arc42-review-format`](.agents/skills/arc42-review-format/SKILL.md)** — Review-Modi, Befund-Templates und allgemeine Regeln, die von allen Review-Agenten referenziert werden.
 - **[`arc42-orchestrator-format`](.agents/skills/arc42-orchestrator-format/SKILL.md)** — Gemeinsames Ausgabeformat für die drei Orchestrator-Agenten: Ampellogik, Übersichtstabellen, Konfliktkarte und konsolidierte Berichts-Templates.
 - **[`arc42-doc-layout`](.agents/skills/arc42-doc-layout/SKILL.md)** — Struktur-Erkennung für verschiedene arc42-Dokumentationslayouts (Multi-Folder, Flat-Files, Single-File) und Delegations-Protokoll für Orchestratoren.
+- **[`arc42-knowledge-graph`](.agents/skills/arc42-knowledge-graph/SKILL.md)** — Wandelt eine arc42-Dokumentation in einen Wissensgraphen (GraphML) um, den die Review-Agenten im Graph-Modus statt der rohen Dateien analysieren. Enthält Schema, Aufbau- und Validierungsskript (`scripts/`).
 
 13 Skills stelllen Funktionalität für des Schreiben von Dokumentation bereit:
 
@@ -29,6 +30,17 @@ Drei Skills stellen gemeinsam genutzte Querschnittsfunktionalität bereit:
 | **Vollständiges Review** | `arc42-review` | Prüft alle Sektionen und führt Konfliktanalyse durch |
 | **Branch-Review** | `arc42-review-branch` | Reviewt nur die geänderten Dateien eines Git-Branches |
 | **Nur Konfliktanalyse** | `arc42-review-conflict` | Führt nur die sektionsübergreifende Konsistenzprüfung durch |
+
+### Analyse-Modi: Graph oder Datei
+
+Jeder Review läuft wahlweise in einem von zwei Analyse-Modi. Die Modi sind unabhängig vom Review-Modus oben und gelten für alle Orchestratoren und Agenten.
+
+| Analyse-Modus | Arbeitsgrundlage | Geeignet für |
+|---|---|---|
+| **Datei-Modus** | Die rohen Markdown-Dateien der Dokumentation, wie im ursprünglichen Ablauf | Einmalige oder kleine Reviews, ständig ändernde Dokumentation, keine Python-Umgebung |
+| **Graph-Modus** | Ein Wissensgraph (GraphML) mit Entitäten (Qualitätsziele, Bausteine, ADRs, Risiken …) und typisierten Beziehungen (`addresses`, `concretizes`, `threatens` …), jeweils mit Quelldatei, Anker und Evidenz | Wiederholte Reviews, große Dokumentationen, sektionsübergreifende Konfliktanalyse |
+
+Im Graph-Modus liefert der Graph strukturierte Fakten und die Zuordnungen zwischen Sektionen. Die inhaltliche Bewertung bleibt bei den Agenten, und jeder Befund zitiert weiterhin die Quelle. Anleitung: [Graph- oder Datei-Modus verwenden](#graph--oder-datei-modus-verwenden).
 
 ## Unterstützte Dokumentationsstrukturen
 
@@ -70,16 +82,58 @@ Falls du nur `.agents/` in ein anderes Repository übernimmst, kannst du `.agent
 
 Wähle den jewiligen Agenten in GitHub Copilot aus. Verwende keine Delegation über `@arc42-review` da Copilot aktuell nur eine ebene der Delegation unterstützt, die Subagenten würden sonst sequentiell im gleichen Context ausgeführt.
 
+### Graph- oder Datei-Modus verwenden
+
+**Modus wählen.** Nenne den Modus im Prompt, zum Beispiel:
+
+- Graph-Modus: „Führe ein vollständiges Review im Graph-Modus durch“, „mit Graph“, „graphbasiert“
+- Datei-Modus: „Führe ein vollständiges Review im Datei-Modus durch“, „ohne Graph“, „klassisch“
+
+Ist der Modus nicht eindeutig, fragt der Orchestrator nach. Er teilt den gewählten Modus allen Sektions- und Konflikt-Agenten mit. Ruft man einen Sektions- oder Konflikt-Agenten direkt auf, fragt auch dieser nach dem Modus.
+
+**Was im Graph-Modus passiert.**
+
+1. Der Orchestrator sucht den Graphen unter `<Repository-Root>/.arc42-graph/<doku-ordner>.graphml` (Beispiel: `.arc42-graph/arc-doc.graphml`) mit `<doku-ordner>.manifest.json` und `<doku-ordner>.extraction.json`.
+2. Er prüft die Aktualität über die SHA-256-Hashes im Manifest. Ist der Graph aktuell, wird er ohne Neuaufbau wiederverwendet.
+3. Fehlt der Graph oder ist er veraltet, wird er neu aufgebaut: Der Agent extrahiert Entitäten und Beziehungen in eine JSON-Datei, und `scripts/build_graph.py` erzeugt daraus GraphML und Manifest, ergänzt Communities, validiert das Ergebnis und ersetzt alte Dateien nur bei Erfolg.
+4. Die Sektions-Agenten filtern ihre Sektion über die Community (`c-s01` … `c-s12`). Die Konflikt-Agenten arbeiten mit ihrer Konfliktdimension (`c-qs`, `c-sd`, `c-cc`, `c-cb`, `c-vc`, `c-ke`, `c-rq`) und lesen Zuordnungen aus den Kanten. Kanten mit `evidence=inferred` gelten nur mit Vorbehalt, im Zweifel wird die Quelle nachgelesen.
+
+Einen Neuaufbau erzwingst du mit „Graph neu bauen“ oder „ignoriere den Cache“ im Prompt.
+
+**Voraussetzung.** Der Aufbau braucht Python 3 (nur Standardbibliothek) und eine Terminalausführung. Ohne beides schreibt der Agent GraphML und Manifest direkt gemäß Schema und weist darauf hin, dass die Validierung nicht gelaufen ist. Der Datei-Modus benötigt keines von beidem.
+
+**Graph manuell bauen und prüfen.** Das ist nützlich, um einen Graphen unabhängig von einem Review zu erzeugen oder zu kontrollieren. Bei einer APM-Installation liegen die Skills unter `.github/skills/` statt `.agents/skills/`:
+
+```bash
+# Extraktion (JSON) in einen Graphen überführen; --doc darf ein Ordner oder eine einzelne Datei sein
+python3 .agents/skills/arc42-knowledge-graph/scripts/build_graph.py extraktion.json --doc arc-doc --out-dir .arc42-graph
+
+# Vorhandenen Graphen gegen Schema, Quelldateien und Manifest prüfen (Hinweis graph-duenn bei auffällig dünnen Graphen)
+python3 .agents/skills/arc42-knowledge-graph/scripts/validate_graph.py .arc42-graph/arc-doc.graphml --doc arc-doc --manifest .arc42-graph/arc-doc.manifest.json
+```
+
+Beispielgraphen mit den zugehörigen Extraktionen zu DokChess liegen in [.arc42-graph_demo_results/](.arc42-graph_demo_results/).
+
+**Branch-Review im Graph-Modus.** `arc42-review-branch` baut den Graphen nicht komplett neu. Er entfernt die Knoten der geänderten Dateien aus der Extraktionsdatei, extrahiert diese Dateien neu und baut mit `build_graph.py --changed <datei>:added|modified` neu. Dadurch tragen die betroffenen Knoten und Kanten `changed=true`, und die Agenten prüfen nur diese und ihre Nachbarschaft.
+
 ### Vollständiges Review starten
 
-Rufe in Copilot den Agenten `arc42-review` auf (z. B. über den Copilot-Chat). Er:
+Rufe in Copilot den Agenten `arc42-review` auf (z. B. über den Copilot-Chat) und nenne den Analyse-Modus (siehe oben). Er:
 
-1. Identifiziert alle vorhandenen Sektionen unter `arc-doc/`
+1. Identifiziert alle vorhandenen Sektionen unter `arc-doc/` (im Graph-Modus: stellt zusätzlich den Wissensgraphen bereit)
 2. Delegiert an die 12 Sektions-Agenten
 3. Startet die sektionsübergreifende Konfliktanalyse
 4. Erstellt einen konsolidierten Prüfbericht mit Ampel-Bewertung
 
-Ein Reviewesultat befindet sich hier: [FullReviewResultOpus46.md](FullReviewResultOpus46.md). Je nach verwendetem Modell unterscheiden sich die Resultate leicht.
+Reviewresultate zu `arc-doc/` liegen für beide Analyse-Modi und drei Modelle vor:
+
+| Modell | Graph-Modus | Datei-Modus |
+|---|---|---|
+| Opus 5.5 | [FullReviewResultGraphOpus55.md](FullReviewResultGraphOpus55.md) | [FullReviewResultFilesOpus55.md](FullReviewResultFilesOpus55.md) |
+| GPT 6.1 Sol | [FullReviewResultGraphGPT61Sol.md](FullReviewResultGraphGPT61Sol.md) | [FullReviewResultFilesGPT61Sol.md](FullReviewResultFilesGPT61Sol.md) |
+| Sonnet 5.5 | [FullReviewResultGraphSonnet55.md](FullReviewResultGraphSonnet55.md) | [FullReviewResultFilesSonnet55.md](FullReviewResultFilesSonnet55.md) |
+
+Je nach Modell und Modus unterscheiden sich die Resultate. Eine Bewertung der Reviews steht in [BewertungReviewResults.md](BewertungReviewResults.md), eine Bewertung der zugehörigen Graphen in [Bewertunggraphen.md](Bewertunggraphen.md).
 
 Identifiziert alle vorhandenen Sektionen unter `arc-doc/`
 
@@ -98,7 +152,7 @@ Starten der sektionsübergreifenden Konfliktanalyse
 Rufe den Agenten `arc42-review-branch` auf. Er:
 
 1. Ermittelt geänderte Dateien via `git diff`
-2. Identifiziert betroffene arc42-Sektionen
+2. Identifiziert betroffene arc42-Sektionen (im Graph-Modus aktualisiert er zusätzlich den Wissensgraphen inkrementell für die geänderten Dateien)
 3. Delegiert nur an die zuständigen Sektions-Agenten im **Delta-Modus**
 4. Löst relevante Konfliktanalysen basierend auf den geänderten Sektionen aus
 5. Erstellt einen fokussierten Änderungs-Review-Bericht
@@ -267,6 +321,22 @@ Das Repository enthält Branches, in denen gezielt Änderungen an der arc42-Doku
 
 So lässt sich das Delta-Review in der Praxis ausprobieren und überprüfen, ob die Agenten korrekt im Delta-Modus arbeiten.
 
+## Prüfwerkzeuge und Tests
+
+Die Skripte laufen ohne LLM und nutzen nur die Python-Standardbibliothek. Die Skripte in den Skills (`scripts/`) werden mit den APM-Paketen ausgeliefert, `tools/` dient nur der Entwicklung in diesem Repository:
+
+| Werkzeug | Zweck |
+|---|---|
+| `.agents/skills/arc42-knowledge-graph/scripts/build_graph.py`, `validate_graph.py` | Graph aufbauen und prüfen (siehe oben) |
+| `.agents/skills/arc42-review-format/scripts/check_review.py <bericht.md>` | Prüft einen Review-Bericht formal: eindeutige Befund-IDs, Schweregrad-Summen, Links und Zeilenanker, wörtliche Zitate, Vorschläge. Mit `--gold dokchess` sucht es zusätzlich die Hauptwidersprüche der Beispiel-Dokumentation |
+| `tools/graph_scorecard.py <name>=<graphml> …` | Vergleicht Graphen mit Soll-Werten zu `arc-doc/` (DokChess-spezifisch) |
+
+Regressionstests für Aufbau- und Validierungsskript sowie die Berichtsprüfung:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
 ## Lizenz
 
 Dieses Repository steht unter der [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) Lizenz.
@@ -282,7 +352,7 @@ Dieses Repository steht unter der [CC BY-SA 4.0](https://creativecommons.org/lic
 arc42agentic/
 ├── README.md               ← Diese Datei
 ├── LICENSE                  CC BY-SA 4.0
-├── .agents/                 24 Agent-Definitionen (.agent.md) + 16 Skills
+├── .agents/                 24 Agent-Definitionen (.agent.md) + 17 Skills
 │   ├── arc42-review.agent.md
 │   ├── arc42-review-branch.agent.md
 │   ├── arc42-review-conflict.agent.md
@@ -298,8 +368,12 @@ arc42agentic/
 │       ├── arc42-doc-layout/            Struktur-Erkennung, Delegations-Protokoll
 │       ├── arc42-review-format/         Befund-Formate, Review-Modi
 │       ├── arc42-orchestrator-format/   Ampellogik, Ausgabe-Templates, Konfliktkarte
+│       ├── arc42-knowledge-graph/       Wissensgraph (GraphML): Schema, Aufbau- und Validierungsskript
 │       ├── arc42-write-doc-layout/      Verzeichnisstruktur beim Schreiben
 │       └── arc42-write-s01..s12/        12 sektionsspezifische Write-Skills
+├── tools/                       Prüfwerkzeuge ohne LLM (Review-Bericht, Graph-Scorecard)
+├── tests/                       Regressionstests (`python3 -m unittest discover -s tests`)
+├── .arc42-graph_demo_results/   Beispielgraphen und Extraktionen zu DokChess
 └── arc-doc/                     Beispiel-Dokumentation (DokChess, CC BY-NC-SA 4.0)
     ├── LICENSE.md           CC BY-NC-SA 4.0 Lizenz
     ├── 01-Einfuehrung-und-Ziele/

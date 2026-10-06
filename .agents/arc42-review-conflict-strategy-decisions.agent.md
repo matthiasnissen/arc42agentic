@@ -21,11 +21,20 @@ Probleme entstehen, wenn:
 - Strategische Grundlinien nicht durch Entscheidungen umgesetzt werden
 - Entscheidungen strategisch relevante Änderungen vornehmen, ohne die Strategie zu aktualisieren
 
-## Zu prüfende Dateien
+## Analyse-Modus
 
-> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
-> - **Sektion 4** (Lösungsstrategie) — alle Dateien
-> - **Sektion 9** (Entscheidungen) — alle Dateien
+Der Aufrufer (Orchestrator) teilt dir explizit mit, ob du im **GRAPH-MODUS** oder im **DATEI-MODUS** arbeitest. Wurde kein Modus mitgeteilt (Standalone-Aufruf), frage den Nutzer, bevor du beginnst, ob er den Graph-Modus (Wissensgraph) oder den Datei-Modus (rohe Markdown-Dateien) nutzen möchte.
+
+**GRAPH-MODUS**: Der Aufrufer liefert dir den Pfad zur GraphML-Datei sowie die Konfliktdimensions-Community `c-sd` (S4, S9) gemäß Skill `arc42-knowledge-graph`.
+- Filtere auf Knoten der Typen `StrategyApproach` (S4) und `ArchitectureDecision` (S9) — über `member_of` → Community `c-sd` (nicht über den exakten `section`-Wert: er enthält auch Unterabschnitte wie `4.1`).
+- Nutze die Kanten `realizes` (`ArchitectureDecision` → `StrategyApproach`) und `supersedes` (`ArchitectureDecision` → `ArchitectureDecision`), um Alignment und Nachfolgeketten strukturell abzuleiten.
+- Beachte das `status`-Attribut der `ArchitectureDecision`-Knoten (`proposed`/`accepted`/`deprecated`/`superseded`) — nur `accepted`-Entscheidungen können in Konflikt zur Strategie stehen.
+- Kanten mit `evidence=inferred` nur mit Vorbehalt verwenden — prüfe bei kritischen (🔴) Befunden `source_file`/`source_anchor` gegen.
+- **Delta-Modus**: Beschränke die Analyse auf Knoten/Kanten mit `changed=true` und deren Nachbarschaft (siehe Skill `arc42-knowledge-graph`, Abschnitt „Inkrementelle Aktualisierung").
+
+**DATEI-MODUS**: Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+- **Sektion 4** (Lösungsstrategie) — alle Dateien
+- **Sektion 9** (Entscheidungen) — alle Dateien
 
 ## Review-Modus
 
@@ -65,12 +74,12 @@ Probleme entstehen, wenn:
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien aus Sektion 4 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-3. Lies alle Dateien aus Sektion 9 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-4. Extrahiere alle strategischen Festlegungen und alle akzeptierten Entscheidungen
-5. Prüfe jede Entscheidung gegen jede strategische Festlegung auf Widerspruch oder Redundanz
-6. Prüfe, ob alle strategischen Festlegungen durch Entscheidungen unterstützt werden
-7. Im Delta-Modus: Fokussiere auf Konflikte, die durch die geänderten Dateien entstehen
+2. Lade den Wissensgraphen und extrahiere alle `StrategyApproach`-Knoten (Sektion 4)
+3. Extrahiere alle `ArchitectureDecision`-Knoten (Sektion 9) mit `status=accepted` sowie deren `realizes`- und `supersedes`-Kanten
+4. Verknüpfe über `realizes` jede Entscheidung mit ihrer strategischen Festlegung
+5. Prüfe jede Entscheidung gegen jede strategische Festlegung auf Widerspruch oder Redundanz (fehlende `realizes`-Kante trotz thematischer Nähe = Verdachtsfall)
+6. Prüfe, ob alle `StrategyApproach`-Knoten mindestens eine eingehende `realizes`-Kante haben — sonst Strategie ohne Entscheidungsgrundlage
+7. Im Delta-Modus: Fokussiere auf `changed=true`-Knoten und ihre Nachbarschaft
 
 ## Ausgabeformat
 

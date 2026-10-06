@@ -16,12 +16,21 @@ Risiken (Sektion 11) und Qualitätsziele (Sektion 1.2) / Qualitätsanforderungen
 - Jedes Risiko kann ein oder mehrere Qualitätsziele gefährden
 - Maßnahmen gegen Risiken sollten die Qualitätsziele schützen
 
-## Zu prüfende Dateien
+## Analyse-Modus
 
-> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
-> - **Sektion 1** (Qualitätsziele) — insbesondere Qualitätsziele
-> - **Sektion 10** (Qualitätsanforderungen) — alle Dateien
-> - **Sektion 11** (Risiken) — alle Dateien
+Der Aufrufer (Orchestrator) teilt dir explizit mit, ob du im **GRAPH-MODUS** oder im **DATEI-MODUS** arbeitest. Wurde kein Modus mitgeteilt (Standalone-Aufruf), frage den Nutzer, bevor du beginnst, ob er den Graph-Modus (Wissensgraph) oder den Datei-Modus (rohe Markdown-Dateien) nutzen möchte.
+
+**GRAPH-MODUS**: Der Aufrufer liefert dir den Pfad zur GraphML-Datei sowie die Konfliktdimensions-Community `c-rq` (S1, S10, S11) gemäß Skill `arc42-knowledge-graph`.
+- Filtere auf Knoten der Typen `QualityGoal` (S1), `QualityScenario` (S10) und `Risk`/`Mitigation` (S11) — über `member_of` → Community `c-rq` (nicht über den exakten `section`-Wert: er enthält auch Unterabschnitte wie `11.2`).
+- Nutze die Kanten `threatens` (`Risk` → `QualityGoal`), `mitigates` (`Risk`/`Mitigation` → `StrategyApproach`|`QualityScenario`|`BuildingBlock`) und `contradicts` (`Risk`/`Mitigation` → `QualityScenario`), um die Zuordnungsmatrix strukturell abzuleiten.
+- Ein `QualityGoal` ohne jede eingehende `threatens`-Kante ist ein Verdachtsfall für einen blinden Fleck in der Risikoanalyse; ein `Risk` mit `threatens`-Kante aber ohne `mitigates`-Kante ist ein unmitigiertes Qualitätsrisiko.
+- Kanten mit `evidence=inferred` nur mit Vorbehalt verwenden — prüfe bei kritischen (🔴) Befunden `source_file`/`source_anchor` gegen.
+- **Delta-Modus**: Beschränke die Analyse auf Knoten/Kanten mit `changed=true` und deren Nachbarschaft (siehe Skill `arc42-knowledge-graph`, Abschnitt „Inkrementelle Aktualisierung").
+
+**DATEI-MODUS**: Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+- **Sektion 1** (Qualitätsziele) — insbesondere Qualitätsziele
+- **Sektion 10** (Qualitätsanforderungen) — alle Dateien
+- **Sektion 11** (Risiken) — alle Dateien
 
 ## Review-Modus
 
@@ -60,11 +69,11 @@ Risiken (Sektion 11) und Qualitätsziele (Sektion 1.2) / Qualitätsanforderungen
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Qualitätsziele aus Sektion 1 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-3. Lies alle Qualitätsszenarien aus Sektion 10 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-4. Lies alle Risiken und Maßnahmen aus Sektion 11 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-5. Erstelle eine Zuordnungsmatrix: Qualitätsziel → Risiko → Maßnahme
-6. Identifiziere Lücken und Widersprüche (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
+2. Lade den Wissensgraphen und extrahiere alle `QualityGoal`-Knoten (Sektion 1) mit `priority`
+3. Extrahiere alle `QualityScenario`-Knoten (Sektion 10)
+4. Extrahiere alle `Risk`-/`Mitigation`-Knoten (Sektion 11) sowie deren `threatens`-, `mitigates`- und `contradicts`-Kanten
+5. Erstelle die Zuordnungsmatrix Qualitätsziel → Risiko → Maßnahme direkt aus den Kanten (fehlende Kante = Lücke)
+6. Identifiziere Lücken und Widersprüche (im Delta-Modus: fokussiert auf `changed=true`-Knoten und ihre Nachbarschaft)
 
 ## Ausgabeformat
 

@@ -42,6 +42,8 @@ Jeder Review läuft wahlweise in einem von zwei Analyse-Modi. Die Modi sind unab
 
 Im Graph-Modus liefert der Graph strukturierte Fakten und die Zuordnungen zwischen Sektionen. Die inhaltliche Bewertung bleibt bei den Agenten, und jeder Befund zitiert weiterhin die Quelle. Anleitung: [Graph- oder Datei-Modus verwenden](#graph--oder-datei-modus-verwenden).
 
+![Wissensgraph des biking Beispiels](.attachments/biking_knowledge.png)
+
 ## Unterstützte Dokumentationsstrukturen
 
 Das System erkennt automatisch drei verschiedene Layouts einer arc42-Dokumentation — gesteuert durch den Skill [`arc42-doc-layout`](.agents/skills/arc42-doc-layout/SKILL.md):

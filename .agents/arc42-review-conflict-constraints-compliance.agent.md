@@ -13,13 +13,22 @@ Der Pfad zum Wurzelverzeichnis der arc42-Dokumentation wird dir vom Aufrufer im 
 
 Randbedingungen (Sektion 2) definieren den nicht verhandelbaren Rahmen, innerhalb dessen die Architektur gestaltet werden muss. Wenn nachgelagerte Sektionen (Strategie, Entscheidungen, Konzepte) diesen Rahmen verletzen, liegt ein kritischer Dokumentationskonflikt vor — oder die Randbedingung hat sich geändert und muss aktualisiert werden.
 
-## Zu prüfende Dateien
+## Analyse-Modus
 
-> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
-> - **Sektion 2** (Randbedingungen) — alle Dateien (Constraints)
-> - **Sektion 4** (Lösungsstrategie) — alle Dateien
-> - **Sektion 8** (Konzepte) — alle Dateien
-> - **Sektion 9** (Entscheidungen) — alle Dateien
+Der Aufrufer (Orchestrator) teilt dir explizit mit, ob du im **GRAPH-MODUS** oder im **DATEI-MODUS** arbeitest. Wurde kein Modus mitgeteilt (Standalone-Aufruf), frage den Nutzer, bevor du beginnst, ob er den Graph-Modus (Wissensgraph) oder den Datei-Modus (rohe Markdown-Dateien) nutzen möchte.
+
+**GRAPH-MODUS**: Der Aufrufer liefert dir den Pfad zur GraphML-Datei sowie die Konfliktdimensions-Community `c-cc` (S2, S4, S8, S9) gemäß Skill `arc42-knowledge-graph`.
+- Filtere auf Knoten der Typen `Constraint` (S2), `StrategyApproach` (S4), `CrossCuttingConcept` (S8) und `ArchitectureDecision` (S9) — über `member_of` → Community `c-cc` (nicht über den exakten `section`-Wert: er enthält auch Unterabschnitte wie `4.1`).
+- Nutze die Kante `constrains` (`Constraint` → `StrategyApproach` | `CrossCuttingConcept` | `ArchitectureDecision`), um zu ermitteln, welche Randbedingung welchen nachgelagerten Knoten einschränkt.
+- Ein `Constraint`-Knoten ohne jede ausgehende `constrains`-Kante zu S4/S8/S9-Knoten, deren Themengebiet er betrifft, ist ein Verdachtsfall für eine ungeprüfte Randbedingung.
+- Kanten mit `evidence=inferred` nur mit Vorbehalt verwenden — prüfe bei kritischen (🔴) Befunden `source_file`/`source_anchor` gegen.
+- **Delta-Modus**: Beschränke die Analyse auf Knoten/Kanten mit `changed=true` und deren Nachbarschaft (siehe Skill `arc42-knowledge-graph`, Abschnitt „Inkrementelle Aktualisierung").
+
+**DATEI-MODUS**: Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+- **Sektion 2** (Randbedingungen) — alle Dateien (Constraints)
+- **Sektion 4** (Lösungsstrategie) — alle Dateien
+- **Sektion 8** (Konzepte) — alle Dateien
+- **Sektion 9** (Entscheidungen) — alle Dateien
 
 ## Review-Modus
 
@@ -58,12 +67,11 @@ Randbedingungen (Sektion 2) definieren den nicht verhandelbaren Rahmen, innerhal
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien aus Sektion 2 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere jeden einzelnen Constraint
-3. Lies alle Dateien aus Sektion 4 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-4. Lies alle Dateien aus Sektion 8 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-5. Lies alle Dateien aus Sektion 9 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-6. Prüfe jeden Constraint systematisch gegen alle Aussagen in S4, S8, S9
-7. Dokumentiere Verletzungen und Verdachtsfälle (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
+2. Lade den Wissensgraphen und extrahiere jeden einzelnen `Constraint`-Knoten (Sektion 2) mit `category`
+3. Extrahiere alle `StrategyApproach`-Knoten (Sektion 4), `CrossCuttingConcept`-Knoten (Sektion 8) und `ArchitectureDecision`-Knoten (Sektion 9)
+4. Extrahiere alle `constrains`-Kanten zwischen Constraints und S4/S8/S9-Knoten
+5. Prüfe jeden Constraint systematisch gegen alle thematisch passenden Aussagen in S4, S8, S9 — auch dort, wo keine explizite `constrains`-Kante existiert (mögliche unentdeckte Verletzung)
+6. Dokumentiere Verletzungen und Verdachtsfälle (im Delta-Modus: fokussiert auf `changed=true`-Knoten und ihre Nachbarschaft)
 
 ## Ausgabeformat
 

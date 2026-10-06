@@ -1,0 +1,2002 @@
+{
+  "nodes": [
+    {
+      "id": "s00-system-dokchess",
+      "type": "System",
+      "label": "DokChess",
+      "section": "0.0",
+      "description": "DokChess ist eine voll funktionsfähige Schach-Engine und ein verständliches, erweiterbares Fallbeispiel für Architekturentwurf, -bewertung und -dokumentation. Ziel ist nicht die höchstmögliche Spielstärke; Partien sollen dennoch Gelegenheitsspielern Freude bereiten.",
+      "source_file": "00-Ueberblick/00-00-Overview.md",
+      "source_anchor": "# Architekturüberblick"
+    },
+    {
+      "id": "s01-req-schachengine",
+      "type": "Requirement",
+      "label": "Voll funktionsfähige Schach-Engine",
+      "section": "1.1",
+      "description": "DokChess ist eine voll funktionsfähige Schach-Engine.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Was ist DokChess?"
+    },
+    {
+      "id": "s01-req-fallbeispiel",
+      "type": "Requirement",
+      "label": "Zugängliches und attraktives Fallbeispiel",
+      "section": "1.1",
+      "description": "Sie dient als einfach zugängliches und zugleich attraktives Fallbeispiel für Architekturentwurf, -bewertung und -dokumentation.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Was ist DokChess?"
+    },
+    {
+      "id": "s01-req-experimentieren",
+      "type": "Requirement",
+      "label": "Experimentieren und Erweitern",
+      "section": "1.1",
+      "description": "Der verständliche Aufbau lädt zum Experimentieren und zum Erweitern der Engine ein.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Was ist DokChess?"
+    },
+    {
+      "id": "s01-req-gelegenheitsspieler",
+      "type": "Requirement",
+      "label": "Spielstärke für Gelegenheitsspieler",
+      "section": "1.1",
+      "description": "Ziel ist nicht die höchstmögliche Spielstärke – dennoch gelingen Partien, die Gelegenheitsspielern Freude bereiten.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Was ist DokChess?"
+    },
+    {
+      "id": "s01-req-fide-regeln",
+      "type": "Requirement",
+      "label": "Vollständige FIDE-Schachregeln",
+      "section": "1.1",
+      "description": "Vollständige Implementierung der FIDE-Schachregeln.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Wesentliche Features"
+    },
+    {
+      "id": "s01-req-gegner",
+      "type": "Requirement",
+      "label": "Menschliche und programmatische Gegner",
+      "section": "1.1",
+      "description": "Unterstützt das Spiel gegen menschliche Gegner und andere Schachprogramme.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Wesentliche Features"
+    },
+    {
+      "id": "s01-req-taktik",
+      "type": "Requirement",
+      "label": "Zentrale taktische Ideen",
+      "section": "1.1",
+      "description": "Beherrscht zentrale taktische Ideen, beispielsweise Gabel und Spieß.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Wesentliche Features"
+    },
+    {
+      "id": "s01-req-frontends",
+      "type": "Requirement",
+      "label": "Integration grafischer Schach-Frontends",
+      "section": "1.1",
+      "description": "Integration mit modernen grafischen Schach-Frontends.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md",
+      "source_anchor": "### Wesentliche Features"
+    },
+    {
+      "id": "s01-qg-zugaenglich",
+      "type": "QualityGoal",
+      "label": "Zugängliches Beispiel (Analysierbarkeit)",
+      "section": "1.2",
+      "priority": "1",
+      "description": "Da DokChess in erster Linie als Anschauungsmaterial für Softwarearchitektur und -entwicklung dient, erschließen sich Entwurf und Implementierung rasch.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md",
+      "source_anchor": "## 1.2 Qualitätsziele"
+    },
+    {
+      "id": "s01-qg-experimentierplattform",
+      "type": "QualityGoal",
+      "label": "Einladende Experimentierplattform (Änderbarkeit)",
+      "section": "1.2",
+      "priority": "2",
+      "description": "Alternative Algorithmen und Strategien, etwa zur Bewertung einer Schachstellung, können leicht implementiert und in die Lösung integriert werden.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md",
+      "source_anchor": "## 1.2 Qualitätsziele"
+    },
+    {
+      "id": "s01-qg-interoperabilitaet",
+      "type": "QualityGoal",
+      "label": "Bestehende Frontends nutzen (Interoperabilität)",
+      "section": "1.2",
+      "priority": "3",
+      "description": "DokChess lässt sich mit angemessenem Aufwand in bestehende grafische Schach-Frontends einbinden.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md",
+      "source_anchor": "## 1.2 Qualitätsziele"
+    },
+    {
+      "id": "s01-qg-spielstaerke",
+      "type": "QualityGoal",
+      "label": "Akzeptable Spielstärke (Funktionale Eignung)",
+      "section": "1.2",
+      "priority": "4",
+      "description": "DokChess spielt stark genug, um schwache Gegner sicher zu schlagen und Gelegenheitsspieler zumindest zu fordern.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md",
+      "source_anchor": "## 1.2 Qualitätsziele"
+    },
+    {
+      "id": "s01-qg-effizienz",
+      "type": "QualityGoal",
+      "label": "Schnelles Antworten auf Züge (Effizienz)",
+      "section": "1.2",
+      "priority": "5",
+      "description": "Da DokChess in Seminaren und Vorträgen live demonstriert wird, erfolgt die Berechnung der Spielzüge rasch.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md",
+      "source_anchor": "## 1.2 Qualitätsziele"
+    },
+    {
+      "id": "s01-sh-architekten",
+      "type": "Stakeholder",
+      "label": "Softwarearchitektinnen und -architekten",
+      "section": "1.3",
+      "category": "Architektur",
+      "description": "Wollen ein Gefühl bekommen, wie Architekturdokumentation für ein konkretes System aussehen kann; möchten sich Dinge (z.B. Form, Notation) für Ihre tägliche Arbeit abgucken; gewinnen Sicherheit für Ihre eigenen Dokumentationsvorhaben; haben in der Regel keine tiefen Schachkenntnisse.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-03-Stakeholder.md",
+      "source_anchor": "## 1.3 Stakeholder"
+    },
+    {
+      "id": "s01-sh-entwickler",
+      "type": "Stakeholder",
+      "label": "Entwicklerinnen und Entwickler",
+      "section": "1.3",
+      "category": "Entwicklung",
+      "description": "Nehmen auch Architekturaufgaben im Team wahr; bekommen beim Studium von DokChess Lust, selbst eine Schach-Engine zu implementieren; sind neugierig auf konkrete Anregungen, wie man das macht.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-03-Stakeholder.md",
+      "source_anchor": "## 1.3 Stakeholder"
+    },
+    {
+      "id": "s01-sh-stefan-zoerner",
+      "type": "Stakeholder",
+      "label": "Stefan Zörner",
+      "section": "1.3",
+      "category": "Autor und Vortragender",
+      "description": "Benötigt attraktive Beispiele für sein Buch; will DokChess in Workshops und Vorträgen zu Softwareentwurf und -architektur als Anschauungsmaterial verwenden.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-03-Stakeholder.md",
+      "source_anchor": "## 1.3 Stakeholder"
+    },
+    {
+      "id": "s01-sh-oose",
+      "type": "Stakeholder",
+      "label": "oose Innovative Informatik",
+      "section": "1.3",
+      "category": "Schulungsunternehmen",
+      "description": "Schulungsunternehmen, Arbeitgeber von Stefan Zörner zum Zeitpunkt der Konzeption von DokChess; bietet Seminare, Workshops und Coaching zu Themen rund um Softwareentwicklung an.",
+      "source_file": "01-Einfuehrung-und-Ziele/01-03-Stakeholder.md",
+      "source_anchor": "## 1.3 Stakeholder"
+    },
+    {
+      "id": "s02-constraint-hardware",
+      "type": "Constraint",
+      "label": "Moderate Hardwareausstattung",
+      "section": "2.1",
+      "category": "technisch",
+      "description": "Betrieb der Lösung auf einem marktüblichen Standard-Notebook, um sie im Rahmen von Seminaren und Konferenzen auf einem solchen zeigen zu können.",
+      "source_file": "02-Randbedingungen/02-01-Technisch.md",
+      "source_anchor": "## 2.1 Technische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-windows",
+      "type": "Constraint",
+      "label": "Betrieb auf Windows Desktop Betriebssystemen",
+      "section": "2.1",
+      "category": "technisch",
+      "description": "Standardausstattung von Notebooks bei Mitarbeitern des Schulungsunternehmens zum Zeitpunkt der Konzeption. Hohe Verbreitung dieser Betriebssysteme bei potenziell Interessierten (Zuhörer bei Vorträgen, Teilnehmer bei Seminaren). Unterstützung anderer Betriebssysteme (allen voran Linux und Mac OS X) wünschenswert, aber nicht zwingend erforderlich.",
+      "source_file": "02-Randbedingungen/02-01-Technisch.md",
+      "source_anchor": "## 2.1 Technische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-java",
+      "type": "Constraint",
+      "label": "Implementierung in Java",
+      "section": "2.1",
+      "category": "technisch",
+      "description": "Einsatz als Beispiel in Java-lastigen Seminaren und auf Java-Konferenzen. Entwicklung unter Version Java SE 6 (DokChess 1.0), später Java SE 7 und Java SE 11. Die Engine soll auch auf neueren Java-Versionen, sobald verfügbar, laufen.",
+      "source_file": "02-Randbedingungen/02-01-Technisch.md",
+      "source_anchor": "## 2.1 Technische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-fremdsoftware",
+      "type": "Constraint",
+      "label": "Fremdsoftware frei verfügbar",
+      "section": "2.1",
+      "category": "technisch",
+      "description": "Falls zur Lösung Fremdsoftware hinzugezogen wird (z.B. grafisches Frontend), sollte diese idealerweise frei verfügbar und kostenlos sein. Die Schwelle der Verwendung wird auf diese Weise niedrig gehalten.",
+      "source_file": "02-Randbedingungen/02-01-Technisch.md",
+      "source_anchor": "## 2.1 Technische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-team",
+      "type": "Constraint",
+      "label": "Team",
+      "section": "2.2",
+      "category": "organisatorisch",
+      "description": "Stefan Zörner, unterstützt durch Kollegen, Bekannte und Interessierte aus Workshops und Seminaren.",
+      "source_file": "02-Randbedingungen/02-02-Organisatorisch.md",
+      "source_anchor": "## 2.2 Organisatorische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-zeitplan",
+      "type": "Constraint",
+      "label": "Zeitplan",
+      "section": "2.2",
+      "category": "organisatorisch",
+      "description": "Beginn der Entwicklung Dezember 2010, erster lauffähiger Prototyp März 2011 (Abendvortrag beim Schulungsunternehmenin Hamburg), vorzeigbare Version Mai 2011 (Vortrag JAX-Konferenz in Mainz). Fertigstellung Version 1.0: Februar 2012 (Abgabe des Buchmanuskripts für die 1. Auflage).",
+      "source_file": "02-Randbedingungen/02-02-Organisatorisch.md",
+      "source_anchor": "## 2.2 Organisatorische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-vorgehensmodell",
+      "type": "Constraint",
+      "label": "Vorgehensmodell",
+      "section": "2.2",
+      "category": "organisatorisch",
+      "description": "Entwicklung risikogetrieben, iterativ und inkrementell. Zur Dokumentation der Architektur kommt arc42 zum Einsatz. Eine Architekturdokumentation gegliedert nach dieser Vorlage ist zentrales Projektergebnis.",
+      "source_file": "02-Randbedingungen/02-02-Organisatorisch.md",
+      "source_anchor": "## 2.2 Organisatorische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-werkzeuge",
+      "type": "Constraint",
+      "label": "Entwicklungswerkzeuge",
+      "section": "2.2",
+      "category": "organisatorisch",
+      "description": "Entwurf mit Stift und Papier, ergänzend Enterprise Architect. Arbeitsergebnisse zur Architekturdokumentation gesammelt im Confluence Wiki. Erstellung der Java-Quelltexte in Eclipse oder IntelliJ. Die Software muss jedoch auch, allein mit Gradle, also ohne IDE baubar sein.",
+      "source_file": "02-Randbedingungen/02-02-Organisatorisch.md",
+      "source_anchor": "## 2.2 Organisatorische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-versionsverwaltung",
+      "type": "Constraint",
+      "label": "Konfigurations- und Versionsverwaltung",
+      "section": "2.2",
+      "category": "organisatorisch",
+      "description": "Zu Beginn (Version 1.0) Subversion bei SourceForge, später Git bei GitHub.",
+      "source_file": "02-Randbedingungen/02-02-Organisatorisch.md",
+      "source_anchor": "## 2.2 Organisatorische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-testwerkzeuge",
+      "type": "Constraint",
+      "label": "Testwerkzeuge und -prozesse",
+      "section": "2.2",
+      "category": "organisatorisch",
+      "description": "JUnit im Annotationsstil sowohl für inhaltliche Richtigkeit als auch für Integrationstests und die Einhaltung von Effizienzvorgaben.",
+      "source_file": "02-Randbedingungen/02-02-Organisatorisch.md",
+      "source_anchor": "## 2.2 Organisatorische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-opensource",
+      "type": "Constraint",
+      "label": "Veröffentlichung als Open Source",
+      "section": "2.2",
+      "category": "organisatorisch",
+      "description": "Die Quelltexte der Lösung oder zumindest Teile werden als Open Source verfügbar gemacht. Lizenz: GNU General Public License version 3.0 (GPLv3). Gehostet bei GitHub: https://github.com/DokChess/.",
+      "source_file": "02-Randbedingungen/02-02-Organisatorisch.md",
+      "source_anchor": "## 2.2 Organisatorische Randbedingungen"
+    },
+    {
+      "id": "s02-constraint-arc42",
+      "type": "Constraint",
+      "label": "Architekturdokumentation",
+      "section": "2.3",
+      "category": "konvention",
+      "description": "Terminologie und Gliederung nach dem deutschen arc42-Template in der Version 6.0.",
+      "source_file": "02-Randbedingungen/02-03-Konventionen.md",
+      "source_anchor": "## 2.3 Konventionen"
+    },
+    {
+      "id": "s02-constraint-coding",
+      "type": "Constraint",
+      "label": "Kodierrichtlinien für Java",
+      "section": "2.3",
+      "category": "konvention",
+      "description": "Java Coding Conventions von Sun/Oracle, geprüft mit Hilfe von CheckStyle.",
+      "source_file": "02-Randbedingungen/02-03-Konventionen.md",
+      "source_anchor": "## 2.3 Konventionen"
+    },
+    {
+      "id": "s02-constraint-sprache",
+      "type": "Constraint",
+      "label": "Sprache (Deutsch vs. Englisch)",
+      "section": "2.3",
+      "category": "konvention",
+      "description": "Benennung von Dingen (Komponenten, Schnittstellen) in Diagrammen und Texten innerhalb dieser (deutschen) arc42-Architekturdokumentation in Deutsch. Verwendung deutscher Bezeichner für Klassen, Methoden etc. im Java-Quelltext (es sei denn, die Java-Kodierrichtlinien stehen dem im Wege). Hintergrund: Die Zielgruppe sind keine Schach-Experten, es soll keine zusätzliche Barriere durch englische (Schach-)begriffe erzeugt werden.",
+      "source_file": "02-Randbedingungen/02-03-Konventionen.md",
+      "source_anchor": "## 2.3 Konventionen"
+    },
+    {
+      "id": "s02-constraint-datenformate",
+      "type": "Constraint",
+      "label": "Schach-Spezifische Datenformate",
+      "section": "2.3",
+      "category": "konvention",
+      "description": "Verwendung etablierter Standards für Schach-spezifische Notationen und Austauschformate innerhalb der Lösung. Themen: Züge, Stellungen, Partien, Eröffnungen, … Keinesfalls sind eigene Formate zu entwickeln. Prinzip: Offene Standards sind proprietären Formaten (wie sie ggf. kommerzielle Programme verwenden) vorzuziehen.",
+      "source_file": "02-Randbedingungen/02-03-Konventionen.md",
+      "source_anchor": "## 2.3 Konventionen"
+    },
+    {
+      "id": "s03-partner-mensch",
+      "type": "ExternalPartner",
+      "label": "Menschlicher Gegner (Benutzer)",
+      "section": "3.1",
+      "category": "mensch",
+      "description": "Schach wird zwischen zwei Gegnern gespielt, die abwechselnd ihre Figuren ziehen. DokChess übernimmt die Rolle eines der Gegner und tritt gegen einen menschlichen Gegner an. Dazu müssen sich die beiden austauschen, beispielsweise über ihre Züge oder über Remisangebote.",
+      "source_file": "03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md",
+      "source_anchor": "### Menschlicher Gegner (Benutzer)"
+    },
+    {
+      "id": "s03-partner-computergegner",
+      "type": "ExternalPartner",
+      "label": "Computergegner (Fremdsystem)",
+      "section": "3.1",
+      "category": "system",
+      "description": "Alternativ zu einem menschlichen Gegner kann DokChess auch gegen eine andere Engine antreten. Die Anforderungen bezüglich des Informationsaustausches sind dieselben.",
+      "source_file": "03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md",
+      "source_anchor": "### Computergegner (Fremdsystem)"
+    },
+    {
+      "id": "s03-partner-eroeffnungen",
+      "type": "ExternalPartner",
+      "label": "Eröffnungen (Fremdsystem)",
+      "section": "3.1",
+      "category": "system",
+      "description": "Umfangreiches Wissen zur Eröffnung existiert in Schachliteratur und ist in Form von Bibliotheken und Datenbanken teils frei und teils kommerziell verfügbar. Im Rahmen von DokChess wird keine solche Bibliothek erstellt. Stattdessen wird (optional) eine angebunden, um in der Frühphase ein auf Wissen basiertes Spiel zur ermöglichen, wie es menschliche Spieler erwarten.",
+      "source_file": "03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md",
+      "source_anchor": "### Eröffnungen (Fremdsystem)"
+    },
+    {
+      "id": "s03-partner-endspiele",
+      "type": "ExternalPartner",
+      "label": "Endspiele (Fremdsystem)",
+      "section": "3.1",
+      "category": "system",
+      "description": "Endspielbibliotheken können bei wenigen Figuren für mögliche Stellungen aussagen, ob das Spiel gewonnen, unentschieden oder verloren ist, sowie gegebenenfalls den nötigen nächsten Schritt zum Sieg. DokChess erstellt keine solche Bibliothek. Eine Anbindung kann optional erfolgen, um klar gewonnene Spiele sicher nach Hause zu bringen oder Bibliothekswissen für Analysen und Stellungsbewertungen zu nutzen.",
+      "source_file": "03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md",
+      "source_anchor": "### Endspiele (Fremdsystem)"
+    },
+    {
+      "id": "s03-partner-xboard-client",
+      "type": "ExternalPartner",
+      "label": "XBoard Client (Fremdsystem)",
+      "section": "3.2",
+      "category": "system",
+      "description": "Die Anbindung menschlicher Spieler erfolgt über ein grafisches Frontend, dessen Entwicklung nicht Teil von DokChess ist. Verwendbar ist jedes grafische Frontend, welches das XBoard-Protokoll unterstützt, darunter Xboard (bzw. Winboard unter Windows), Arena und Aquarium.",
+      "source_file": "03-Kontextabgrenzung/03-02-Technischer-Kontext.md",
+      "source_anchor": "### XBoard Client (Fremdsystem)"
+    },
+    {
+      "id": "s03-partner-polyglot",
+      "type": "ExternalPartner",
+      "label": "Polyglot Opening Book (Fremdsystem)",
+      "section": "3.2",
+      "category": "system",
+      "description": "Polyglot Opening Book ist ein binäres Dateiformat für Eröffnungsbibliotheken. DokChess erlaubt die optionale Anbindung solcher Bücher. Der Zugriff erfolgt ausschließlich lesend.",
+      "source_file": "03-Kontextabgrenzung/03-02-Technischer-Kontext.md",
+      "source_anchor": "### Polyglot Opening Book (Fremdsystem)"
+    },
+    {
+      "id": "s04-approach-arc42",
+      "type": "StrategyApproach",
+      "label": "Architekturüberblick nach arc42",
+      "section": "4.1",
+      "description": "Architekturüberblick gegliedert nach arc42.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-domain-explicit",
+      "type": "StrategyApproach",
+      "label": "Explizites objektorientiertes Domänenmodell",
+      "section": "4.1",
+      "description": "Explizites, objektorientiertes Domänenmodell.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-german-names",
+      "type": "StrategyApproach",
+      "label": "Deutsche Modul-, Klassen- und Methodennamen",
+      "section": "4.1",
+      "description": "Modul-, Klassen- und Methodennamen in Deutsch, um englische Schachbegriffe zu vermeiden.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-javadoc",
+      "type": "StrategyApproach",
+      "label": "Dokumentation öffentlicher Schnittstellen",
+      "section": "4.1",
+      "description": "Ausführliche Dokumentation der öffentlichen Schnittstellen in javadoc.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-java",
+      "type": "StrategyApproach",
+      "label": "Verbreitete und portable Programmiersprache Java",
+      "section": "4.1",
+      "description": "Verbreitete Programmiersprache Java und Einsatz des portablen Java. Tabelle 4.1 markiert beide Ansätze mit (a).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-interfaces",
+      "type": "StrategyApproach",
+      "label": "Schnittstellen für Kernabstraktionen",
+      "section": "4.1",
+      "description": "Schnittstellen für Kernabstraktionen (z.B. Stellungsbewertung, Spielregeln).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-immutable",
+      "type": "StrategyApproach",
+      "label": "Unveränderliche Objekte",
+      "section": "4.1",
+      "description": "Unveränderliche Objekte (Stellung, Zug, …) erleichtern Implementierung vieler Algorithmen.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-di",
+      "type": "StrategyApproach",
+      "label": "Dependency Injection",
+      "section": "4.1",
+      "description": "„Zusammenstecken“ der Bestandteile mit Dependency Injection führt zu Austauschbarkeit; Tabelle 4.1 markiert den Ansatz mit (b).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-test-coverage",
+      "type": "StrategyApproach",
+      "label": "Hohe Testabdeckung",
+      "section": "4.1",
+      "description": "Hohe Testabdeckung als Sicherheitsnetz.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-xboard",
+      "type": "StrategyApproach",
+      "label": "XBoard-Protokoll",
+      "section": "4.1",
+      "description": "Verwendung des verbreiteten Kommunikationsprotokolls xboard; Tabelle 4.1 markiert den Ansatz mit (c).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-opening-book",
+      "type": "StrategyApproach",
+      "label": "Integration von Eröffnungsbibliotheken",
+      "section": "4.1",
+      "description": "Integration von Eröffnungsbibliotheken; Tabelle 4.1 markiert den Ansatz mit (d).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-minimax-evaluation",
+      "type": "StrategyApproach",
+      "label": "Minimax und geeignete Stellungsbewertung",
+      "section": "4.1",
+      "description": "Implementierung des Minimax-Algorithmus und einer geeigneten Stellungsbewertung; Tabelle 4.1 markiert den Ansatz mit (e).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-tactics-tests",
+      "type": "StrategyApproach",
+      "label": "Integrationstests für taktische Motive und Matt",
+      "section": "4.1",
+      "description": "Integrationstests mit Schachaufgaben für taktische Motive und Mattsituationen.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-reactive",
+      "type": "StrategyApproach",
+      "label": "Reactive Extensions für nebenläufige Berechnung",
+      "section": "4.1",
+      "description": "Reactive Extensions für nebenläufige Berechnung mit neu gefundenen besseren Zügen als Events; Tabelle 4.1 markiert den Ansatz mit (f).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-alpha-beta",
+      "type": "StrategyApproach",
+      "label": "Alpha-Beta-Suche",
+      "section": "4.1",
+      "description": "Optimierung des Minimax durch Alpha-Beta-Suche; Tabelle 4.1 markiert den Ansatz mit (e).",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-domain-efficient",
+      "type": "StrategyApproach",
+      "label": "Effiziente Implementierung des Domänenmodells",
+      "section": "4.1",
+      "description": "Effiziente Implementierung des Domänenmodells. Dieser Ansatz ist eigenständig neben dem expliziten, objektorientierten Domänenmodell für Analysierbarkeit aufgeführt.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-time-tests",
+      "type": "StrategyApproach",
+      "label": "Integrationstests mit Zeitvorgaben",
+      "section": "4.1",
+      "description": "Integrationstests mit Zeitvorgaben.",
+      "source_file": "04-Loesungsstrategie/04-01-Einstieg.md",
+      "source_anchor": "## 4.1 Einstieg in die Lösungsstrategie"
+    },
+    {
+      "id": "s04-approach-modular-structure",
+      "type": "StrategyApproach",
+      "label": "Vier austauschbare Subsysteme",
+      "section": "4.2",
+      "description": "DokChess ist als Java-Programm mit main-Routine realisiert. Es zerfällt in Schachregeln, Engine zur Zugermittlung, XBoard-Anbindung und Adapter für Polyglot Opening Book. Die Zerlegung ermöglicht den Austausch von Kommunikationsprotokoll und Eröffnungsbibliotheksformat; alle Teile sind über Schnittstellen abstrahiert und per Dependency Injection zusammengesteckt.",
+      "source_file": "04-Loesungsstrategie/04-02-Aufbau.md",
+      "source_anchor": "## 4.2 Der Aufbau von DokChess"
+    },
+    {
+      "id": "s04-approach-domain-readability",
+      "type": "StrategyApproach",
+      "label": "Fachliche Datenstrukturen zugunsten der Verständlichkeit",
+      "section": "4.2",
+      "description": "Algorithmenteile tauschen fachlich motivierte Datenstrukturen aus (Figur, Zug, …). Hier wurde bewusst eine bessere Verständlichkeit angestrebt, auf Kosten von Effizienz. Auch bei der Stellung ging Lesbarkeit vor Effizienz; sie ist wie alle anderen fachlichen Klassen unveränderlich.",
+      "source_file": "04-Loesungsstrategie/04-02-Aufbau.md",
+      "source_anchor": "## 4.2 Der Aufbau von DokChess"
+    },
+    {
+      "id": "s04-approach-fixed-depth-minimax",
+      "type": "StrategyApproach",
+      "label": "Minimax mit fester Suchtiefe",
+      "section": "4.3",
+      "description": "Für den weiteren Partieverlauf ist ein klassischer Minimax-Algorithmus mit fester Suchtiefe im Spielbaum verantwortlich. Die Basis-Implementierung ist nicht nebenläufig; die Bewertung an einem Terminalknoten basiert ausschließlich auf dem Material. Diese einfachen Implementierungen erfüllen unter den gegebenen Randbedingungen bereits die Qualitätsszenarien.",
+      "source_file": "04-Loesungsstrategie/04-03-Spielstrategie.md",
+      "source_anchor": "## 4.3 Spielstrategie"
+    },
+    {
+      "id": "s04-approach-parallel-minimax",
+      "type": "StrategyApproach",
+      "label": "Paralleler Minimax als Beispiel",
+      "section": "4.3",
+      "description": "Die unveränderlichen Datenstrukturen erleichtern das Implementieren nebenläufiger Algorithmen; ein paralleler Minimax ist ebenfalls als Beispiel enthalten.",
+      "source_file": "04-Loesungsstrategie/04-03-Spielstrategie.md",
+      "source_anchor": "## 4.3 Spielstrategie"
+    },
+    {
+      "id": "s04-approach-stdin-stdout",
+      "type": "StrategyApproach",
+      "label": "XBoard-Kommunikation über Standardein- und -ausgabe",
+      "section": "4.4",
+      "description": "DokChess besitzt keine grafische Benutzeroberfläche; die Kommunikation erfolgt stattdessen über die Standardein- und -ausgabe. Als textbasiertes Kommunikationsprotokoll kommt XBoard zum Einsatz.",
+      "source_file": "04-Loesungsstrategie/04-04-Anbindung.md",
+      "source_anchor": "## 4.4 Die Anbindung"
+    },
+    {
+      "id": "s04-approach-async-engine",
+      "type": "StrategyApproach",
+      "label": "Reaktive Engine-Anbindung",
+      "section": "4.4",
+      "description": "Die eigentliche Engine wird über einen reaktiven Ansatz (Reactive Extensions) angebunden. DokChess bleibt so auch während der Zugermittlung ansprechbar; ein Benutzer kann zum Beispiel ein sofortiges Ziehen erzwingen.",
+      "source_file": "04-Loesungsstrategie/04-04-Anbindung.md",
+      "source_anchor": "## 4.4 Die Anbindung"
+    },
+    {
+      "id": "s04-approach-windows-batch",
+      "type": "StrategyApproach",
+      "label": "Windows-Batchdatei zum JVM-Start",
+      "section": "4.4",
+      "description": "Die Integration in ein UI erfolgt unter Windows über eine Batch-Datei (.bat), welche die JVM unter Angabe der Klasse mit main-Methode startet.",
+      "source_file": "04-Loesungsstrategie/04-04-Anbindung.md",
+      "source_anchor": "## 4.4 Die Anbindung"
+    },
+    {
+      "id": "s05-bb-xboard",
+      "type": "BuildingBlock",
+      "label": "XBoard-Protokoll",
+      "section": "5.2",
+      "priority": "1",
+      "category": "blackbox",
+      "description": "Subsystem zur Kommunikation mit einem Client per textbasiertem XBoard-Protokoll. Liest Befehle über stdin, prüft sie gegen die Spielregeln, setzt sie für die Engine um, nimmt Engine-Antworten als Ereignisse entgegen und sendet protokollgemäße Antworten über stdout. Treibt das ganze Spielgeschehen und enthält die main-Methode.",
+      "source_file": "05-Bausteinsicht/05-02-XBoard-Protokoll.md",
+      "source_anchor": "## 5.2 XBoard-Protokoll (Blackbox)"
+    },
+    {
+      "id": "s05-bb-regeln",
+      "type": "BuildingBlock",
+      "label": "Spielregeln",
+      "section": "5.3",
+      "priority": "1",
+      "category": "blackbox",
+      "description": "Subsystem mit Schachregeln gemäß FIDE. Ermittelt zu einer Stellung alle gültigen Züge und entscheidet, ob Schach, Matt oder Patt vorliegt. Schnittstelle de.dokchess.regeln.Spielregeln, Default-Implementierung de.dokchess.regeln.DefaultSpielregeln. Abgesehen vom Patt kann das Subsystem kein Remis erkennen; insbesondere sind 50-Züge-Regel und Stellungswiederholung bisher nicht implementiert.",
+      "source_file": "05-Bausteinsicht/05-03-Spielregeln.md",
+      "source_anchor": "## 5.3 Spielregeln (Blackbox)"
+    },
+    {
+      "id": "s05-bb-engine",
+      "type": "BuildingBlock",
+      "label": "Engine",
+      "section": "5.4",
+      "priority": "1",
+      "category": "blackbox",
+      "description": "Subsystem zur Ermittlung eines nächsten Zuges ausgehend von einer extern vorgegebenen Spielsituation. Zustandsbehaftet und spielt stets eine Partie zur gleichen Zeit. Die Default-Implementierung benötigt Spielregeln; die Eröffnungsbibliothek ist optional. Die Engine führt die ermittelten Züge nicht selbst aus.",
+      "source_file": "05-Bausteinsicht/05-04-Engine.md",
+      "source_anchor": "## 5.4 Engine (Blackbox)"
+    },
+    {
+      "id": "s05-bb-eroeffnung",
+      "type": "BuildingBlock",
+      "label": "Eröffnung",
+      "section": "5.5",
+      "priority": "1",
+      "category": "blackbox",
+      "description": "Subsystem für Eröffnungsbibliotheken mit Implementierung des Polyglot Opening Book-Formats, des gegenwärtig einzig geläufigen nicht proprietären Formats. Die Möglichkeiten der Zugauswahl bei mehreren Kandidaten sind beschränkt (erster, am häufigsten gespielter, per Zufall); mehrere Bibliotheksdateien können nicht gleichzeitig gemischt werden.",
+      "source_file": "05-Bausteinsicht/05-05-Eroeffnung.md",
+      "source_anchor": "## 5.5 Eröffnung (Blackbox)"
+    },
+    {
+      "id": "s05-bb-engine-whitebox",
+      "type": "BuildingBlock",
+      "label": "Engine (Whitebox, Ebene 2)",
+      "section": "5.6",
+      "priority": "2",
+      "category": "whitebox",
+      "description": "Whitebox-Zerlegung des Engine-Subsystems in Zugsuche und Stellungsbewertung. Wenn vorhanden wird die Ermittlung zuerst an die Eröffnungsbibliothek delegiert; nur wenn diese keinen Rat weiß, kommt die Zugsuche zum Einsatz.",
+      "source_file": "05-Bausteinsicht/05-06-Ebene-2-Engine.md",
+      "source_anchor": "## 5.6 Ebene 2: Engine (Whitebox)"
+    },
+    {
+      "id": "s05-bb-zugsuche",
+      "type": "BuildingBlock",
+      "label": "Zugsuche",
+      "section": "5.7",
+      "priority": "2",
+      "category": "blackbox",
+      "description": "Modul zur Ermittlung des unter bestimmten Bedingungen optimalen Zuges. Der Minimax-Algorithmus exploriert den Spielbaum nur bis zu einer bestimmten Tiefe. MinimaxParalleleSuche untersucht mehrere Teilbäume parallel und meldet bessere Züge per onNext; onComplete signalisiert Suchabschluss. Die Suche kann abgebrochen und geschlossen werden.",
+      "source_file": "05-Bausteinsicht/05-07-Zugsuche.md",
+      "source_anchor": "## 5.7 Zugsuche (Blackbox)"
+    },
+    {
+      "id": "s05-bb-bewertung",
+      "type": "BuildingBlock",
+      "label": "Stellungsbewertung",
+      "section": "5.8",
+      "priority": "2",
+      "category": "blackbox",
+      "description": "Modul zur Bewertung einer Stellung aus Sicht eines Spielers. 0 bedeutet ausgeglichen, positive Werte Vorteil und negative Werte Nachteil; je höher der Betrag, desto größer der Vor- bzw. Nachteil. ReineMaterialBewertung berücksichtigt ausschließlich Material (Bauer 1, Springer 3, …, Dame 9); Figurenpositionen werden nicht berücksichtigt, bewusst bleibt Spielraum für Verbesserungen.",
+      "source_file": "05-Bausteinsicht/05-08-Stellungsbewertung.md",
+      "source_anchor": "## 5.8 Stellungsbewertung (Blackbox)"
+    },
+    {
+      "id": "s05-if-xboard-api",
+      "type": "InternalInterface",
+      "label": "XBoard-API",
+      "section": "5.2",
+      "description": "Java-Klassen de.dokchess.xboard.XBoard und de.dokchess.xboard.Main. XBoard-Methoden: setEingabe(Reader), setAusgabe(Writer), setSpielregeln(Spielregeln), setEngine(Engine), spielen(). Main.main(String[]) instanziiert XBoard.",
+      "source_file": "05-Bausteinsicht/05-02-XBoard-Protokoll.md",
+      "source_anchor": "### Schnittstellen"
+    },
+    {
+      "id": "s05-if-spielregeln",
+      "type": "InternalInterface",
+      "label": "Spielregeln-API",
+      "section": "5.3",
+      "description": "Java-Interface de.dokchess.regeln.Spielregeln: liefereGrundaufstellung():Stellung, liefereGueltigeZuege(Stellung):Collection<Zug>, aufSchachPruefen(Stellung,Farbe):boolean, aufMattPruefen(Stellung):boolean, aufPattPruefen(Stellung):boolean. Bei Matt oder Patt liefert liefereGueltigeZuege eine leere Collection, nie null.",
+      "source_file": "05-Bausteinsicht/05-03-Spielregeln.md",
+      "source_anchor": "### Schnittstelle"
+    },
+    {
+      "id": "s05-if-engine",
+      "type": "InternalInterface",
+      "label": "Engine-API",
+      "section": "5.4",
+      "description": "Java-Interface de.dokchess.engine.Engine: figurenAufbauen(Stellung), ermittleDeinenZug():Observable<Zug>, ziehen(Zug), schliessen(). DefaultEngine ergänzt setSpielregeln(Spielregeln) und setEroeffnungsbibliothek(Eroeffnungsbibliothek); Zugermittlung läuft asynchron, die Engine führt Züge nicht aus.",
+      "source_file": "05-Bausteinsicht/05-04-Engine.md",
+      "source_anchor": "### Schnittstellen"
+    },
+    {
+      "id": "s05-if-eroeffnung",
+      "type": "InternalInterface",
+      "label": "Eröffnungsbibliothek-API",
+      "section": "5.5",
+      "description": "Java-Interface de.dokchess.eroeffnung.Eroeffnungsbibliothek mit liefereZug(Stellung):Zug. PolyglotOpeningBook liest eine Binärdatei, bietet setAuswahlModus(AuswahlModus) und liefert gegebenenfalls null.",
+      "source_file": "05-Bausteinsicht/05-05-Eroeffnung.md",
+      "source_anchor": "### Schnittstellen"
+    },
+    {
+      "id": "s05-if-suche",
+      "type": "InternalInterface",
+      "label": "Suche-API",
+      "section": "5.7",
+      "description": "Schnittstelle de.dokchess.engine.suche.Suche: zugSuchen(Stellung, Observer<Zug>), sucheAbbrechen(), schliessen(). MinimaxAlgorithmus setzt Spielregeln, Bewertung und Tiefe; ermittleBestenZug(Stellung) blockiert und ist deterministisch.",
+      "source_file": "05-Bausteinsicht/05-07-Zugsuche.md",
+      "source_anchor": "### Schnittstellen"
+    },
+    {
+      "id": "s05-if-bewertung",
+      "type": "InternalInterface",
+      "label": "Bewertung-API",
+      "section": "5.8",
+      "description": "Schnittstelle de.dokchess.engine.bewertung.Bewertung mit bewerteStellung(Stellung,Farbe):int sowie Konstanten für typische Bewertungen; einfache Implementierung ReineMaterialBewertung.",
+      "source_file": "05-Bausteinsicht/05-08-Stellungsbewertung.md",
+      "source_anchor": "### Schnittstellen"
+    },
+    {
+      "id": "s06-scenario-zugermittlung",
+      "type": "RuntimeScenario",
+      "label": "Zugermittlung: e2e4 bis move b8c6",
+      "section": "6.1",
+      "category": "normal",
+      "description": "Der Client startet eine Partie mit e2e4. XBoard validiert den Zug mit Spielregeln, führt ihn auf der Engine aus und fordert asynchron die Zugermittlung an. Die Engine fragt zuerst die optionale Eröffnungsbibliothek ab (im Beispiel null), ermittelt danach mit Spielregeln Kandidaten und meldet über Observer/Reactive Extensions nacheinander e7-e5 und b8-c6 sowie fertig. XBoard führt den letzten Zug b8-c6 auf der Engine aus und gibt „move b8c6“ über stdout aus.",
+      "source_file": "06-Laufzeitsicht/06-01-Zugermittlung.md",
+      "source_anchor": "## 6.1 Zugermittlung Walkthrough"
+    },
+    {
+      "id": "s07-infra-windows-pc",
+      "type": "InfrastructureNode",
+      "label": "Windows-PC",
+      "section": "7.1",
+      "priority": "1",
+      "description": "Gerät, auf dem das Deploymentdiagramm DokChess unter Windows ohne Eröffnungsbibliothek zeigt.",
+      "source_file": "07-Verteilungssicht/07-01-Infrastruktur-Windows.md",
+      "source_anchor": "## 7.1 Infrastruktur Windows"
+    },
+    {
+      "id": "s07-infra-arena",
+      "type": "InfrastructureNode",
+      "label": "Arena Chess GUI",
+      "section": "7.1",
+      "priority": "2",
+      "description": "Exemplarisches Schach-Frontend; Softwarevoraussetzung Arena. In Arena wird dokchess.bat als Motor installiert und als Motoren-Typ Winboard ausgewählt.",
+      "source_file": "07-Verteilungssicht/07-01-Infrastruktur-Windows.md",
+      "source_anchor": "## 7.1 Infrastruktur Windows"
+    },
+    {
+      "id": "s07-infra-jre",
+      "type": "InfrastructureNode",
+      "label": "Java Runtime Environment SE",
+      "section": "7.1",
+      "priority": "2",
+      "description": "Execution environment. Softwarevoraussetzung Java Runtime Environment SE 11 oder höher; javaw.exe muss im Pfad liegen, ansonsten ist dokchess.bat anzupassen.",
+      "source_file": "07-Verteilungssicht/07-01-Infrastruktur-Windows.md",
+      "source_anchor": "## 7.1 Infrastruktur Windows"
+    },
+    {
+      "id": "s07-infra-dokchess-jar",
+      "type": "InfrastructureNode",
+      "label": "DokChess.jar",
+      "section": "7.1",
+      "priority": "2",
+      "description": "Ausführbares Artefakt in der JVM; enthält den kompilierten Java-Quelltext sämtlicher Module und alle nötigen Abhängigkeiten („Über-jar“). Liegt mit dokchess.bat in einem gemeinsamen Verzeichnis, da das Skript die jar-Datei relativ anspricht.",
+      "source_file": "07-Verteilungssicht/07-01-Infrastruktur-Windows.md",
+      "source_anchor": "## 7.1 Infrastruktur Windows"
+    },
+    {
+      "id": "s07-infra-batch",
+      "type": "InfrastructureNode",
+      "label": "dokchess.bat",
+      "section": "7.1",
+      "priority": "2",
+      "description": "Script-Datei und Deployment-Artefakt; startet die Java Virtual Machine mit DokChess. Liegt mit DokChess.jar in einem gemeinsamen Verzeichnis.",
+      "source_file": "07-Verteilungssicht/07-01-Infrastruktur-Windows.md",
+      "source_anchor": "## 7.1 Infrastruktur Windows"
+    },
+    {
+      "id": "s08-concept-abhaengigkeiten",
+      "type": "CrossCuttingConcept",
+      "label": "Abhängigkeiten zwischen Modulen",
+      "section": "8.1",
+      "category": "muster",
+      "description": "Module sind über Java-Schnittstellen lose gekoppelt. Benötiger signalisieren Abhängigkeiten über set«Module»(«Interface» …), erzeugen keine Exemplare selbst und bemühen keine Factory. Der Verwender erzeugt Implementierungen und steckt sie per Dependency Injection zusammen. Das erlaubt Alternativimplementierungen, Decorator und AOP/Dynamic Proxies und verbessert Testbarkeit. Kein spezielles DI-Framework: hart verdrahtet wird nur in Unit-Tests und Glue-Code (z.B. Main); keine annotationsgetriebene Konfiguration. Als reine POJOs sind Spring oder CDI möglich.",
+      "source_file": "08-Konzepte/08-01-Abhaengigkeiten.md",
+      "source_anchor": "## 8.1 Abhängigkeiten zwischen Modulen"
+    },
+    {
+      "id": "s08-concept-domain-model",
+      "type": "CrossCuttingConcept",
+      "label": "Schach-Domänenmodell",
+      "section": "8.2",
+      "category": "domänenmodell",
+      "description": "Alle Module tauschen dieselben schachspezifischen Klassen als Aufruf- und Rückgabeparameter aus. Das Modell umfasst insbesondere Stellung, Züge und Figuren; Klassen und Enums liegen im Paket de.dokchess.allgemein. Figur speichert Farbe und Art, aber nicht ihren Ort; Feld repräsentiert ein Brettfeld; Zug geht von Feld zu Feld (mit Umwandlungs-Ausnahme; Rochade als Königszug über zwei Felder). Stellung speichert Brett (2D-Array 8x8, unbesetzt = null), am Zug, Rochaderechte und en-passant-Möglichkeit. Die Domänenklassen sind unveränderlich; fuehreZugAus() liefert eine neue Stellung.",
+      "source_file": "08-Konzepte/08-02-Domaenenmodell.md",
+      "source_anchor": "## 8.2 Schach-Domänenmodell"
+    },
+    {
+      "id": "s08-concept-ui",
+      "type": "CrossCuttingConcept",
+      "label": "Benutzungsoberfläche über XBoard",
+      "section": "8.3",
+      "category": "prinzip",
+      "description": "DokChess verfügt selbst über keine grafische Oberfläche, sondern agiert über das textbasierte XBoard-Protokoll mit der Außenwelt. Eine Interaktion per Shell ist möglich, wenn die Kommandos bekannt sind. Die Beispieltabelle zeigt xboard, protover 2, feature done=1, e2e4, move b8c6 und quit. Das Kommandozeilenbild ergänzt Ereignisse wie Illegal move: a1a2 und Error (unknown command): blahblah. Typischerweise nimmt ein grafisches Frontend wie Arena Züge des Menschen entgegen, sendet XBoard-Kommandos und visualisiert die Antworten; die Gegenseite kann auch eine andere Engine sein.",
+      "source_file": "08-Konzepte/08-03-Benutzungsoberflaeche.md",
+      "source_anchor": "## 8.3 Benutzungsoberfläche"
+    },
+    {
+      "id": "s08-concept-validation",
+      "type": "CrossCuttingConcept",
+      "label": "Plausibilisierung und Validierung",
+      "section": "8.4",
+      "category": "regel",
+      "description": "XBoard-Eingaben werden geparst; unbekannte oder nicht implementierte Kommandos werden mit Error gemeldet. Züge werden mit dem Spielregeln-Subsystem geprüft; unzulässige Züge mit Illegal move gemeldet. Beim Aufbau einer Stellung wird die Protokolleinhaltung, nicht aber die Zulässigkeit der Position geprüft; im Extremfall wirft die Engine später Fehler (z.B. ohne Könige). Bei Eröffnungsbibliotheken wird nur geprüft, ob die Datei geöffnet/eingelesen werden kann; erkannte Formatprobleme erzeugen Laufzeitfehler. Inhaltlich prüft DokChess die Bibliothek jedoch nicht; unzulässige hinterlegte Züge bleiben unerkannt und können im Extremfall zu einem ungültigen Engine-Zug führen. Für Bibliotheksqualität ist der Anwender verantwortlich.",
+      "source_file": "08-Konzepte/08-04-Validierung.md",
+      "source_anchor": "## 8.4 Plausibilisierung und Validierung"
+    },
+    {
+      "id": "s08-concept-error-handling",
+      "type": "CrossCuttingConcept",
+      "label": "Ausnahme- und Fehlerbehandlung",
+      "section": "8.5",
+      "category": "regel",
+      "description": "Subsysteme werfen Runtime Exceptions; bei asynchroner Engine-Zugermittlung zusätzlich onError. Erweiterungen müssen Checked Exceptions gegebenenfalls verpacken. Erwartete Exceptions (Bibliothekseinlesen oder ungültige Stellung, falls erkannt) dokumentiert javadoc; alle übrigen Exceptions sind Programmierfehler. XBoard fängt sämtliche Exceptions und meldet tellusererror. DokChess arbeitet dann normal weiter; der Anwender entscheidet, ob Fortfahren sinnvoll ist, etwa ohne Eröffnungsbibliothek. Das Arena-Screenshot-Beispiel zeigt eine FileNotFoundException für D:\\Schach\\SuperCleverOpeningBook.bin mit der Meldung, das System könne den angegebenen Pfad nicht finden.",
+      "source_file": "08-Konzepte/08-05-Fehlerbehandlung.md",
+      "source_anchor": "## 8.5 Ausnahme- und Fehlerbehandlung"
+    },
+    {
+      "id": "s08-concept-logging",
+      "type": "CrossCuttingConcept",
+      "label": "Logging, Protokollierung, Tracing",
+      "section": "8.6",
+      "category": "regel",
+      "description": "Funktionalität wird gut mit Unit-Tests geprüft, insbesondere Spielregeln und Engine-Spielweise. Es gibt keine feinkörnigen Logging-Ausgaben innerhalb DokChess; log4j kommt nicht zum Einsatz, um Fremdbibliotheksabhängigkeit und Codeverschmutzung zu vermeiden. Für XBoard-Kommunikation kann der Client Logs oder Protokollfenster bereitstellen. Wegen dieser Verfügbarkeit wurde internes Kommunikationsprotokoll-Tracing nicht implementiert. Das Arena-Protokollfenster illustriert mitgeschnittene Kommandos wie new, random, level, post, hard, easy, time, otim, e2e4 und move b8c6 sowie die Ausgabe „Zug gefunden: Sb8-c6“.",
+      "source_file": "08-Konzepte/08-06-Logging.md",
+      "source_anchor": "## 8.6 Logging, Protokollierung, Tracing"
+    },
+    {
+      "id": "s08-concept-testability",
+      "type": "CrossCuttingConcept",
+      "label": "Testbarkeit",
+      "section": "8.7",
+      "category": "prinzip",
+      "description": "Umfangreiche JUnit-4-Unit-Tests liegen in src/test als Spiegelbild der Paketstruktur; Klassen-Unit-Tests heißen KlasseTest. Zusätzlich gibt es modulübergreifende und systemweite Tests, einschließlich Mattaufgaben; länger laufende Integrationstests (z.B. ganze Partien) liegen in src/integTest. Stellungen werden mit FEN als kompakter Zeichenkette bereitgestellt; Stellung akzeptiert FEN im Konstruktor und liefert FEN über toString. Grundstellung: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1. Beispielstellung aus dem Bild, weiß vor dem 79. Zug, 30 Halbzüge ohne Schlag oder Bauernzug: 6r1/6pp/7r/1B5K/1P3k2/N7/3R4/8 w - - 30 79; die Bildunterschrift beschreibt Weiß am Zug als matt. Antwortzeiten werden für exemplarische Situationen über @Test-Timeouts geprüft; Testerfolg hängt von der Hardware ab.",
+      "source_file": "08-Konzepte/08-07-Testbarkeit.md",
+      "source_anchor": "## 8.7 Testbarkeit"
+    },
+    {
+      "id": "s08-dm-figur",
+      "type": "DomainModelElement",
+      "label": "Figur",
+      "section": "8.2",
+      "description": "Schachfigur mit Farbe und FigurenArt. Das Klassendiagramm zeigt Attribute farbe:Farbe und art:FigurenArt; FigurenArt-Werte: BAUER, SPRINGER, LAEUFER, TURM, DAME, KOENIG. Eine Figur weiß im DokChess-Domänenmodell nicht, wo sie steht; sie ist unveränderlich.",
+      "source_file": "08-Konzepte/08-02-Domaenenmodell.md",
+      "source_anchor": "## 8.2 Schach-Domänenmodell"
+    },
+    {
+      "id": "s08-dm-feld",
+      "type": "DomainModelElement",
+      "label": "Feld",
+      "section": "8.2",
+      "description": "Beschreibt eines der 64 Felder des Schachbretts, angeordnet in 8 Reihen (1-8) und 8 Linien (a-h). Das Klassendiagramm weist linie:char und reihe:int aus.",
+      "source_file": "08-Konzepte/08-02-Domaenenmodell.md",
+      "source_anchor": "## 8.2 Schach-Domänenmodell"
+    },
+    {
+      "id": "s08-dm-zug",
+      "type": "DomainModelElement",
+      "label": "Zug",
+      "section": "8.2",
+      "description": "Angabe von Ausgangs- und Zielfeld; das Klassendiagramm zeigt von:Feld, nach:Feld und umwandlung:FigurenArt mit Multiplizität 0..1. Da ein Feld maximal von einer Figur besetzt sein kann, reicht dies für einen Zug. Ausnahme ist die Bauernumwandlung, bei der der Spieler die Umwandlungsfigur auswählt. Rochade wird als Königszug über zwei Felder repräsentiert.",
+      "source_file": "08-Konzepte/08-02-Domaenenmodell.md",
+      "source_anchor": "## 8.2 Schach-Domänenmodell"
+    },
+    {
+      "id": "s08-dm-stellung",
+      "type": "DomainModelElement",
+      "label": "Stellung",
+      "section": "8.2",
+      "description": "Aktuelle Spielsituation: Figuren auf dem Brett, Spieler am Zug, Rochademöglichkeiten und en-passant-Möglichkeit. Das Brett ist intern ein zweidimensionales Array (8x8), unbesetzte Felder enthalten null. Klasse unveränderlich; fuehreZugAus() liefert eine neue Stellung zurück. Das Klassendiagramm zeigt brett: Figur[][] und amZug: Farbe sowie eine 2..64-Assoziation zu Figur.",
+      "source_file": "08-Konzepte/08-02-Domaenenmodell.md",
+      "source_anchor": "## 8.2 Schach-Domänenmodell"
+    },
+    {
+      "id": "s08-dm-farbe",
+      "type": "DomainModelElement",
+      "label": "Farbe",
+      "section": "8.2",
+      "description": "Aufzählungstyp für die Farbe eines Spielers/einer Figur; mögliche Farben sind schwarz und weiß. Das Stellungsklassendiagramm verwendet Farbe für amZug.",
+      "source_file": "08-Konzepte/08-02-Domaenenmodell.md",
+      "source_anchor": "## 8.2 Schach-Domänenmodell"
+    },
+    {
+      "id": "s08-dm-figurenart",
+      "type": "DomainModelElement",
+      "label": "FigurenArt",
+      "section": "8.2",
+      "description": "Aufzählungstyp im Figurendiagramm mit den Werten BAUER, SPRINGER, LAEUFER, TURM, DAME und KOENIG.",
+      "source_file": "08-Konzepte/08-02-Domaenenmodell.md",
+      "source_anchor": "## 8.2 Schach-Domänenmodell"
+    },
+    {
+      "id": "s09-adr-01-anbindung",
+      "type": "ArchitectureDecision",
+      "label": "ADR 09-01: Frontend-Anbindung",
+      "section": "9.1",
+      "status": "accepted",
+      "description": "Status: Accepted (2026-03-10). Context: DokChess soll mit vorhandenen Schach-Frontends zusammenarbeiten; untersucht wurden UCI und XBoard anhand Arena 3, Fritz for Fun und Winboard/XBoard (Stand 2011). Beide Protokolle sind textbasiert und nutzen stdin/stdout; das Frontend startet die Engine in einem separaten Prozess. Decision: XBoard-Protokoll als primäres Kommunikationsprotokoll. Begründung: freie Frontends und Unterstützung neben Windows auch auf Mac OS X/Linux; Arena unter Windows unterstützt beide Protokolle. Die Architektur lässt alternative Protokolle wie UCI ohne Änderung der Engine zu. Consequences positive: breitere Interoperabilität, niedrige Einstiegshürde, Debugging mit Arena, spätere Protokollerweiterung. Negative: UCI wird initial nicht nativ umgesetzt; UCI-spezifische Integrationen sind zunächst nicht direkt verfügbar; Bewertung beruht auf begrenzter Menge betrachteter Frontends. Weiterentwicklung: Kommunikationsschnittstelle stabil halten.",
+      "source_file": "09-Entscheidungen/09-01-Anbindung.md",
+      "source_anchor": "# 09-01 Frontend-Anbindung"
+    },
+    {
+      "id": "s09-adr-02-stellungsobjekte",
+      "type": "ArchitectureDecision",
+      "label": "ADR 09-02: Stellungsobjekte veränderlich oder unveränderlich",
+      "section": "9.2",
+      "status": "accepted",
+      "description": "Status: Accepted (2026-03-10). Context: Stellungen werden zwischen Modulen ausgetauscht; eine spätere Änderung der Stellungsschnittstelle beträfe das Gesamtsystem. Betrachtete Alternativen: (1) veränderlich mit fuehreZugAus() und nimmLetztenZugZurueck(); (2) unveränderlich, fuehreZugAus() liefert neue Stellung, Original bleibt unverändert. Vergleichstabelle: Implementierungsaufwand veränderlich höher/unveränderlich geringer; Speicher veränderlich sparsamer/unveränderlich höher; Zeitverhalten veränderlich neutral/unveränderlich schlechter; Nebenläufigkeit veränderlich schlecht/unveränderlich gut. Decision: unveränderliche Variante (Option 2). Begründung: keine Undo-Mechanik für Suchbaum; besser für nebenläufige Ausführung; Prototypvergleich (Mattsuche, Minimax, Matt in 3) ergab ca. 30 Prozent längere Laufzeit, weiterhin innerhalb der geforderten Grenzen. Positive Konsequenzen: geringerer Suchlogik-Aufwand ohne explizites Zurücknehmen, robustere Grundlage für Nebenläufigkeit, alte Stellungen als Werte erhalten. Negative Konsequenzen: höherer Speicherbedarf, mehr Garbage-Collector-Last und potentiell schlechteres Zeitverhalten; gemessener Effizienznachteil ca. 30 Prozent. Weiterentwicklung: Optimierungen bleiben relevant (effizientes Kopieren, spätere Parallelisierung); DokChess 2.0 adressiert den Ansatz teilweise mit parallelem Minimax.",
+      "source_file": "09-Entscheidungen/09-02-Stellungsobjekte.md",
+      "source_anchor": "# 09-02 Stellungsobjekte: veraenderlich oder unveraenderlich"
+    },
+    {
+      "id": "s10-qs-w01",
+      "type": "QualityScenario",
+      "label": "W01",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Jemand mit Grundkenntnissen in UML und Schach möchte einen Einstieg in die Architektur von DokChess finden. Lösungsstrategie und Entwurf erschließen sich ihr oder ihm innerhalb von 15 Minuten.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-w02",
+      "type": "QualityScenario",
+      "label": "W02",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Ein Architekt, der arc42 anwenden möchte, sucht zu einem beliebigen Kapitel des Template einen konkreten Beispielinhalt und findet ihn unverzüglich in der Dokumentation.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-w03",
+      "type": "QualityScenario",
+      "label": "W03",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Eine erfahrene Java-Entwicklerin sucht die Implementierung eines im Entwurf beschriebenen Moduls. Sie findet sie ohne Umwege oder fremde Hilfe im Quelltext.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-w04",
+      "type": "QualityScenario",
+      "label": "W04",
+      "section": "10.2",
+      "category": "change",
+      "description": "Ein Entwickler implementiert eine neue Stellungsbewertung. Er kann sie ohne Änderung und ohne Übersetzung vorhandenen Codes in bestehende Strategien integrieren.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-w05",
+      "type": "QualityScenario",
+      "label": "W05",
+      "section": "10.2",
+      "category": "change",
+      "description": "Eine Entwicklerin implementiert eine figurenzentrierte Bitboard-Repräsentation der Spielsituation. Der Aufwand dazu beträgt inklusive des Austauschs der bestehenden, feldzentrierten Darstellung durch die neue maximal eine Woche.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-k01",
+      "type": "QualityScenario",
+      "label": "K01",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Ein Benutzer will DokChess mit einem Schach-Frontend verwenden, das ein von der Lösung implementiertes Kommunikationsprotokoll unterstützt. Das Einbinden erfordert keinerlei Programmieraufwand, die Konfiguration innerhalb des Frontend ist innerhalb von zehn Minuten durchgeführt und getestet.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-f01",
+      "type": "QualityScenario",
+      "label": "F01",
+      "section": "10.2",
+      "category": "usage",
+      "description": "In einer Spielsituation hat die Engine einen oder mehrere regelkonforme Züge zur Auswahl. Sie antwortet mit einem dieser Züge.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-f02",
+      "type": "QualityScenario",
+      "label": "F02",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Ein schwacher Spieler zieht in einer Partie gegen die Engine eine Figur ungedeckt und frei von Sinn auf ein von der Engine angegriffenes Feld. Die Engine im Anschluss am Zug nimmt die „eingestellte“ Figur.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-f03",
+      "type": "QualityScenario",
+      "label": "F03",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Der Engine eröffnet sich eine Springergabel, um Dame oder Turm zu gewinnen. Die Engine gewinnt Dame (bzw. Turm) gegen Springer.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-f04",
+      "type": "QualityScenario",
+      "label": "F04",
+      "section": "10.2",
+      "category": "usage",
+      "description": "In einer Partie ergibt sich für die Engine ein Matt in zwei Zügen. Die Engine zieht sicher zum Sieg.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-e01",
+      "type": "QualityScenario",
+      "label": "E01",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Während einer Partie antwortet die Engine auf gegnerische Züge innerhalb von fünf Sekunden mit einem Zug.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-e02",
+      "type": "QualityScenario",
+      "label": "E02",
+      "section": "10.2",
+      "category": "usage",
+      "description": "Eine in ein grafisches Frontend integrierte Engine spielt schwarz, der menschliche Spieler zieht an. Die Engine antwortet innerhalb von maximal zehn Sekunden mit ihrem ersten Zug, der Benutzer erhält spätestens nach fünf Sekunden eine Rückmeldung, dass die Engine „denkt“.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-z01",
+      "type": "QualityScenario",
+      "label": "Z01",
+      "section": "10.2",
+      "category": "fault",
+      "description": "Der Engine wird im Spielverlauf ein unzulässiger Gegenzug präsentiert. Die Engine lehnt den Zug ab, erlaubt im Anschluss die Eingabe eines anderen Zugs und spielt fehlerfrei weiter.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-z02",
+      "type": "QualityScenario",
+      "label": "Z02",
+      "section": "10.2",
+      "category": "fault",
+      "description": "Der Engine wird zum Spielbeginn eine unzulässige Stellung präsentiert. Die Engine erkennt die Situation und beendet das Spiel.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s10-qs-p01",
+      "type": "QualityScenario",
+      "label": "P01",
+      "section": "10.2",
+      "category": "change",
+      "description": "Eine Java-Programmiererin will DokChess mit einem Schach-Frontend verwenden, welches das Einbinden von Engines erlaubt, aber keines der implementierten Protokolle unterstützt. Sie kann das neue Protokoll ohne Änderung am bestehenden Code implementieren und die Engine anschließend wie gewohnt einbinden.",
+      "source_file": "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md",
+      "source_anchor": "## 10.2 Qualitätsszenarien"
+    },
+    {
+      "id": "s11-risk-frontend",
+      "type": "Risk",
+      "label": "Anbindung an das Frontend schlägt fehl",
+      "section": "11.1",
+      "priority": "nicht angegeben",
+      "category": "Integration",
+      "description": "Es liegt keinerlei Wissen über die Anbindung einer Engine an ein vorhandenes Schach-Frontend vor. Vorhandene Open-Source-Engines sind in C programmiert und werden als ausführbare Programme (unter Windows z.B. .exe) geliefert; sie taugen nur bedingt zur Inspiration. Über Kommunikationsprotokolle ist überhaupt nichts bekannt. Falls keine funktionierende Anbindung gelingt, kann die Lösung nicht mit bestehenden Frontends verwendet werden; damit fehlt ein wichtiges Feature und die Lösung ist als Fallbeispiel unglaubwürdig. Eventualfall: einfaches textuelles UI, aufwändiger eigenes grafisches Frontend. Risikominderung: frühestmögliche Sicherheit durch Proof of concept.",
+      "source_file": "11-Risiken/11-01-Frontend.md",
+      "source_anchor": "## 11.1 Risiko: Anbindung an das Frontend schlägt fehl"
+    },
+    {
+      "id": "s11-risk-aufwand",
+      "type": "Risk",
+      "label": "Aufwand der Implementierung zu hoch",
+      "section": "11.2",
+      "priority": "nicht angegeben",
+      "category": "Aufwand und Zeit",
+      "description": "Keine Erfahrung mit Schachprogrammierung; die vollständig zu realisierenden Spielregeln wirken umfangreich und kompliziert (unterschiedliche Figurenbewegungen, Patt, Umwandlung, Rochade, en passant und Partiehistorie). Algorithmen sind nicht trivial; Recherche für Eröffnungsbibliotheken und Endspieldatenbanken ist umfangreich. Die Entwicklung erfolgt nebenher in freier Zeit; es ist unklar, ob vorzeigbare Ergebnisse im Zeitplan möglich sind. Eventualfall: Live-Demo im März/Mai 2011 entfällt, der kostenlose Abendvortrag im März könnte abgesagt werden (Imageverlust). Risikominderung: 50-Züge-Regel und Stellungswiederholung zunächst nicht implementieren. Ihr Fehlen hat geringe Konsequenzen bezüglich der Spielstärke, und keine bezüglich der Korrektheit des Spiels der Engine. Eröffnungsbibliotheken und Endspieldatenbanken werden niedrig priorisiert und hintenangestellt.",
+      "source_file": "11-Risiken/11-02-Aufwand.md",
+      "source_anchor": "## 11.2 Risiko: Aufwand der Implementierung zu hoch"
+    },
+    {
+      "id": "s11-risk-spielstaerke",
+      "type": "Risk",
+      "label": "Erreichen der Spielstärke scheitert",
+      "section": "11.3",
+      "priority": "nicht angegeben",
+      "category": "Qualität und Leistung",
+      "description": "Die Qualitätsziele fordern akzeptable Spielstärke, eine einfache und leicht zugängliche Lösung sowie Effizienz. Unsicher ist, ob die anvisierte Java-Lösung mit objektorientiertem Domänenmodell und einfacher Zugauswahl diese konkurrierenden Ziele erreicht. Das Risiko zeigt sich in zu schlechter Spielstärke, zu langen Wartezeiten oder beidem; bei Live-Vorführungen würden Zuhörer die Lösung dann möglicherweise nur als Spielerei wahrnehmen. Unklar ist, ab wann Spielstärke unangemessen schwach wäre. Eventualfall: auf Teile der Live-Demonstration verzichten oder vorab gespielte Partien zeigen. Risikominderung: Szenarien konkretisieren Qualitätsziele und Schachaufgaben in Unit- und Integrationstests präzisieren erwartete Spielstärke, um früh den Stand zu ermitteln.",
+      "source_file": "11-Risiken/11-03-Spielstaerke.md",
+      "source_anchor": "## 11.3 Risiko: Erreichen der Spielstärke scheitert"
+    },
+    {
+      "id": "s12-term-50-zuege",
+      "type": "GlossaryTerm",
+      "label": "50-Züge-Regel",
+      "section": "12.2",
+      "description": "Regel im Schach, die besagt, dass ein Spieler ein Remis reklamieren kann, wenn 50 Züge lang kein Bauer bewegt und keine Figur geschlagen wurde.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-alpha-beta",
+      "type": "GlossaryTerm",
+      "label": "Alpha-Beta-Suche",
+      "section": "12.2",
+      "description": "Deutliche Verbesserung des Minimax-Algorithmus, in dem Teile des Suchbaumes „weggeschnitten“ werden können, ohne dabei zu einem anderen Ergebnis zu kommen.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-einstellen",
+      "type": "GlossaryTerm",
+      "label": "Einstellen",
+      "section": "12.2",
+      "description": "Anfängerfehler im Schach. Eine eigene Figur wird eingestellt, wenn sie auf ein vom Gegner angegriffenes Feld gezogen wird und von diesem gefahrlos geschlagen werden kann.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-endspiel",
+      "type": "GlossaryTerm",
+      "label": "Endspiel",
+      "section": "12.2",
+      "description": "Als Endspiel bezeichnet man im Schach die Endphase einer Partie. Sie ist dadurch gekennzeichnet, dass nur noch wenige Figurenarten auf dem Brett sind.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-engine",
+      "type": "GlossaryTerm",
+      "label": "Engine",
+      "section": "12.2",
+      "description": "Auch Schach-Engine. Bezeichnung für den Teil des Schachprogramms, der die Züge berechnet. Typischerweise hat eine Engine keine grafische Benutzeroberfläche.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-en-passant",
+      "type": "GlossaryTerm",
+      "label": "en passant",
+      "section": "12.2",
+      "description": "Spezieller Bauernzug im Schach. Wenn ein Bauer zwei Felder vorgeht und ein gegnerischer Bauer ihn hätte schlagen können, wäre er nur eins vorgegangen, darf dieser en passant schlagen.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-eroeffnung",
+      "type": "GlossaryTerm",
+      "label": "Eröffnung",
+      "section": "12.2",
+      "description": "Erste Phase einer Schachpartie. Das Erfahrungswissen hierzu füllt viele Bücher und umfangreiche Datenbanken.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-fen",
+      "type": "GlossaryTerm",
+      "label": "FEN",
+      "section": "12.2",
+      "description": "Forsyth-Edwards-Notation. Kompakte Darstellung einer Schachstellung als Zeichenkette. Wird von vielen Schach-Werkzeugen unterstützt. Einsatz in DokChess in Unit- und Integrationstests. Erläuterung siehe z.B. Wikipedia.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-fide",
+      "type": "GlossaryTerm",
+      "label": "FIDE",
+      "section": "12.2",
+      "description": "Fédération Internationale des Échecs, Internationaler Schachverband.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-gabel",
+      "type": "GlossaryTerm",
+      "label": "Gabel",
+      "section": "12.2",
+      "description": "Taktikmotiv im Schach, bei dem eine Figur zwei (oder mehr) gegnerische Figuren gleichzeitig bedroht.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-halbzug",
+      "type": "GlossaryTerm",
+      "label": "Halbzug",
+      "section": "12.2",
+      "description": "Aktion (Spielzug) eines einzelnen Spielers. Im Gegensatz zur Folge von weißem und schwarzem Zug, die z.B. beim Nummerieren als Zug gezählt wird.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-matt",
+      "type": "GlossaryTerm",
+      "label": "Matt",
+      "section": "12.2",
+      "description": "Auch Schachmatt. Ende einer Schachpartie, bei dem der König des am Zug befindlichen Spielers angegriffen ist und dieser keinen gültigen Zug hat (dem Angriff also nicht ausweichen kann). Der Spieler hat verloren.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-minimax",
+      "type": "GlossaryTerm",
+      "label": "Minimax-Algorithmus",
+      "section": "12.2",
+      "description": "Algorithmus zur Ermittlung des besten Zuges unter der Berücksichtigung aller Optionen beider Spieler.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-patt",
+      "type": "GlossaryTerm",
+      "label": "Patt",
+      "section": "12.2",
+      "description": "Ende einer Schachpartie, bei dem der am Zug befindliche Spieler keinen gültigen Zug hat, sein König aber nicht angegriffen ist. Das Spiel wird Remis gewertet.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-polyglot",
+      "type": "GlossaryTerm",
+      "label": "Polyglot Opening Book",
+      "section": "12.2",
+      "description": "Binäres Dateiformat für Eröffnungsbibliotheken. Anders als bei vielen anderen Formaten ist eine Dokumentation des Formates frei zugänglich.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-remis",
+      "type": "GlossaryTerm",
+      "label": "Remis",
+      "section": "12.2",
+      "description": "Ein Unentschieden im Schach. Es gibt verschiedene Möglichkeiten dazu, eine ist das Patt.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-rochade",
+      "type": "GlossaryTerm",
+      "label": "Rochade",
+      "section": "12.2",
+      "description": "Spezieller Spielzug im Schach, bei dem der eigene König und ein eigener Turm zugleich bewegt werden. Dazu müssen verschiedene Voraussetzungen erfüllt sein.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-schach960",
+      "type": "GlossaryTerm",
+      "label": "Schach960",
+      "section": "12.2",
+      "description": "Eine von Bobby Fischer entwickelte Schachvariante, bei der die Anfangsstellung aus 960 Möglichkeiten ausgelost wird. Auch als Fischer-Random-Chess bekannt.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-spiess",
+      "type": "GlossaryTerm",
+      "label": "Spieß",
+      "section": "12.2",
+      "description": "Taktikmotiv im Schach, bei dem eine geradlinig ziehende Figur mit zwei gegnerischen Figuren auf einer Reihe, Linie oder Diagonalen steht und die vordere der beiden zum Wegziehen zwingt.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-springergabel",
+      "type": "GlossaryTerm",
+      "label": "Springergabel",
+      "section": "12.2",
+      "description": "Besonders häufige Form der Gabel mit einem Springer als angreifende Figur.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-stellungswiederholung",
+      "type": "GlossaryTerm",
+      "label": "Stellungswiederholung",
+      "section": "12.2",
+      "description": "Regel im Schach, die besagt, dass ein Spieler ein Remis reklamieren kann, wenn dieselbe Stellung mindestens zum dritten Mal auftritt.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-umwandlung",
+      "type": "GlossaryTerm",
+      "label": "Umwandlung",
+      "section": "12.2",
+      "description": "Regel im Schach, nach der ein Bauer, der die gegnerische Grundlinie erreicht, sofort in Dame, Turm, Läufer oder Springer umgewandelt wird.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-winboard",
+      "type": "GlossaryTerm",
+      "label": "WinBoard-Protokoll",
+      "section": "12.2",
+      "description": "Siehe XBoard-Protokoll.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    },
+    {
+      "id": "s12-term-xboard",
+      "type": "GlossaryTerm",
+      "label": "XBoard-Protokoll",
+      "section": "12.2",
+      "description": "Textbasiertes Protokoll zur Kommunikation zwischen Schach-Frontends und Engines. Auch als „Winboard“ oder (seltener) als „Chess Engine Communication Protocol“ bezeichnet.",
+      "source_file": "12-Glossar/12-02-Begriffe.md",
+      "source_anchor": "| Begriff | Erklärung |"
+    }
+  ],
+  "edges": [
+    {
+      "source": "s04-approach-arc42",
+      "target": "s01-qg-zugaenglich",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet den arc42-Architekturüberblick dem Qualitätsziel Analysierbarkeit zu."
+    },
+    {
+      "source": "s04-approach-domain-explicit",
+      "target": "s01-qg-zugaenglich",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet das explizite, objektorientierte Domänenmodell der Analysierbarkeit zu."
+    },
+    {
+      "source": "s04-approach-german-names",
+      "target": "s01-qg-zugaenglich",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet deutsche Modul-, Klassen- und Methodennamen der Analysierbarkeit zu."
+    },
+    {
+      "source": "s04-approach-javadoc",
+      "target": "s01-qg-zugaenglich",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet die javadoc-Dokumentation öffentlicher Schnittstellen der Analysierbarkeit zu."
+    },
+    {
+      "source": "s04-approach-java",
+      "target": "s01-qg-experimentierplattform",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Java der Änderbarkeit zu (Markierung a)."
+    },
+    {
+      "source": "s04-approach-interfaces",
+      "target": "s01-qg-experimentierplattform",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Schnittstellen für Kernabstraktionen der Änderbarkeit zu."
+    },
+    {
+      "source": "s04-approach-immutable",
+      "target": "s01-qg-experimentierplattform",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet unveränderliche Objekte der Änderbarkeit zu."
+    },
+    {
+      "source": "s04-approach-di",
+      "target": "s01-qg-experimentierplattform",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Dependency Injection der Austauschbarkeit/Änderbarkeit zu (Markierung b)."
+    },
+    {
+      "source": "s04-approach-test-coverage",
+      "target": "s01-qg-experimentierplattform",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet hohe Testabdeckung der Änderbarkeit zu."
+    },
+    {
+      "source": "s04-approach-xboard",
+      "target": "s01-qg-interoperabilitaet",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet das XBoard-Protokoll der Interoperabilität zu (Markierung c)."
+    },
+    {
+      "source": "s04-approach-java",
+      "target": "s01-qg-interoperabilitaet",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet portables Java der Interoperabilität zu (Markierung a)."
+    },
+    {
+      "source": "s04-approach-opening-book",
+      "target": "s01-qg-spielstaerke",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Eröffnungsbibliotheken der Attraktivität/Spielstärke zu (Markierung d)."
+    },
+    {
+      "source": "s04-approach-minimax-evaluation",
+      "target": "s01-qg-spielstaerke",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Minimax und Stellungsbewertung der Attraktivität/Spielstärke zu (Markierung e)."
+    },
+    {
+      "source": "s04-approach-tactics-tests",
+      "target": "s01-qg-spielstaerke",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Integrationstests mit taktischen Schachaufgaben und Matt der Attraktivität zu."
+    },
+    {
+      "source": "s04-approach-reactive",
+      "target": "s01-qg-effizienz",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Reactive Extensions für nebenläufige Berechnung der Effizienz zu (Markierung f)."
+    },
+    {
+      "source": "s04-approach-alpha-beta",
+      "target": "s01-qg-effizienz",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Alpha-Beta-Suche der Effizienz zu (Markierung e)."
+    },
+    {
+      "source": "s04-approach-domain-efficient",
+      "target": "s01-qg-effizienz",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet die effiziente Implementierung des Domänenmodells der Effizienz zu."
+    },
+    {
+      "source": "s04-approach-time-tests",
+      "target": "s01-qg-effizienz",
+      "label": "addresses",
+      "evidence": "explicit",
+      "description": "Tabelle 4.1 ordnet Integrationstests mit Zeitvorgaben der Effizienz zu."
+    },
+    {
+      "source": "s10-qs-w01",
+      "target": "s01-qg-zugaenglich",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet W01 dem Qualitätsziel „Zugängliches Beispiel“ unter Analysierbarkeit zu."
+    },
+    {
+      "source": "s10-qs-w02",
+      "target": "s01-qg-zugaenglich",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet W02 dem Qualitätsziel „Zugängliches Beispiel“ unter Analysierbarkeit zu."
+    },
+    {
+      "source": "s10-qs-w03",
+      "target": "s01-qg-zugaenglich",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet W03 dem Qualitätsziel „Zugängliches Beispiel“ unter Analysierbarkeit zu."
+    },
+    {
+      "source": "s10-qs-w04",
+      "target": "s01-qg-experimentierplattform",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet W04 dem Qualitätsziel „Einladende Experimentierplattform“ unter Erweiterbarkeit zu."
+    },
+    {
+      "source": "s10-qs-w05",
+      "target": "s01-qg-experimentierplattform",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet W05 der Änderbarkeit und dem Qualitätsziel „Einladende Experimentierplattform“ zu."
+    },
+    {
+      "source": "s10-qs-p01",
+      "target": "s01-qg-experimentierplattform",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet P01 dem Qualitätsziel „Einladende Experimentierplattform“ unter Erweiterbarkeit zu."
+    },
+    {
+      "source": "s10-qs-k01",
+      "target": "s01-qg-interoperabilitaet",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet K01 der Interoperabilität und „Bestehende Frontends nutzen“ zu."
+    },
+    {
+      "source": "s10-qs-f02",
+      "target": "s01-qg-spielstaerke",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet F02 der angemessenen Spielstärke zu."
+    },
+    {
+      "source": "s10-qs-f03",
+      "target": "s01-qg-spielstaerke",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet F03 der angemessenen Spielstärke zu."
+    },
+    {
+      "source": "s10-qs-f04",
+      "target": "s01-qg-spielstaerke",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet F04 der angemessenen Spielstärke zu."
+    },
+    {
+      "source": "s10-qs-e01",
+      "target": "s01-qg-effizienz",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet E01 dem Qualitätsziel „Schnelles Antworten auf Züge“ zu."
+    },
+    {
+      "source": "s10-qs-e02",
+      "target": "s01-qg-effizienz",
+      "label": "concretizes",
+      "evidence": "explicit",
+      "description": "Abschnitt 10.1 Qualitätsbaum ordnet E02 dem Qualitätsziel „Schnelles Antworten auf Züge“ zu."
+    },
+    {
+      "source": "s09-adr-01-anbindung",
+      "target": "s04-approach-xboard",
+      "label": "realizes",
+      "evidence": "explicit",
+      "description": "ADR 09-01 entscheidet XBoard als primäres Kommunikationsprotokoll; die Lösungsstrategie führt XBoard als Ansatz auf."
+    },
+    {
+      "source": "s09-adr-02-stellungsobjekte",
+      "target": "s04-approach-immutable",
+      "label": "realizes",
+      "evidence": "explicit",
+      "description": "ADR 09-02 entscheidet für unveränderliche Stellung; die Lösungsstrategie führt unveränderliche Objekte als Ansatz auf."
+    },
+    {
+      "source": "s02-constraint-java",
+      "target": "s04-approach-java",
+      "label": "constrains",
+      "evidence": "explicit",
+      "description": "Randbedingung 2.1 fordert Java; Tabelle 4.1 führt Java als Programmiersprache auf."
+    },
+    {
+      "source": "s02-constraint-datenformate",
+      "target": "s09-adr-01-anbindung",
+      "label": "constrains",
+      "evidence": "explicit",
+      "description": "ADR 09-01 nennt die Bevorzugung etablierter Schachstandards als relevanten Einflussfaktor (Verweis auf 2.3 Konventionen)."
+    },
+    {
+      "source": "s02-constraint-hardware",
+      "target": "s09-adr-02-stellungsobjekte",
+      "label": "constrains",
+      "evidence": "explicit",
+      "description": "ADR 09-02 nennt moderate Hardwareausstattung als relevanten Einflussfaktor."
+    },
+    {
+      "source": "s02-constraint-windows",
+      "target": "s09-adr-01-anbindung",
+      "label": "constrains",
+      "evidence": "explicit",
+      "description": "ADR 09-01 berücksichtigt den Betrieb der Frontends zumindest auf Windows-Desktop-Betriebssystemen."
+    },
+    {
+      "source": "s03-partner-xboard-client",
+      "target": "s05-bb-xboard",
+      "label": "communicates_with",
+      "evidence": "explicit",
+      "description": "Abschnitt 3.2 und die Kontextabbildung zeigen den XBoard Client als Protokollpartner des DokChess-Subsystems XBoard-Protokoll."
+    },
+    {
+      "source": "s03-partner-polyglot",
+      "target": "s05-bb-eroeffnung",
+      "label": "communicates_with",
+      "evidence": "explicit",
+      "description": "Abschnitt 3.2 beschreibt die optionale, ausschließlich lesende Anbindung des Polyglot Opening Book; die Bausteinsicht 5.5 implementiert das Format."
+    },
+    {
+      "source": "s05-bb-engine",
+      "target": "s05-bb-engine-whitebox",
+      "label": "contains",
+      "evidence": "structural",
+      "description": "Whitebox-Sicht 5.6 verfeinert den Engine-Baustein der Ebene 1."
+    },
+    {
+      "source": "s05-bb-engine-whitebox",
+      "target": "s05-bb-zugsuche",
+      "label": "contains",
+      "evidence": "structural",
+      "description": "Whitebox-Sicht 5.6 zerlegt Engine in Zugsuche und Stellungsbewertung."
+    },
+    {
+      "source": "s05-bb-engine-whitebox",
+      "target": "s05-bb-bewertung",
+      "label": "contains",
+      "evidence": "structural",
+      "description": "Whitebox-Sicht 5.6 zerlegt Engine in Zugsuche und Stellungsbewertung."
+    },
+    {
+      "source": "s05-bb-xboard",
+      "target": "s05-if-xboard-api",
+      "label": "provides",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.2 stellt die XBoard-Funktionalität über die Klassen XBoard und Main bereit."
+    },
+    {
+      "source": "s05-bb-regeln",
+      "target": "s05-if-spielregeln",
+      "label": "provides",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.3 stellt die Funktionalität über das Interface de.dokchess.regeln.Spielregeln bereit."
+    },
+    {
+      "source": "s05-bb-engine",
+      "target": "s05-if-engine",
+      "label": "provides",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.4 stellt die Funktionalität über das Interface de.dokchess.engine.Engine bereit."
+    },
+    {
+      "source": "s05-bb-eroeffnung",
+      "target": "s05-if-eroeffnung",
+      "label": "provides",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.5 stellt die Funktionalität über das Interface de.dokchess.eroeffnung.Eroeffnungsbibliothek bereit."
+    },
+    {
+      "source": "s05-bb-zugsuche",
+      "target": "s05-if-suche",
+      "label": "provides",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.7 stellt die Suche über die Schnittstelle de.dokchess.engine.suche.Suche bereit."
+    },
+    {
+      "source": "s05-bb-bewertung",
+      "target": "s05-if-bewertung",
+      "label": "provides",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.8 stellt die Bewertung über de.dokchess.engine.bewertung.Bewertung bereit."
+    },
+    {
+      "source": "s05-bb-xboard",
+      "target": "s05-if-spielregeln",
+      "label": "consumes",
+      "evidence": "explicit",
+      "description": "Die XBoard-API setzt eine Spielregeln-Implementierung; Abschnitt 5.2 verweist auf Spielregeln 5.3."
+    },
+    {
+      "source": "s05-bb-xboard",
+      "target": "s05-if-engine",
+      "label": "consumes",
+      "evidence": "explicit",
+      "description": "Die XBoard-API setzt eine Engine-Implementierung; Abschnitt 5.2 verweist auf Engine 5.4."
+    },
+    {
+      "source": "s05-bb-engine",
+      "target": "s05-if-spielregeln",
+      "label": "consumes",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.4 sagt, dass die Default-Engine zum Arbeiten eine Implementierung der Spielregeln benötigt."
+    },
+    {
+      "source": "s05-bb-engine",
+      "target": "s05-if-eroeffnung",
+      "label": "consumes",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.4 beschreibt die Eröffnungsbibliothek als optional und ihre Züge als gegenüber eigenen Überlegungen bevorzugt."
+    },
+    {
+      "source": "s05-bb-zugsuche",
+      "target": "s05-if-spielregeln",
+      "label": "consumes",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.7 setzt die Spielregeln über Dependency Injection; Verweis auf 5.3."
+    },
+    {
+      "source": "s05-bb-zugsuche",
+      "target": "s05-if-bewertung",
+      "label": "consumes",
+      "evidence": "explicit",
+      "description": "Abschnitt 5.7 setzt die Bewertungsfunktion; Verweis auf 5.8."
+    },
+    {
+      "source": "s06-scenario-zugermittlung",
+      "target": "s05-bb-xboard",
+      "label": "involves",
+      "evidence": "explicit",
+      "description": "Abschnitt 6.1 beginnt mit Eingabe am XBoard-Protokoll und endet mit der Ausgabe move b8c6."
+    },
+    {
+      "source": "s06-scenario-zugermittlung",
+      "target": "s05-bb-regeln",
+      "label": "involves",
+      "evidence": "explicit",
+      "description": "Abschnitt 6.1 lässt XBoard den Zug validieren und die Engine gültige Kandidaten über die Spielregeln ermitteln."
+    },
+    {
+      "source": "s06-scenario-zugermittlung",
+      "target": "s05-bb-engine",
+      "label": "involves",
+      "evidence": "explicit",
+      "description": "Abschnitt 6.1 fordert die Engine asynchron zur Zugermittlung auf und führt ihren letzten Zug aus."
+    },
+    {
+      "source": "s06-scenario-zugermittlung",
+      "target": "s05-bb-eroeffnung",
+      "label": "involves",
+      "evidence": "explicit",
+      "description": "Abschnitt 6.1 fragt die Eröffnungsbibliothek ab; im Beispiel liefert sie null."
+    },
+    {
+      "source": "s06-scenario-zugermittlung",
+      "target": "s05-bb-zugsuche",
+      "label": "involves",
+      "evidence": "explicit",
+      "description": "Abschnitt 6.1 beschreibt nach erfolgloser Eröffnungsabfrage die Suche, bessere Zugereignisse und deren Abschluss."
+    },
+    {
+      "source": "s06-scenario-zugermittlung",
+      "target": "s05-bb-bewertung",
+      "label": "involves",
+      "evidence": "inferred",
+      "description": "Im Walkthrough werden Kandidaten untersucht und bewertet; die Bausteinsicht ordnet Stellungsbewertung der Engine zu."
+    },
+    {
+      "source": "s07-infra-windows-pc",
+      "target": "s07-infra-arena",
+      "label": "refines",
+      "evidence": "explicit",
+      "description": "Die Abbildung in Abschnitt 7.1 zeigt Arena Chess GUI auf dem Windows-PC."
+    },
+    {
+      "source": "s07-infra-windows-pc",
+      "target": "s07-infra-jre",
+      "label": "refines",
+      "evidence": "explicit",
+      "description": "Die Abbildung in Abschnitt 7.1 zeigt die Java Runtime Environment auf dem Windows-PC."
+    },
+    {
+      "source": "s07-infra-windows-pc",
+      "target": "s07-infra-dokchess-jar",
+      "label": "refines",
+      "evidence": "explicit",
+      "description": "Die Abbildung in Abschnitt 7.1 zeigt DokChess.jar auf dem Windows-PC in der JVM."
+    },
+    {
+      "source": "s07-infra-windows-pc",
+      "target": "s07-infra-batch",
+      "label": "refines",
+      "evidence": "explicit",
+      "description": "Die Abbildung in Abschnitt 7.1 zeigt dokchess.bat auf dem Windows-PC."
+    },
+    {
+      "source": "s05-bb-xboard",
+      "target": "s07-infra-dokchess-jar",
+      "label": "deployed_on",
+      "evidence": "explicit",
+      "description": "Die DokChess.jar enthält den kompilierten Java-Quelltext sämtlicher Module; Abschnitt 7.1."
+    },
+    {
+      "source": "s05-bb-regeln",
+      "target": "s07-infra-dokchess-jar",
+      "label": "deployed_on",
+      "evidence": "explicit",
+      "description": "Die DokChess.jar enthält den kompilierten Java-Quelltext sämtlicher Module; Abschnitt 7.1."
+    },
+    {
+      "source": "s05-bb-engine",
+      "target": "s07-infra-dokchess-jar",
+      "label": "deployed_on",
+      "evidence": "explicit",
+      "description": "Die DokChess.jar enthält den kompilierten Java-Quelltext sämtlicher Module; Abschnitt 7.1."
+    },
+    {
+      "source": "s05-bb-eroeffnung",
+      "target": "s07-infra-dokchess-jar",
+      "label": "deployed_on",
+      "evidence": "explicit",
+      "description": "Die DokChess.jar enthält den kompilierten Java-Quelltext sämtlicher Module; Abschnitt 7.1."
+    },
+    {
+      "source": "s08-concept-domain-model",
+      "target": "s08-dm-figur",
+      "label": "models",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.2 beschreibt Figur als Element des gemeinsamen Schach-Domänenmodells."
+    },
+    {
+      "source": "s08-concept-domain-model",
+      "target": "s08-dm-feld",
+      "label": "models",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.2 beschreibt Feld als Element des gemeinsamen Schach-Domänenmodells."
+    },
+    {
+      "source": "s08-concept-domain-model",
+      "target": "s08-dm-zug",
+      "label": "models",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.2 beschreibt Zug als Element des gemeinsamen Schach-Domänenmodells."
+    },
+    {
+      "source": "s08-concept-domain-model",
+      "target": "s08-dm-stellung",
+      "label": "models",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.2 beschreibt Stellung als Element des gemeinsamen Schach-Domänenmodells."
+    },
+    {
+      "source": "s08-concept-domain-model",
+      "target": "s08-dm-farbe",
+      "label": "models",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.2 beschreibt Farbe als Aufzählungstyp des gemeinsamen Schach-Domänenmodells."
+    },
+    {
+      "source": "s08-concept-domain-model",
+      "target": "s08-dm-figurenart",
+      "label": "models",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.2 und das Figurendiagramm zeigen FigurenArt als Aufzählungstyp des gemeinsamen Schach-Domänenmodells."
+    },
+    {
+      "source": "s08-concept-domain-model",
+      "target": "s09-adr-02-stellungsobjekte",
+      "label": "based_on",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.2 verweist für unveränderliche Stellung und fuehreZugAus() auf Entscheidung 9.2."
+    },
+    {
+      "source": "s08-concept-validation",
+      "target": "s05-bb-xboard",
+      "label": "affects",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.4 sagt, dass das XBoard-Protokoll eingehende Kommandos parst und Fehler meldet."
+    },
+    {
+      "source": "s08-concept-validation",
+      "target": "s05-bb-regeln",
+      "label": "affects",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.4 nutzt das Spielregeln-Subsystem zur Regelkonformitätsprüfung eingehender Züge."
+    },
+    {
+      "source": "s08-concept-validation",
+      "target": "s05-bb-eroeffnung",
+      "label": "affects",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.4 beschreibt Prüfgrenzen beim Einlesen und bei inhaltlich ungültigen Eröffnungsbibliotheken."
+    },
+    {
+      "source": "s08-concept-error-handling",
+      "target": "s05-bb-xboard",
+      "label": "affects",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.5 weist dem XBoard-Subsystem das Fangen sämtlicher Exceptions und die tellusererror-Meldung zu."
+    },
+    {
+      "source": "s08-concept-error-handling",
+      "target": "s05-bb-engine",
+      "label": "affects",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.5 nennt Runtime Exceptions und onError bei asynchroner Engine-Zugermittlung."
+    },
+    {
+      "source": "s08-concept-abhaengigkeiten",
+      "target": "s01-qg-experimentierplattform",
+      "label": "references",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.1 verweist auf Aufgabenstellung 1 zum Experimentieren und Erweitern der Engine."
+    },
+    {
+      "source": "s08-concept-abhaengigkeiten",
+      "target": "s08-concept-testability",
+      "label": "references",
+      "evidence": "explicit",
+      "description": "Abschnitt 8.1 verweist auf Konzept 8.7 Testbarkeit."
+    },
+    {
+      "source": "s11-risk-frontend",
+      "target": "s01-qg-interoperabilitaet",
+      "label": "threatens",
+      "evidence": "explicit",
+      "description": "Abschnitt 11.1 sagt, dass ohne funktionierende Frontend-Anbindung ein wichtiges Feature fehlt und DokChess nicht mit bestehenden Frontends verwendet werden kann."
+    },
+    {
+      "source": "s11-risk-aufwand",
+      "target": "s01-qg-spielstaerke",
+      "label": "threatens",
+      "evidence": "inferred",
+      "description": "Risiko 11.2 priorisiert Eröffnungsbibliotheken und Endspieldatenbanken niedrig und benennt geringe Folgen für Spielstärke; der Einfluss auf das Qualitätsziel Spielstärke ist thematisch abgeleitet."
+    },
+    {
+      "source": "s11-risk-spielstaerke",
+      "target": "s01-qg-spielstaerke",
+      "label": "threatens",
+      "evidence": "explicit",
+      "description": "Abschnitt 11.3 nennt ausdrücklich das Qualitätsziel akzeptable Spielstärke und das Risiko zu schlechter Spielstärke."
+    },
+    {
+      "source": "s11-risk-spielstaerke",
+      "target": "s01-qg-effizienz",
+      "label": "threatens",
+      "evidence": "explicit",
+      "description": "Abschnitt 11.3 nennt ausdrücklich Effizienz und zu lange Wartezeiten als mögliche Manifestation."
+    },
+    {
+      "source": "s11-risk-spielstaerke",
+      "target": "s01-qg-zugaenglich",
+      "label": "threatens",
+      "evidence": "inferred",
+      "description": "Risiko 11.3 nennt eine einfache, leicht zugängliche Lösung; Zuordnung zum Qualitätsziel Zugängliches Beispiel ist thematisch abgeleitet."
+    },
+    {
+      "source": "s12-term-alpha-beta",
+      "target": "s04-approach-alpha-beta",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossareintrag erläutert den Alpha-Beta-Ansatz aus Abschnitt 4.1."
+    },
+    {
+      "source": "s12-term-minimax",
+      "target": "s04-approach-minimax-evaluation",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossareintrag erläutert den Minimax-Ansatz aus Abschnitt 4.1."
+    },
+    {
+      "source": "s12-term-engine",
+      "target": "s05-bb-engine",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossareintrag definiert Engine als den Zugberechnungsteil eines Schachprogramms."
+    },
+    {
+      "source": "s12-term-polyglot",
+      "target": "s05-bb-eroeffnung",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossareintrag erläutert das Dateiformat der Eröffnungsbibliothek."
+    },
+    {
+      "source": "s12-term-xboard",
+      "target": "s05-bb-xboard",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossareintrag definiert das Protokoll zur Kommunikation zwischen Frontends und Engines."
+    },
+    {
+      "source": "s12-term-winboard",
+      "target": "s12-term-xboard",
+      "label": "references",
+      "evidence": "explicit",
+      "description": "Der Glossareintrag WinBoard-Protokoll verweist mit „siehe XBoard-Protokoll“ auf XBoard-Protokoll."
+    },
+    {
+      "source": "s12-term-fen",
+      "target": "s08-concept-testability",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossareintrag nennt den Einsatz der FEN-Notation in Unit- und Integrationstests."
+    },
+    {
+      "source": "s12-term-50-zuege",
+      "target": "s05-bb-regeln",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossarbegriff bezeichnet eine im Regel-Subsystem als nicht implementiert ausgewiesene Schachregel."
+    },
+    {
+      "source": "s12-term-stellungswiederholung",
+      "target": "s05-bb-regeln",
+      "label": "defines_term_for",
+      "evidence": "inferred",
+      "description": "Der Glossarbegriff bezeichnet eine im Regel-Subsystem als nicht implementiert ausgewiesene Schachregel."
+    }
+  ]
+}

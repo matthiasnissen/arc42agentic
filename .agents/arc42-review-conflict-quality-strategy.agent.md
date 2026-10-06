@@ -18,12 +18,20 @@ In der arc42-Dokumentation bildet sich ein zentraler Qualitätsstrang:
 
 Widersprüche oder Lücken in diesem Strang untergraben die Architekturbegründung fundamental.
 
-## Zu prüfende Dateien
+## Analyse-Modus
 
-> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
-> - **Sektion 1** (Qualitätsziele) — insbesondere Qualitätsziele
-> - **Sektion 4** (Lösungsstrategie) — alle Dateien
-> - **Sektion 10** (Qualitätsanforderungen) — alle Dateien
+Der Aufrufer (Orchestrator) teilt dir explizit mit, ob du im **GRAPH-MODUS** oder im **DATEI-MODUS** arbeitest. Wurde kein Modus mitgeteilt (Standalone-Aufruf), frage den Nutzer, bevor du beginnst, ob er den Graph-Modus (Wissensgraph) oder den Datei-Modus (rohe Markdown-Dateien) nutzen möchte.
+
+**GRAPH-MODUS**: Der Aufrufer liefert dir den Pfad zur GraphML-Datei sowie die Konfliktdimensions-Community `c-qs` (S1, S4, S10) gemäß Skill `arc42-knowledge-graph`.
+- Filtere auf Knoten der Typen `QualityGoal` (S1), `StrategyApproach` (S4) und `QualityScenario` (S10) — über `member_of` → Community `c-qs` (nicht über den exakten `section`-Wert: er enthält auch Unterabschnitte wie `4.1`).
+- Nutze die Kanten `addresses` (`StrategyApproach` → `QualityGoal`) und `concretizes` (`QualityScenario` → `QualityGoal`), um die Zuordnungsmatrix strukturell abzuleiten, statt sie manuell aus Fließtext zu rekonstruieren.
+- Kanten mit `evidence=inferred` nur mit Vorbehalt verwenden — prüfe bei kritischen (🔴) Befunden `source_file`/`source_anchor` gegen.
+- **Delta-Modus**: Beschränke die Analyse auf Knoten/Kanten mit `changed=true` und deren Nachbarschaft (siehe Skill `arc42-knowledge-graph`, Abschnitt „Inkrementelle Aktualisierung").
+
+**DATEI-MODUS**: Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+- **Sektion 1** (Qualitätsziele) — insbesondere Qualitätsziele
+- **Sektion 4** (Lösungsstrategie) — alle Dateien
+- **Sektion 10** (Qualitätsanforderungen) — alle Dateien
 
 ## Review-Modus
 
@@ -63,11 +71,11 @@ Widersprüche oder Lücken in diesem Strang untergraben die Architekturbegründu
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Qualitätsziele aus Sektion 1 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-3. Lies alle Dateien aus Sektion 4 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-4. Lies alle Dateien aus Sektion 10 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln)
-5. Erstelle eine Zuordnungsmatrix: Qualitätsziel → Strategieansatz → Szenario
-6. Identifiziere Lücken und Widersprüche in der Matrix (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
+2. Lade den Wissensgraphen und extrahiere alle `QualityGoal`-Knoten (Sektion 1) mit `priority`
+3. Extrahiere alle `StrategyApproach`-Knoten (Sektion 4) sowie deren `addresses`-Kanten zu `QualityGoal`
+4. Extrahiere alle `QualityScenario`-Knoten (Sektion 10) sowie deren `concretizes`-Kanten zu `QualityGoal`
+5. Erstelle die Zuordnungsmatrix Qualitätsziel → Strategieansatz → Szenario direkt aus den Kanten (fehlende Kante = Lücke)
+6. Identifiziere Lücken und Widersprüche in der Matrix (im Delta-Modus: fokussiert auf `changed=true`-Knoten und ihre Nachbarschaft)
 
 ## Ausgabeformat
 

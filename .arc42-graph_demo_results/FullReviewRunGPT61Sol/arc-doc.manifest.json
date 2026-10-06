@@ -1,0 +1,877 @@
+{
+  "doc_path": "/home/matthiaspe/repos/Arc42Agents/arc-doc",
+  "graph": "arc-doc.graphml",
+  "generator": "scripts/build_graph.py",
+  "schema_version": "1.0.0",
+  "files": {
+    "00-Ueberblick/00-00-Overview.md": {
+      "sha256": "537d6b6ec79a631602cb644e19fcd36325042658c95262de885577dec4414d39",
+      "nodes": [
+        "s00-system-dokchess"
+      ],
+      "edges": [
+        "s00-system-dokchess--member_of--c-s00"
+      ]
+    },
+    "01-Einfuehrung-und-Ziele/01-01-Aufgabenstellung.md": {
+      "sha256": "90bee2bfcb5cfbfd040e75c8df0201d8cd3444873f05ee99bab0d9a6ed0a59c8",
+      "nodes": [
+        "s01-req-schachengine",
+        "s01-req-fallbeispiel",
+        "s01-req-experimentieren",
+        "s01-req-gelegenheitsspieler",
+        "s01-req-fide-regeln",
+        "s01-req-gegner",
+        "s01-req-taktik",
+        "s01-req-frontends"
+      ],
+      "edges": [
+        "s01-req-schachengine--member_of--c-s01",
+        "s01-req-schachengine--member_of--c-qs",
+        "s01-req-schachengine--member_of--c-rq",
+        "s01-req-fallbeispiel--member_of--c-s01",
+        "s01-req-fallbeispiel--member_of--c-qs",
+        "s01-req-fallbeispiel--member_of--c-rq",
+        "s01-req-experimentieren--member_of--c-s01",
+        "s01-req-experimentieren--member_of--c-qs",
+        "s01-req-experimentieren--member_of--c-rq",
+        "s01-req-gelegenheitsspieler--member_of--c-s01",
+        "s01-req-gelegenheitsspieler--member_of--c-qs",
+        "s01-req-gelegenheitsspieler--member_of--c-rq",
+        "s01-req-fide-regeln--member_of--c-s01",
+        "s01-req-fide-regeln--member_of--c-qs",
+        "s01-req-fide-regeln--member_of--c-rq",
+        "s01-req-gegner--member_of--c-s01",
+        "s01-req-gegner--member_of--c-qs",
+        "s01-req-gegner--member_of--c-rq",
+        "s01-req-taktik--member_of--c-s01",
+        "s01-req-taktik--member_of--c-qs",
+        "s01-req-taktik--member_of--c-rq",
+        "s01-req-frontends--member_of--c-s01",
+        "s01-req-frontends--member_of--c-qs",
+        "s01-req-frontends--member_of--c-rq"
+      ]
+    },
+    "01-Einfuehrung-und-Ziele/01-02-Qualitaetsziele.md": {
+      "sha256": "cfd29386c2ca0f785b2e478f7834a6568c89952d4c413ab34408f8a2a7fe56fb",
+      "nodes": [
+        "s01-qg-zugaenglich",
+        "s01-qg-experimentierplattform",
+        "s01-qg-interoperabilitaet",
+        "s01-qg-spielstaerke",
+        "s01-qg-effizienz"
+      ],
+      "edges": [
+        "s01-qg-zugaenglich--member_of--c-s01",
+        "s01-qg-zugaenglich--member_of--c-qs",
+        "s01-qg-zugaenglich--member_of--c-rq",
+        "s01-qg-experimentierplattform--member_of--c-s01",
+        "s01-qg-experimentierplattform--member_of--c-qs",
+        "s01-qg-experimentierplattform--member_of--c-rq",
+        "s01-qg-interoperabilitaet--member_of--c-s01",
+        "s01-qg-interoperabilitaet--member_of--c-qs",
+        "s01-qg-interoperabilitaet--member_of--c-rq",
+        "s01-qg-spielstaerke--member_of--c-s01",
+        "s01-qg-spielstaerke--member_of--c-qs",
+        "s01-qg-spielstaerke--member_of--c-rq",
+        "s01-qg-effizienz--member_of--c-s01",
+        "s01-qg-effizienz--member_of--c-qs",
+        "s01-qg-effizienz--member_of--c-rq"
+      ]
+    },
+    "01-Einfuehrung-und-Ziele/01-03-Stakeholder.md": {
+      "sha256": "549277647386d3f3bd4b3c6d4952058f0617a14c654bf57e6ac5146825da8e1d",
+      "nodes": [
+        "s01-sh-architekten",
+        "s01-sh-entwickler",
+        "s01-sh-stefan-zoerner",
+        "s01-sh-oose"
+      ],
+      "edges": [
+        "s01-sh-architekten--member_of--c-s01",
+        "s01-sh-architekten--member_of--c-qs",
+        "s01-sh-architekten--member_of--c-rq",
+        "s01-sh-entwickler--member_of--c-s01",
+        "s01-sh-entwickler--member_of--c-qs",
+        "s01-sh-entwickler--member_of--c-rq",
+        "s01-sh-stefan-zoerner--member_of--c-s01",
+        "s01-sh-stefan-zoerner--member_of--c-qs",
+        "s01-sh-stefan-zoerner--member_of--c-rq",
+        "s01-sh-oose--member_of--c-s01",
+        "s01-sh-oose--member_of--c-qs",
+        "s01-sh-oose--member_of--c-rq"
+      ]
+    },
+    "02-Randbedingungen/02-01-Technisch.md": {
+      "sha256": "5060812eef47a167a2d11962ddf51555f21644b843b5a94893e78c380854f929",
+      "nodes": [
+        "s02-constraint-hardware",
+        "s02-constraint-windows",
+        "s02-constraint-java",
+        "s02-constraint-fremdsoftware"
+      ],
+      "edges": [
+        "s02-constraint-java--constrains--s04-approach-java",
+        "s02-constraint-hardware--constrains--s09-adr-02-stellungsobjekte",
+        "s02-constraint-windows--constrains--s09-adr-01-anbindung",
+        "s02-constraint-hardware--member_of--c-s02",
+        "s02-constraint-hardware--member_of--c-cc",
+        "s02-constraint-windows--member_of--c-s02",
+        "s02-constraint-windows--member_of--c-cc",
+        "s02-constraint-java--member_of--c-s02",
+        "s02-constraint-java--member_of--c-cc",
+        "s02-constraint-fremdsoftware--member_of--c-s02",
+        "s02-constraint-fremdsoftware--member_of--c-cc"
+      ]
+    },
+    "02-Randbedingungen/02-02-Organisatorisch.md": {
+      "sha256": "25e4407c49fc453463c7a30132b9216a1926d9f4a253a10f0cf4c42f0c19bb0d",
+      "nodes": [
+        "s02-constraint-team",
+        "s02-constraint-zeitplan",
+        "s02-constraint-vorgehensmodell",
+        "s02-constraint-werkzeuge",
+        "s02-constraint-versionsverwaltung",
+        "s02-constraint-testwerkzeuge",
+        "s02-constraint-opensource"
+      ],
+      "edges": [
+        "s02-constraint-team--member_of--c-s02",
+        "s02-constraint-team--member_of--c-cc",
+        "s02-constraint-zeitplan--member_of--c-s02",
+        "s02-constraint-zeitplan--member_of--c-cc",
+        "s02-constraint-vorgehensmodell--member_of--c-s02",
+        "s02-constraint-vorgehensmodell--member_of--c-cc",
+        "s02-constraint-werkzeuge--member_of--c-s02",
+        "s02-constraint-werkzeuge--member_of--c-cc",
+        "s02-constraint-versionsverwaltung--member_of--c-s02",
+        "s02-constraint-versionsverwaltung--member_of--c-cc",
+        "s02-constraint-testwerkzeuge--member_of--c-s02",
+        "s02-constraint-testwerkzeuge--member_of--c-cc",
+        "s02-constraint-opensource--member_of--c-s02",
+        "s02-constraint-opensource--member_of--c-cc"
+      ]
+    },
+    "02-Randbedingungen/02-03-Konventionen.md": {
+      "sha256": "2a1d78e8049d700e8f5d3e2a7e8165dbfd98c7662ec73ee4f95776f3575c5a15",
+      "nodes": [
+        "s02-constraint-arc42",
+        "s02-constraint-coding",
+        "s02-constraint-sprache",
+        "s02-constraint-datenformate"
+      ],
+      "edges": [
+        "s02-constraint-datenformate--constrains--s09-adr-01-anbindung",
+        "s02-constraint-arc42--member_of--c-s02",
+        "s02-constraint-arc42--member_of--c-cc",
+        "s02-constraint-coding--member_of--c-s02",
+        "s02-constraint-coding--member_of--c-cc",
+        "s02-constraint-sprache--member_of--c-s02",
+        "s02-constraint-sprache--member_of--c-cc",
+        "s02-constraint-datenformate--member_of--c-s02",
+        "s02-constraint-datenformate--member_of--c-cc"
+      ]
+    },
+    "03-Kontextabgrenzung/03-01-Fachlicher-Kontext.md": {
+      "sha256": "152a09fd7f23a8620ffe4ee9918793a5fb60ec0a1ea3f11f3c514921dc63cf8a",
+      "nodes": [
+        "s03-partner-mensch",
+        "s03-partner-computergegner",
+        "s03-partner-eroeffnungen",
+        "s03-partner-endspiele"
+      ],
+      "edges": [
+        "s03-partner-mensch--member_of--c-s03",
+        "s03-partner-mensch--member_of--c-cb",
+        "s03-partner-computergegner--member_of--c-s03",
+        "s03-partner-computergegner--member_of--c-cb",
+        "s03-partner-eroeffnungen--member_of--c-s03",
+        "s03-partner-eroeffnungen--member_of--c-cb",
+        "s03-partner-endspiele--member_of--c-s03",
+        "s03-partner-endspiele--member_of--c-cb"
+      ]
+    },
+    "03-Kontextabgrenzung/03-02-Technischer-Kontext.md": {
+      "sha256": "8692b99de2bb42a4da4cdc921a1c2e021413c588977bac3e22aeaed5062878a9",
+      "nodes": [
+        "s03-partner-xboard-client",
+        "s03-partner-polyglot"
+      ],
+      "edges": [
+        "s03-partner-xboard-client--communicates_with--s05-bb-xboard",
+        "s03-partner-polyglot--communicates_with--s05-bb-eroeffnung",
+        "s03-partner-xboard-client--member_of--c-s03",
+        "s03-partner-xboard-client--member_of--c-cb",
+        "s03-partner-polyglot--member_of--c-s03",
+        "s03-partner-polyglot--member_of--c-cb"
+      ]
+    },
+    "04-Loesungsstrategie/04-01-Einstieg.md": {
+      "sha256": "17e3853db1889dd0fdfc1564ffc207e28eeeff07efbea4c8310d61732d26336c",
+      "nodes": [
+        "s04-approach-arc42",
+        "s04-approach-domain-explicit",
+        "s04-approach-german-names",
+        "s04-approach-javadoc",
+        "s04-approach-java",
+        "s04-approach-interfaces",
+        "s04-approach-immutable",
+        "s04-approach-di",
+        "s04-approach-test-coverage",
+        "s04-approach-xboard",
+        "s04-approach-opening-book",
+        "s04-approach-minimax-evaluation",
+        "s04-approach-tactics-tests",
+        "s04-approach-reactive",
+        "s04-approach-alpha-beta",
+        "s04-approach-domain-efficient",
+        "s04-approach-time-tests"
+      ],
+      "edges": [
+        "s04-approach-arc42--addresses--s01-qg-zugaenglich",
+        "s04-approach-domain-explicit--addresses--s01-qg-zugaenglich",
+        "s04-approach-german-names--addresses--s01-qg-zugaenglich",
+        "s04-approach-javadoc--addresses--s01-qg-zugaenglich",
+        "s04-approach-java--addresses--s01-qg-experimentierplattform",
+        "s04-approach-interfaces--addresses--s01-qg-experimentierplattform",
+        "s04-approach-immutable--addresses--s01-qg-experimentierplattform",
+        "s04-approach-di--addresses--s01-qg-experimentierplattform",
+        "s04-approach-test-coverage--addresses--s01-qg-experimentierplattform",
+        "s04-approach-xboard--addresses--s01-qg-interoperabilitaet",
+        "s04-approach-java--addresses--s01-qg-interoperabilitaet",
+        "s04-approach-opening-book--addresses--s01-qg-spielstaerke",
+        "s04-approach-minimax-evaluation--addresses--s01-qg-spielstaerke",
+        "s04-approach-tactics-tests--addresses--s01-qg-spielstaerke",
+        "s04-approach-reactive--addresses--s01-qg-effizienz",
+        "s04-approach-alpha-beta--addresses--s01-qg-effizienz",
+        "s04-approach-domain-efficient--addresses--s01-qg-effizienz",
+        "s04-approach-time-tests--addresses--s01-qg-effizienz",
+        "s04-approach-arc42--member_of--c-s04",
+        "s04-approach-arc42--member_of--c-qs",
+        "s04-approach-arc42--member_of--c-sd",
+        "s04-approach-arc42--member_of--c-cc",
+        "s04-approach-domain-explicit--member_of--c-s04",
+        "s04-approach-domain-explicit--member_of--c-qs",
+        "s04-approach-domain-explicit--member_of--c-sd",
+        "s04-approach-domain-explicit--member_of--c-cc",
+        "s04-approach-german-names--member_of--c-s04",
+        "s04-approach-german-names--member_of--c-qs",
+        "s04-approach-german-names--member_of--c-sd",
+        "s04-approach-german-names--member_of--c-cc",
+        "s04-approach-javadoc--member_of--c-s04",
+        "s04-approach-javadoc--member_of--c-qs",
+        "s04-approach-javadoc--member_of--c-sd",
+        "s04-approach-javadoc--member_of--c-cc",
+        "s04-approach-java--member_of--c-s04",
+        "s04-approach-java--member_of--c-qs",
+        "s04-approach-java--member_of--c-sd",
+        "s04-approach-java--member_of--c-cc",
+        "s04-approach-interfaces--member_of--c-s04",
+        "s04-approach-interfaces--member_of--c-qs",
+        "s04-approach-interfaces--member_of--c-sd",
+        "s04-approach-interfaces--member_of--c-cc",
+        "s04-approach-immutable--member_of--c-s04",
+        "s04-approach-immutable--member_of--c-qs",
+        "s04-approach-immutable--member_of--c-sd",
+        "s04-approach-immutable--member_of--c-cc",
+        "s04-approach-di--member_of--c-s04",
+        "s04-approach-di--member_of--c-qs",
+        "s04-approach-di--member_of--c-sd",
+        "s04-approach-di--member_of--c-cc",
+        "s04-approach-test-coverage--member_of--c-s04",
+        "s04-approach-test-coverage--member_of--c-qs",
+        "s04-approach-test-coverage--member_of--c-sd",
+        "s04-approach-test-coverage--member_of--c-cc",
+        "s04-approach-xboard--member_of--c-s04",
+        "s04-approach-xboard--member_of--c-qs",
+        "s04-approach-xboard--member_of--c-sd",
+        "s04-approach-xboard--member_of--c-cc",
+        "s04-approach-opening-book--member_of--c-s04",
+        "s04-approach-opening-book--member_of--c-qs",
+        "s04-approach-opening-book--member_of--c-sd",
+        "s04-approach-opening-book--member_of--c-cc",
+        "s04-approach-minimax-evaluation--member_of--c-s04",
+        "s04-approach-minimax-evaluation--member_of--c-qs",
+        "s04-approach-minimax-evaluation--member_of--c-sd",
+        "s04-approach-minimax-evaluation--member_of--c-cc",
+        "s04-approach-tactics-tests--member_of--c-s04",
+        "s04-approach-tactics-tests--member_of--c-qs",
+        "s04-approach-tactics-tests--member_of--c-sd",
+        "s04-approach-tactics-tests--member_of--c-cc",
+        "s04-approach-reactive--member_of--c-s04",
+        "s04-approach-reactive--member_of--c-qs",
+        "s04-approach-reactive--member_of--c-sd",
+        "s04-approach-reactive--member_of--c-cc",
+        "s04-approach-alpha-beta--member_of--c-s04",
+        "s04-approach-alpha-beta--member_of--c-qs",
+        "s04-approach-alpha-beta--member_of--c-sd",
+        "s04-approach-alpha-beta--member_of--c-cc",
+        "s04-approach-domain-efficient--member_of--c-s04",
+        "s04-approach-domain-efficient--member_of--c-qs",
+        "s04-approach-domain-efficient--member_of--c-sd",
+        "s04-approach-domain-efficient--member_of--c-cc",
+        "s04-approach-time-tests--member_of--c-s04",
+        "s04-approach-time-tests--member_of--c-qs",
+        "s04-approach-time-tests--member_of--c-sd",
+        "s04-approach-time-tests--member_of--c-cc"
+      ]
+    },
+    "04-Loesungsstrategie/04-02-Aufbau.md": {
+      "sha256": "65d5ac62d0292c73f1157a8fa8bd35104818aa5d30ecccfcdf139a33c4872df2",
+      "nodes": [
+        "s04-approach-modular-structure",
+        "s04-approach-domain-readability"
+      ],
+      "edges": [
+        "s04-approach-modular-structure--member_of--c-s04",
+        "s04-approach-modular-structure--member_of--c-qs",
+        "s04-approach-modular-structure--member_of--c-sd",
+        "s04-approach-modular-structure--member_of--c-cc",
+        "s04-approach-domain-readability--member_of--c-s04",
+        "s04-approach-domain-readability--member_of--c-qs",
+        "s04-approach-domain-readability--member_of--c-sd",
+        "s04-approach-domain-readability--member_of--c-cc"
+      ]
+    },
+    "04-Loesungsstrategie/04-03-Spielstrategie.md": {
+      "sha256": "f5c77e2311f2831987c08f9ad9f63d8efe92657851feb527e9eda5ead76eb9ea",
+      "nodes": [
+        "s04-approach-fixed-depth-minimax",
+        "s04-approach-parallel-minimax"
+      ],
+      "edges": [
+        "s04-approach-fixed-depth-minimax--member_of--c-s04",
+        "s04-approach-fixed-depth-minimax--member_of--c-qs",
+        "s04-approach-fixed-depth-minimax--member_of--c-sd",
+        "s04-approach-fixed-depth-minimax--member_of--c-cc",
+        "s04-approach-parallel-minimax--member_of--c-s04",
+        "s04-approach-parallel-minimax--member_of--c-qs",
+        "s04-approach-parallel-minimax--member_of--c-sd",
+        "s04-approach-parallel-minimax--member_of--c-cc"
+      ]
+    },
+    "04-Loesungsstrategie/04-04-Anbindung.md": {
+      "sha256": "cb6289eb65b75a78f97361b05443ba9afe650fdb438bb252e43560ba4e331247",
+      "nodes": [
+        "s04-approach-stdin-stdout",
+        "s04-approach-async-engine",
+        "s04-approach-windows-batch"
+      ],
+      "edges": [
+        "s04-approach-stdin-stdout--member_of--c-s04",
+        "s04-approach-stdin-stdout--member_of--c-qs",
+        "s04-approach-stdin-stdout--member_of--c-sd",
+        "s04-approach-stdin-stdout--member_of--c-cc",
+        "s04-approach-async-engine--member_of--c-s04",
+        "s04-approach-async-engine--member_of--c-qs",
+        "s04-approach-async-engine--member_of--c-sd",
+        "s04-approach-async-engine--member_of--c-cc",
+        "s04-approach-windows-batch--member_of--c-s04",
+        "s04-approach-windows-batch--member_of--c-qs",
+        "s04-approach-windows-batch--member_of--c-sd",
+        "s04-approach-windows-batch--member_of--c-cc"
+      ]
+    },
+    "05-Bausteinsicht/05-01-Ebene-1.md": {
+      "sha256": "4df003c9b2d8cf486b032aabd8e21827c54f0d15dee1f2fb867103a81bcc8196",
+      "nodes": [],
+      "edges": []
+    },
+    "05-Bausteinsicht/05-02-XBoard-Protokoll.md": {
+      "sha256": "088644e5c0c77718277dd6e524003f9ccc7f7af9cc050933723b4e745245a255",
+      "nodes": [
+        "s05-bb-xboard",
+        "s05-if-xboard-api"
+      ],
+      "edges": [
+        "s05-bb-xboard--provides--s05-if-xboard-api",
+        "s05-bb-xboard--consumes--s05-if-spielregeln",
+        "s05-bb-xboard--consumes--s05-if-engine",
+        "s05-bb-xboard--deployed_on--s07-infra-dokchess-jar",
+        "s05-bb-xboard--member_of--c-s05",
+        "s05-bb-xboard--member_of--c-cb",
+        "s05-bb-xboard--member_of--c-vc",
+        "s05-if-xboard-api--member_of--c-s05",
+        "s05-if-xboard-api--member_of--c-cb",
+        "s05-if-xboard-api--member_of--c-vc"
+      ]
+    },
+    "05-Bausteinsicht/05-03-Spielregeln.md": {
+      "sha256": "ab923712b969151ea88597ae89adff6e8bea7c1b7276eb1aa98f8628576e5a84",
+      "nodes": [
+        "s05-bb-regeln",
+        "s05-if-spielregeln"
+      ],
+      "edges": [
+        "s05-bb-regeln--provides--s05-if-spielregeln",
+        "s05-bb-regeln--deployed_on--s07-infra-dokchess-jar",
+        "s05-bb-regeln--member_of--c-s05",
+        "s05-bb-regeln--member_of--c-cb",
+        "s05-bb-regeln--member_of--c-vc",
+        "s05-if-spielregeln--member_of--c-s05",
+        "s05-if-spielregeln--member_of--c-cb",
+        "s05-if-spielregeln--member_of--c-vc"
+      ]
+    },
+    "05-Bausteinsicht/05-04-Engine.md": {
+      "sha256": "6bac3fbd86ffada10495fa2d1a232303b2aab9affcbd095c151ba5f0b1b5b07f",
+      "nodes": [
+        "s05-bb-engine",
+        "s05-if-engine"
+      ],
+      "edges": [
+        "s05-bb-engine--contains--s05-bb-engine-whitebox",
+        "s05-bb-engine--provides--s05-if-engine",
+        "s05-bb-engine--consumes--s05-if-spielregeln",
+        "s05-bb-engine--consumes--s05-if-eroeffnung",
+        "s05-bb-engine--deployed_on--s07-infra-dokchess-jar",
+        "s05-bb-engine--member_of--c-s05",
+        "s05-bb-engine--member_of--c-cb",
+        "s05-bb-engine--member_of--c-vc",
+        "s05-if-engine--member_of--c-s05",
+        "s05-if-engine--member_of--c-cb",
+        "s05-if-engine--member_of--c-vc"
+      ]
+    },
+    "05-Bausteinsicht/05-05-Eroeffnung.md": {
+      "sha256": "dae48bd7b87d9152c884180601264f54c6cd118316c1039fc12149d6c250f6f7",
+      "nodes": [
+        "s05-bb-eroeffnung",
+        "s05-if-eroeffnung"
+      ],
+      "edges": [
+        "s05-bb-eroeffnung--provides--s05-if-eroeffnung",
+        "s05-bb-eroeffnung--deployed_on--s07-infra-dokchess-jar",
+        "s05-bb-eroeffnung--member_of--c-s05",
+        "s05-bb-eroeffnung--member_of--c-cb",
+        "s05-bb-eroeffnung--member_of--c-vc",
+        "s05-if-eroeffnung--member_of--c-s05",
+        "s05-if-eroeffnung--member_of--c-cb",
+        "s05-if-eroeffnung--member_of--c-vc"
+      ]
+    },
+    "05-Bausteinsicht/05-06-Ebene-2-Engine.md": {
+      "sha256": "587a9f3e14df39ccde5198d7d475d9843c9351c256b5fdce7a386b3c14ee82ea",
+      "nodes": [
+        "s05-bb-engine-whitebox"
+      ],
+      "edges": [
+        "s05-bb-engine-whitebox--contains--s05-bb-zugsuche",
+        "s05-bb-engine-whitebox--contains--s05-bb-bewertung",
+        "s05-bb-engine-whitebox--member_of--c-s05",
+        "s05-bb-engine-whitebox--member_of--c-cb",
+        "s05-bb-engine-whitebox--member_of--c-vc"
+      ]
+    },
+    "05-Bausteinsicht/05-07-Zugsuche.md": {
+      "sha256": "8c28b89b8db81aba1b3d641201bc5793ba7c159b7fa74b02dbff78ab4620e718",
+      "nodes": [
+        "s05-bb-zugsuche",
+        "s05-if-suche"
+      ],
+      "edges": [
+        "s05-bb-zugsuche--provides--s05-if-suche",
+        "s05-bb-zugsuche--consumes--s05-if-spielregeln",
+        "s05-bb-zugsuche--consumes--s05-if-bewertung",
+        "s05-bb-zugsuche--member_of--c-s05",
+        "s05-bb-zugsuche--member_of--c-cb",
+        "s05-bb-zugsuche--member_of--c-vc",
+        "s05-if-suche--member_of--c-s05",
+        "s05-if-suche--member_of--c-cb",
+        "s05-if-suche--member_of--c-vc"
+      ]
+    },
+    "05-Bausteinsicht/05-08-Stellungsbewertung.md": {
+      "sha256": "a7e0238a3fab1700a787c744133eb6e1203b4288b696cafdc2cc6f077ff4b645",
+      "nodes": [
+        "s05-bb-bewertung",
+        "s05-if-bewertung"
+      ],
+      "edges": [
+        "s05-bb-bewertung--provides--s05-if-bewertung",
+        "s05-bb-bewertung--member_of--c-s05",
+        "s05-bb-bewertung--member_of--c-cb",
+        "s05-bb-bewertung--member_of--c-vc",
+        "s05-if-bewertung--member_of--c-s05",
+        "s05-if-bewertung--member_of--c-cb",
+        "s05-if-bewertung--member_of--c-vc"
+      ]
+    },
+    "06-Laufzeitsicht/06-01-Zugermittlung.md": {
+      "sha256": "949a0c5a4dd6725252b73dbd27dfdaa3680dfba052e28f366335aad5f02c3d21",
+      "nodes": [
+        "s06-scenario-zugermittlung"
+      ],
+      "edges": [
+        "s06-scenario-zugermittlung--involves--s05-bb-xboard",
+        "s06-scenario-zugermittlung--involves--s05-bb-regeln",
+        "s06-scenario-zugermittlung--involves--s05-bb-engine",
+        "s06-scenario-zugermittlung--involves--s05-bb-eroeffnung",
+        "s06-scenario-zugermittlung--involves--s05-bb-zugsuche",
+        "s06-scenario-zugermittlung--involves--s05-bb-bewertung",
+        "s06-scenario-zugermittlung--member_of--c-s06",
+        "s06-scenario-zugermittlung--member_of--c-vc"
+      ]
+    },
+    "07-Verteilungssicht/07-01-Infrastruktur-Windows.md": {
+      "sha256": "47d1c6de99f82761530777e51265414e33e0b340fde540c1331c97a508c77bfc",
+      "nodes": [
+        "s07-infra-windows-pc",
+        "s07-infra-arena",
+        "s07-infra-jre",
+        "s07-infra-dokchess-jar",
+        "s07-infra-batch"
+      ],
+      "edges": [
+        "s07-infra-windows-pc--refines--s07-infra-arena",
+        "s07-infra-windows-pc--refines--s07-infra-jre",
+        "s07-infra-windows-pc--refines--s07-infra-dokchess-jar",
+        "s07-infra-windows-pc--refines--s07-infra-batch",
+        "s07-infra-windows-pc--member_of--c-s07",
+        "s07-infra-windows-pc--member_of--c-vc",
+        "s07-infra-arena--member_of--c-s07",
+        "s07-infra-arena--member_of--c-vc",
+        "s07-infra-jre--member_of--c-s07",
+        "s07-infra-jre--member_of--c-vc",
+        "s07-infra-dokchess-jar--member_of--c-s07",
+        "s07-infra-dokchess-jar--member_of--c-vc",
+        "s07-infra-batch--member_of--c-s07",
+        "s07-infra-batch--member_of--c-vc"
+      ]
+    },
+    "08-Konzepte/08-01-Abhaengigkeiten.md": {
+      "sha256": "8c84b2e7f02df71fface675cbf41ca2b2714f131744dd865580544b0c7e8bf7d",
+      "nodes": [
+        "s08-concept-abhaengigkeiten"
+      ],
+      "edges": [
+        "s08-concept-abhaengigkeiten--references--s01-qg-experimentierplattform",
+        "s08-concept-abhaengigkeiten--references--s08-concept-testability",
+        "s08-concept-abhaengigkeiten--member_of--c-s08",
+        "s08-concept-abhaengigkeiten--member_of--c-cc",
+        "s08-concept-abhaengigkeiten--member_of--c-ke"
+      ]
+    },
+    "08-Konzepte/08-02-Domaenenmodell.md": {
+      "sha256": "612847f47bf03c5c66a3b797c15ed69f0022c61d9a5323efa759fd47a354fd9f",
+      "nodes": [
+        "s08-concept-domain-model",
+        "s08-dm-figur",
+        "s08-dm-feld",
+        "s08-dm-zug",
+        "s08-dm-stellung",
+        "s08-dm-farbe",
+        "s08-dm-figurenart"
+      ],
+      "edges": [
+        "s08-concept-domain-model--models--s08-dm-figur",
+        "s08-concept-domain-model--models--s08-dm-feld",
+        "s08-concept-domain-model--models--s08-dm-zug",
+        "s08-concept-domain-model--models--s08-dm-stellung",
+        "s08-concept-domain-model--models--s08-dm-farbe",
+        "s08-concept-domain-model--models--s08-dm-figurenart",
+        "s08-concept-domain-model--based_on--s09-adr-02-stellungsobjekte",
+        "s08-concept-domain-model--member_of--c-s08",
+        "s08-concept-domain-model--member_of--c-cc",
+        "s08-concept-domain-model--member_of--c-ke",
+        "s08-dm-figur--member_of--c-s08",
+        "s08-dm-figur--member_of--c-cc",
+        "s08-dm-figur--member_of--c-ke",
+        "s08-dm-feld--member_of--c-s08",
+        "s08-dm-feld--member_of--c-cc",
+        "s08-dm-feld--member_of--c-ke",
+        "s08-dm-zug--member_of--c-s08",
+        "s08-dm-zug--member_of--c-cc",
+        "s08-dm-zug--member_of--c-ke",
+        "s08-dm-stellung--member_of--c-s08",
+        "s08-dm-stellung--member_of--c-cc",
+        "s08-dm-stellung--member_of--c-ke",
+        "s08-dm-farbe--member_of--c-s08",
+        "s08-dm-farbe--member_of--c-cc",
+        "s08-dm-farbe--member_of--c-ke",
+        "s08-dm-figurenart--member_of--c-s08",
+        "s08-dm-figurenart--member_of--c-cc",
+        "s08-dm-figurenart--member_of--c-ke"
+      ]
+    },
+    "08-Konzepte/08-03-Benutzungsoberflaeche.md": {
+      "sha256": "3beb7f6d80bab255894852df276443a347aefafbfe4790252f2d9ae72c19a5fb",
+      "nodes": [
+        "s08-concept-ui"
+      ],
+      "edges": [
+        "s08-concept-ui--member_of--c-s08",
+        "s08-concept-ui--member_of--c-cc",
+        "s08-concept-ui--member_of--c-ke"
+      ]
+    },
+    "08-Konzepte/08-04-Validierung.md": {
+      "sha256": "5da7ed3e2cb06dba694cbbaab12020d0f0fd0d6490041dcb4fe1913f57aa380f",
+      "nodes": [
+        "s08-concept-validation"
+      ],
+      "edges": [
+        "s08-concept-validation--affects--s05-bb-xboard",
+        "s08-concept-validation--affects--s05-bb-regeln",
+        "s08-concept-validation--affects--s05-bb-eroeffnung",
+        "s08-concept-validation--member_of--c-s08",
+        "s08-concept-validation--member_of--c-cc",
+        "s08-concept-validation--member_of--c-ke"
+      ]
+    },
+    "08-Konzepte/08-05-Fehlerbehandlung.md": {
+      "sha256": "3263b47cf9cb9a6ca91249c0709208da467aac94dbc925100f9144c81732690e",
+      "nodes": [
+        "s08-concept-error-handling"
+      ],
+      "edges": [
+        "s08-concept-error-handling--affects--s05-bb-xboard",
+        "s08-concept-error-handling--affects--s05-bb-engine",
+        "s08-concept-error-handling--member_of--c-s08",
+        "s08-concept-error-handling--member_of--c-cc",
+        "s08-concept-error-handling--member_of--c-ke"
+      ]
+    },
+    "08-Konzepte/08-06-Logging.md": {
+      "sha256": "60b9685473d12689dadee6f8068cfe87d35664f84c0586d76e226620f6cc1c09",
+      "nodes": [
+        "s08-concept-logging"
+      ],
+      "edges": [
+        "s08-concept-logging--member_of--c-s08",
+        "s08-concept-logging--member_of--c-cc",
+        "s08-concept-logging--member_of--c-ke"
+      ]
+    },
+    "08-Konzepte/08-07-Testbarkeit.md": {
+      "sha256": "87d13f28229e1087d6fe64599086939059508cd72813ed1358207eb472aed108",
+      "nodes": [
+        "s08-concept-testability"
+      ],
+      "edges": [
+        "s08-concept-testability--member_of--c-s08",
+        "s08-concept-testability--member_of--c-cc",
+        "s08-concept-testability--member_of--c-ke"
+      ]
+    },
+    "09-Entscheidungen/09-01-Anbindung.md": {
+      "sha256": "31ad8ebf2e6f9aa0dfecdb98f91ae519eae83073fcf64efc54292b130d9be054",
+      "nodes": [
+        "s09-adr-01-anbindung"
+      ],
+      "edges": [
+        "s09-adr-01-anbindung--realizes--s04-approach-xboard",
+        "s09-adr-01-anbindung--member_of--c-s09",
+        "s09-adr-01-anbindung--member_of--c-sd",
+        "s09-adr-01-anbindung--member_of--c-cc",
+        "s09-adr-01-anbindung--member_of--c-ke"
+      ]
+    },
+    "09-Entscheidungen/09-02-Stellungsobjekte.md": {
+      "sha256": "4c5fd631975b83d7623728edb068c0e64d21c66246185fd7285f289564ed7a1e",
+      "nodes": [
+        "s09-adr-02-stellungsobjekte"
+      ],
+      "edges": [
+        "s09-adr-02-stellungsobjekte--realizes--s04-approach-immutable",
+        "s09-adr-02-stellungsobjekte--member_of--c-s09",
+        "s09-adr-02-stellungsobjekte--member_of--c-sd",
+        "s09-adr-02-stellungsobjekte--member_of--c-cc",
+        "s09-adr-02-stellungsobjekte--member_of--c-ke"
+      ]
+    },
+    "10-Qualitaetsanforderungen/10-01-Qualitaetsbaum.md": {
+      "sha256": "a79eb5e3bd1bcdc856500457141834be98d284e61e54cb4f59dd450dce531dfb",
+      "nodes": [],
+      "edges": []
+    },
+    "10-Qualitaetsanforderungen/10-02-Qualitaetsszenarien.md": {
+      "sha256": "11f77a3436f0e8ba9a450caff23c179054b03be28e60c128e572738f052ca391",
+      "nodes": [
+        "s10-qs-w01",
+        "s10-qs-w02",
+        "s10-qs-w03",
+        "s10-qs-w04",
+        "s10-qs-w05",
+        "s10-qs-k01",
+        "s10-qs-f01",
+        "s10-qs-f02",
+        "s10-qs-f03",
+        "s10-qs-f04",
+        "s10-qs-e01",
+        "s10-qs-e02",
+        "s10-qs-z01",
+        "s10-qs-z02",
+        "s10-qs-p01"
+      ],
+      "edges": [
+        "s10-qs-w01--concretizes--s01-qg-zugaenglich",
+        "s10-qs-w02--concretizes--s01-qg-zugaenglich",
+        "s10-qs-w03--concretizes--s01-qg-zugaenglich",
+        "s10-qs-w04--concretizes--s01-qg-experimentierplattform",
+        "s10-qs-w05--concretizes--s01-qg-experimentierplattform",
+        "s10-qs-p01--concretizes--s01-qg-experimentierplattform",
+        "s10-qs-k01--concretizes--s01-qg-interoperabilitaet",
+        "s10-qs-f02--concretizes--s01-qg-spielstaerke",
+        "s10-qs-f03--concretizes--s01-qg-spielstaerke",
+        "s10-qs-f04--concretizes--s01-qg-spielstaerke",
+        "s10-qs-e01--concretizes--s01-qg-effizienz",
+        "s10-qs-e02--concretizes--s01-qg-effizienz",
+        "s10-qs-w01--member_of--c-s10",
+        "s10-qs-w01--member_of--c-qs",
+        "s10-qs-w01--member_of--c-rq",
+        "s10-qs-w02--member_of--c-s10",
+        "s10-qs-w02--member_of--c-qs",
+        "s10-qs-w02--member_of--c-rq",
+        "s10-qs-w03--member_of--c-s10",
+        "s10-qs-w03--member_of--c-qs",
+        "s10-qs-w03--member_of--c-rq",
+        "s10-qs-w04--member_of--c-s10",
+        "s10-qs-w04--member_of--c-qs",
+        "s10-qs-w04--member_of--c-rq",
+        "s10-qs-w05--member_of--c-s10",
+        "s10-qs-w05--member_of--c-qs",
+        "s10-qs-w05--member_of--c-rq",
+        "s10-qs-k01--member_of--c-s10",
+        "s10-qs-k01--member_of--c-qs",
+        "s10-qs-k01--member_of--c-rq",
+        "s10-qs-f01--member_of--c-s10",
+        "s10-qs-f01--member_of--c-qs",
+        "s10-qs-f01--member_of--c-rq",
+        "s10-qs-f02--member_of--c-s10",
+        "s10-qs-f02--member_of--c-qs",
+        "s10-qs-f02--member_of--c-rq",
+        "s10-qs-f03--member_of--c-s10",
+        "s10-qs-f03--member_of--c-qs",
+        "s10-qs-f03--member_of--c-rq",
+        "s10-qs-f04--member_of--c-s10",
+        "s10-qs-f04--member_of--c-qs",
+        "s10-qs-f04--member_of--c-rq",
+        "s10-qs-e01--member_of--c-s10",
+        "s10-qs-e01--member_of--c-qs",
+        "s10-qs-e01--member_of--c-rq",
+        "s10-qs-e02--member_of--c-s10",
+        "s10-qs-e02--member_of--c-qs",
+        "s10-qs-e02--member_of--c-rq",
+        "s10-qs-z01--member_of--c-s10",
+        "s10-qs-z01--member_of--c-qs",
+        "s10-qs-z01--member_of--c-rq",
+        "s10-qs-z02--member_of--c-s10",
+        "s10-qs-z02--member_of--c-qs",
+        "s10-qs-z02--member_of--c-rq",
+        "s10-qs-p01--member_of--c-s10",
+        "s10-qs-p01--member_of--c-qs",
+        "s10-qs-p01--member_of--c-rq"
+      ]
+    },
+    "11-Risiken/11-01-Frontend.md": {
+      "sha256": "3e0a78e11dd8a796bede1b098c955378b60e5992b9989ec1585ff739837f5fc3",
+      "nodes": [
+        "s11-risk-frontend"
+      ],
+      "edges": [
+        "s11-risk-frontend--threatens--s01-qg-interoperabilitaet",
+        "s11-risk-frontend--member_of--c-s11",
+        "s11-risk-frontend--member_of--c-rq"
+      ]
+    },
+    "11-Risiken/11-02-Aufwand.md": {
+      "sha256": "2f7ff5c3ea114289dc9079da91a124011161f49bcca814e42a4d8e04f27ad96c",
+      "nodes": [
+        "s11-risk-aufwand"
+      ],
+      "edges": [
+        "s11-risk-aufwand--threatens--s01-qg-spielstaerke",
+        "s11-risk-aufwand--member_of--c-s11",
+        "s11-risk-aufwand--member_of--c-rq"
+      ]
+    },
+    "11-Risiken/11-03-Spielstaerke.md": {
+      "sha256": "34f34eb802a02602a7e0bffc64e1a7f128e5b3fd6128c84022468a6c65a1b572",
+      "nodes": [
+        "s11-risk-spielstaerke"
+      ],
+      "edges": [
+        "s11-risk-spielstaerke--threatens--s01-qg-spielstaerke",
+        "s11-risk-spielstaerke--threatens--s01-qg-effizienz",
+        "s11-risk-spielstaerke--threatens--s01-qg-zugaenglich",
+        "s11-risk-spielstaerke--member_of--c-s11",
+        "s11-risk-spielstaerke--member_of--c-rq"
+      ]
+    },
+    "12-Glossar/12-01-Einstieg.md": {
+      "sha256": "aebd439ba1ff216b1e5a30dfd81a9b29766b15759a44f6dfb6e04c3c277967d0",
+      "nodes": [],
+      "edges": []
+    },
+    "12-Glossar/12-02-Begriffe.md": {
+      "sha256": "5d247c6d83c644767e48479dd6d37c764a7a9bd61f1e5ae93dabb8dcf2071a13",
+      "nodes": [
+        "s12-term-50-zuege",
+        "s12-term-alpha-beta",
+        "s12-term-einstellen",
+        "s12-term-endspiel",
+        "s12-term-engine",
+        "s12-term-en-passant",
+        "s12-term-eroeffnung",
+        "s12-term-fen",
+        "s12-term-fide",
+        "s12-term-gabel",
+        "s12-term-halbzug",
+        "s12-term-matt",
+        "s12-term-minimax",
+        "s12-term-patt",
+        "s12-term-polyglot",
+        "s12-term-remis",
+        "s12-term-rochade",
+        "s12-term-schach960",
+        "s12-term-spiess",
+        "s12-term-springergabel",
+        "s12-term-stellungswiederholung",
+        "s12-term-umwandlung",
+        "s12-term-winboard",
+        "s12-term-xboard"
+      ],
+      "edges": [
+        "s12-term-alpha-beta--defines_term_for--s04-approach-alpha-beta",
+        "s12-term-minimax--defines_term_for--s04-approach-minimax-evaluation",
+        "s12-term-engine--defines_term_for--s05-bb-engine",
+        "s12-term-polyglot--defines_term_for--s05-bb-eroeffnung",
+        "s12-term-xboard--defines_term_for--s05-bb-xboard",
+        "s12-term-winboard--references--s12-term-xboard",
+        "s12-term-fen--defines_term_for--s08-concept-testability",
+        "s12-term-50-zuege--defines_term_for--s05-bb-regeln",
+        "s12-term-stellungswiederholung--defines_term_for--s05-bb-regeln",
+        "s12-term-50-zuege--member_of--c-s12",
+        "s12-term-alpha-beta--member_of--c-s12",
+        "s12-term-einstellen--member_of--c-s12",
+        "s12-term-endspiel--member_of--c-s12",
+        "s12-term-engine--member_of--c-s12",
+        "s12-term-en-passant--member_of--c-s12",
+        "s12-term-eroeffnung--member_of--c-s12",
+        "s12-term-fen--member_of--c-s12",
+        "s12-term-fide--member_of--c-s12",
+        "s12-term-gabel--member_of--c-s12",
+        "s12-term-halbzug--member_of--c-s12",
+        "s12-term-matt--member_of--c-s12",
+        "s12-term-minimax--member_of--c-s12",
+        "s12-term-patt--member_of--c-s12",
+        "s12-term-polyglot--member_of--c-s12",
+        "s12-term-remis--member_of--c-s12",
+        "s12-term-rochade--member_of--c-s12",
+        "s12-term-schach960--member_of--c-s12",
+        "s12-term-spiess--member_of--c-s12",
+        "s12-term-springergabel--member_of--c-s12",
+        "s12-term-stellungswiederholung--member_of--c-s12",
+        "s12-term-umwandlung--member_of--c-s12",
+        "s12-term-winboard--member_of--c-s12",
+        "s12-term-xboard--member_of--c-s12"
+      ]
+    },
+    "LICENSE.md": {
+      "sha256": "ddff5392e38781a61f1300baf71179d93f4f4cc56ee296f061624aa00f682aa6",
+      "nodes": [],
+      "edges": []
+    }
+  }
+}

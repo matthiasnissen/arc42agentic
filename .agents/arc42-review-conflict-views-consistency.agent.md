@@ -18,12 +18,21 @@ Die drei Architektursichten bilden verschiedene Perspektiven auf dasselbe System
 
 Inkonsistenzen zwischen diesen Sichten erzeugen Verwirrung und deuten auf eine unvollständige Architektur hin.
 
-## Zu prüfende Dateien
+## Analyse-Modus
 
-> Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
-> - **Sektion 5** (Bausteinsicht) — alle Dateien
-> - **Sektion 6** (Laufzeitsicht) — alle Dateien
-> - **Sektion 7** (Verteilungssicht) — alle Dateien
+Der Aufrufer (Orchestrator) teilt dir explizit mit, ob du im **GRAPH-MODUS** oder im **DATEI-MODUS** arbeitest. Wurde kein Modus mitgeteilt (Standalone-Aufruf), frage den Nutzer, bevor du beginnst, ob er den Graph-Modus (Wissensgraph) oder den Datei-Modus (rohe Markdown-Dateien) nutzen möchte.
+
+**GRAPH-MODUS**: Der Aufrufer liefert dir den Pfad zur GraphML-Datei sowie die Konfliktdimensions-Community `c-vc` (S5, S6, S7) gemäß Skill `arc42-knowledge-graph`.
+- Filtere auf Knoten der Typen `BuildingBlock` (S5), `RuntimeScenario` (S6) und `InfrastructureNode` (S7) — über `member_of` → Community `c-vc` (nicht über den exakten `section`-Wert: er enthält auch Unterabschnitte wie `5.2`).
+- Nutze die Kanten `involves` (`RuntimeScenario` → `BuildingBlock`) und `deployed_on` (`BuildingBlock` → `InfrastructureNode`), um die Kreuzreferenz-Matrix strukturell abzuleiten.
+- Ein `BuildingBlock` ohne jede eingehende `involves`- UND ohne jede ausgehende `deployed_on`-Kante ist ein Verdachtsfall für einen verwaisten Baustein.
+- Kanten mit `evidence=inferred` nur mit Vorbehalt verwenden — prüfe bei kritischen (🔴) Befunden `source_file`/`source_anchor` gegen.
+- **Delta-Modus**: Beschränke die Analyse auf Knoten/Kanten mit `changed=true` und deren Nachbarschaft (siehe Skill `arc42-knowledge-graph`, Abschnitt „Inkrementelle Aktualisierung").
+
+**DATEI-MODUS**: Wende das **Empfangs-Protokoll** aus dem Skill `arc42-doc-layout` (Teil B) an. Benötigte Sektionen für diese Analyse:
+- **Sektion 5** (Bausteinsicht) — alle Dateien
+- **Sektion 6** (Laufzeitsicht) — alle Dateien
+- **Sektion 7** (Verteilungssicht) — alle Dateien
 
 ## Review-Modus
 
@@ -68,11 +77,11 @@ Inkonsistenzen zwischen diesen Sichten erzeugen Verwirrung und deuten auf eine u
 ## Vorgehen
 
 1. **Modus bestimmen**: Prüfe, ob der Aufrufer Änderungsinformationen mitgeliefert hat
-2. Lies alle Dateien aus Sektion 5 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere alle definierten Bausteine (Name, Verantwortlichkeit, Schnittstellen)
-3. Lies alle Dateien aus Sektion 6 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere alle referenzierten Bausteine und deren Interaktionen
-4. Lies alle Dateien aus Sektion 7 (Pfade vom Aufrufer mitgeliefert oder über Skill `arc42-doc-layout` ermitteln) und extrahiere das Software-Hardware-Mapping
-5. Erstelle eine Kreuzreferenz-Matrix aller Bausteine über alle drei Sichten
-6. Identifiziere Diskrepanzen (im Delta-Modus: fokussiert auf Auswirkungen der Änderungen)
+2. Lade den Wissensgraphen und extrahiere alle `BuildingBlock`-Knoten (Sektion 5) mit Name, `description` (Verantwortlichkeit) und Schnittstellen
+3. Extrahiere alle `RuntimeScenario`-Knoten (Sektion 6) sowie deren `involves`-Kanten zu `BuildingBlock`
+4. Extrahiere alle `InfrastructureNode`-Knoten (Sektion 7) sowie die `deployed_on`-Kanten von `BuildingBlock` dorthin
+5. Erstelle die Kreuzreferenz-Matrix aller Bausteine über alle drei Sichten direkt aus den `involves`-/`deployed_on`-Kanten
+6. Identifiziere Diskrepanzen (im Delta-Modus: fokussiert auf `changed=true`-Knoten und ihre Nachbarschaft)
 
 ## Ausgabeformat
 

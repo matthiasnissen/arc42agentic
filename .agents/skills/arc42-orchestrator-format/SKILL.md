@@ -73,6 +73,10 @@ Zählt alle Befunde über alle Agenten hinweg:
 | 🟢 Hinweise | n |
 ```
 
+Regeln:
+- Die Zahlen zählen Befund-IDs. Beschreiben mehrere Befunde dieselbe Ursache, führe darunter einen Absatz auf, der diese Gruppen benennt (z. B. „FIDE-Umfang: S01-01, S05-02, S11-02“), damit die Summe nicht als Zahl unabhängiger Mängel gelesen wird.
+- Die Schweregrad-Summen müssen exakt mit den Befunden im Bericht übereinstimmen.
+
 ### Konfliktkarte
 
 Übersicht, welche Sektionen in den meisten Konflikten involviert sind. Wird vom **Vollständigen Review** und der **Konfliktanalyse** ausgegeben:

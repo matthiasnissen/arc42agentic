@@ -47,8 +47,9 @@ Für jede Abweichung in einem Sektions-Review:
 ### [Befund-ID] Titel
 
 **Schwere:** 🔴 Kritisch / 🟡 Empfehlung / 🟢 Hinweis
-**Datei:** `pfad/zur/datei.md`
+**Datei:** [pfad/zur/datei.md](pfad/zur/datei.md#L12) (Zeilenanker der Fundstelle)
 **Kriterium:** Welches arc42-Kriterium verletzt ist
+**Zitat:** „wörtliche Textstelle aus der Datei“
 
 **Befund:** Beschreibung des Problems
 
@@ -82,6 +83,21 @@ Das PREFIX wird vom jeweiligen Konflikt-Agenten definiert (z.B. KQS, KKB, KRC, K
 - Schlage bei jedem Befund eine **KONKRETE, direkt übernehmbare Änderung** vor
 - Berücksichtige, dass die Dokumentation auf **Deutsch** verfasst ist
 - Befund-IDs müssen eindeutig und fortlaufend nummeriert sein
+
+### Schweregrad kalibrieren
+
+- 🔴 **Kritisch** nur, wenn zwei Textstellen der Dokumentation sich belegbar widersprechen oder eine Zusicherung nachweislich nicht erfüllt wird. Beides ist mit wörtlichen Zitaten zu belegen.
+- 🟡 **Empfehlung/Warnung** für fehlende oder unscharfe Angaben, bei denen kein Widerspruch vorliegt (z. B. fehlende Messbedingungen, fehlende Begründung, „beispielsweise“-Formulierungen).
+- 🟢 **Hinweis** für optionale Verbesserungen und Verdachtsfälle ohne Beleg.
+- Eine Lücke im Graphen oder eine fehlende Kante ist kein Beleg für fehlende Dokumentation; prüfe im Zweifel die Quelle.
+- Fordere neue ADRs, Risiken oder Szenarien nur, wenn die Dokumentation selbst eine Entscheidung, ein Risiko oder eine Zusage enthält, die dort fehlt. Ein Konzept darf Regeln samt Begründung enthalten.
+
+### Belege und Vorschläge
+
+- Jeder Befund nennt eine **Zitat-Zeile** mit wörtlich übernommenem Text und, wo möglich, einen Zeilenanker (`#L<n>`) der Fundstelle. Gekürzte Zitate werden mit `[…]` markiert; Paraphrasen stehen nicht in Anführungszeichen.
+- Erfinde keine Zahlenwerte, Schwellen, Zuständigkeiten oder Termine. Fehlt eine Entscheidung, setze `TODO` oder kennzeichne den Wert ausdrücklich als Vorschlag zur Abstimmung.
+- Mehrere Befunde mit derselben Ursache sind miteinander zu verknüpfen („Siehe auch …“) und werden im Zusammenfassungsblock als eine Ursache ausgewiesen.
+- Fertige Berichte lassen sich mit `python3 <skill-ordner>/scripts/check_review.py <bericht.md> --doc <doku-pfad>` prüfen (Summen, Befund-IDs, Links, Zeilenanker, wörtliche Zitate).
 
 ## Verwandte Skills
 
